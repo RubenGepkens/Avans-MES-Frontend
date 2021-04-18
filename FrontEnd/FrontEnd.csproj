@@ -233,6 +233,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\frmAboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\frmAboutBox.Designer.cs">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,6 +249,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\frmAboutBox.resx">
+      <DependentUpon>frmAboutBox.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -264,47 +273,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="applicatieAssets\Icon\noun_bread.png" />
-    <Content Include="applicatieAssets\Icon\noun_Bread_3854138.svg" />
-    <Content Include="applicatieAssets\Icon\noun_bread_multiSizeIcon.ico" />
-    <Content Include="applicatieAssets\Icon\noun_bread_singleSizeIcon.ico" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-accessories-text-editor.svg.png" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-application-exit.svg.png" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-document-new.svg.png" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-edit-paste.svg.png" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-help-faq.svg.png" />
-    <Content Include="applicatieAssets\Origineel\240px-Gnome-x-office-document.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-applications-system.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-document-open-recent.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-network-idle.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-network-offline.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-network-wired.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-system-file-manager.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-window-new.svg.png" />
-    <Content Include="applicatieAssets\Origineel\Gnome-x-office-presentation.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-accessories-text-editor.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-application-exit.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-document-new.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-edit-paste.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-help-faq.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\240px-Gnome-x-office-document.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-applications-system.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-document-open-recent.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-network-idle.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-network-offline.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-network-wired.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-system-file-manager.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-window-new.svg.png" />
-    <Content Include="applicatieAssets\Resize-30x30\Gnome-x-office-presentation.svg.png" />
     <Content Include="noun_bread_multiSizeIcon.ico" />
-    <None Include="Resources\Gnome-x-office-presentation.svg.png" />
-    <None Include="Resources\Gnome-network-wired.svg.png" />
-    <None Include="Resources\Gnome-network-offline.svg.png" />
     <None Include="Resources\Gnome-network-idle.svg.png" />
     <None Include="Resources\Gnome-document-open-recent.svg.png" />
     <None Include="Resources\Gnome-applications-system.svg.png" />
+    <None Include="Resources\240px-Gnome-x-office-document.svg.png" />
+    <None Include="Resources\240px-Gnome-help-faq.svg.png" />
     <None Include="Resources\240px-Gnome-edit-paste.svg.png" />
     <None Include="Resources\240px-Gnome-document-new.svg.png" />
+    <None Include="Resources\240px-Gnome-application-exit.svg.png" />
+    <None Include="Resources\240px-Gnome-accessories-text-editor.svg.png" />
+    <None Include="Resources\Gnome-x-office-presentation.svg.png" />
+    <None Include="Resources\Gnome-window-new.svg.png" />
+    <None Include="Resources\Gnome-system-file-manager.svg.png" />
+    <None Include="Resources\Gnome-network-wired.svg.png" />
+    <None Include="Resources\Gnome-network-offline.svg.png" />
+    <None Include="Resources\Gnome-user-trash-full.svg.png" />
+    <None Include="Resources\240px-Gnumeric.svg.png" />
+    <None Include="Resources\Gnome-folder.svg.png" />
+    <None Include="Resources\240px-Gnome-dialog-question.svg.png" />
     <None Include="Resources\noun_bread.png" />
   </ItemGroup>
   <ItemGroup />
