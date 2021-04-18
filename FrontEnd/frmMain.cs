@@ -37,5 +37,16 @@ namespace FrontEnd
 		{
 
 		}
-	}
+
+        private void btnApplicationInfo_Click(object sender, EventArgs e)
+        {
+			Form frmAboutbox = new frmAboutBox();
+			frmAboutbox.Show();
+		}
+
+        private void afsluitenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			this.Close();
+        }
+    }
 }

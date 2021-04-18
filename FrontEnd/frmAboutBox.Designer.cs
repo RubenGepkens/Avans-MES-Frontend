@@ -1,5 +1,5 @@
 ﻿
-namespace FrontEnd.Resources
+namespace FrontEnd
 {
     partial class frmAboutBox
     {
@@ -165,6 +165,7 @@ namespace FrontEnd.Resources
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmAboutBox";
+            this.Load += new System.EventHandler(this.frmAboutBox_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();

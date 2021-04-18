@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FrontEnd.Resources
+namespace FrontEnd
 {
     partial class frmAboutBox : Form
     {
@@ -101,5 +101,10 @@ namespace FrontEnd.Resources
             }
         }
         #endregion
+
+        private void frmAboutBox_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
