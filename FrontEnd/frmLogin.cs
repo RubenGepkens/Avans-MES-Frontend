@@ -26,7 +26,7 @@ using System.Windows.Forms;
 //          https://stackoverflow.com/questions/453161/how-can-i-save-application-settings-in-a-windows-forms-application
 //          https://stackoverflow.com/questions/4051302/which-passwordchar-shows-a-black-dot-in-a-winforms-textbox/7285282#7285282
 
-namespace DAB2_F1_dbViewer
+namespace FrontEnd
 {
     public partial class frmLogin : Form
     {
@@ -42,14 +42,16 @@ namespace DAB2_F1_dbViewer
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            //txtGebruikersnaam.Text          = Properties.Settings.Default.laatsteGebruikersnaam;
-            //txtServerAdres.Text             = Properties.Settings.Default.laatsteServerAdres;
-            //txtServerPoort.Text             = Properties.Settings.Default.laatsteServerPoort;
-            //cbxWachtwoordOnthouden.Checked  = Properties.Settings.Default.wachtwoordOnthouden;
-
+            // Laad laatstgebruikte inloggegevens.
+            txtGebruikersnaam.Text          = Properties.Settings.Default.laatsteGebruikersnaam;
+            txtServerAdres.Text             = Properties.Settings.Default.laatsteServerAdres;
+            txtServerPoort.Text             = Properties.Settings.Default.laatsteServerPoort;
+            cbxWachtwoordOnthouden.Checked  = Properties.Settings.Default.wachtwoordOnthouden;
+            
+            // Laad alleen laatstgebruikte wachtwoord indien 'wachtwoord onthouden' was geselecteerd.
             if ( cbxWachtwoordOnthouden.Checked == true)
             {
-               // txtWachtwoord.Text          = Properties.Settings.Default.laatsteWachtwoord;
+               txtWachtwoord.Text          = Properties.Settings.Default.laatsteWachtwoord;
             }
         }
 
@@ -62,18 +64,18 @@ namespace DAB2_F1_dbViewer
         {
             if (cbxWachtwoordOnthouden.Checked == true)
             {
-                //Properties.Settings.Default.laatsteWachtwoord = txtWachtwoord.Text;
+                Properties.Settings.Default.laatsteWachtwoord = txtWachtwoord.Text;
             }
             else
             {
-                //Properties.Settings.Default.laatsteWachtwoord = "";
+                Properties.Settings.Default.laatsteWachtwoord = "";
             }
 
-            //Properties.Settings.Default.laatsteGebruikersnaam = txtGebruikersnaam.Text;
-            //Properties.Settings.Default.laatsteServerAdres = txtServerAdres.Text;
-            //Properties.Settings.Default.laatsteServerPoort = txtServerPoort.Text;
-            //Properties.Settings.Default.wachtwoordOnthouden = cbxWachtwoordOnthouden.Checked;
-            //Properties.Settings.Default.Save();
+            Properties.Settings.Default.laatsteGebruikersnaam   = txtGebruikersnaam.Text;
+            Properties.Settings.Default.laatsteServerAdres      = txtServerAdres.Text;
+            Properties.Settings.Default.laatsteServerPoort      = txtServerPoort.Text;
+            Properties.Settings.Default.wachtwoordOnthouden     = cbxWachtwoordOnthouden.Checked;
+            Properties.Settings.Default.Save();
 
             gebruikersnaam  = txtGebruikersnaam.Text;
             wachtwoord      = txtWachtwoord.Text;

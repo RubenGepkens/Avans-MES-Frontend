@@ -1,4 +1,4 @@
-﻿namespace DAB2_F1_dbViewer
+﻿namespace FrontEnd
 {
     partial class frmLogin
     {
