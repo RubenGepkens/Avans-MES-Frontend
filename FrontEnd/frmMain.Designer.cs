@@ -49,6 +49,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTab1 = new System.Windows.Forms.ToolStrip();
             this.dgvTab1 = new System.Windows.Forms.DataGridView();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -66,7 +67,7 @@
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStripMain.Size = new System.Drawing.Size(884, 28);
+            this.menuStripMain.Size = new System.Drawing.Size(1184, 28);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -114,24 +115,24 @@
             this.btnConnect,
             this.toolStripSeparator2,
             this.btnTest,
+            this.toolStripSeparator3,
             this.toolStripButton2,
-            this.toolStripSeparator1,
             this.toolStripButton4,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.toolStripSeparator1});
             this.toolStripMain.Location = new System.Drawing.Point(0, 28);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(884, 49);
+            this.toolStripMain.Size = new System.Drawing.Size(1184, 49);
             this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStrip1";
             // 
             // btnTest
             // 
-            this.btnTest.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnTest.Image = global::FrontEnd.Properties.Resources._240px_Gnumeric_svg;
             this.btnTest.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(46, 46);
-            this.btnTest.Text = "Test";
+            this.btnTest.Size = new System.Drawing.Size(100, 46);
+            this.btnTest.Text = "Testknop";
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // toolStripButton2
@@ -171,9 +172,9 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 531);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 681);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(1184, 30);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -186,24 +187,24 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(852, 422);
+            this.tabPage2.Size = new System.Drawing.Size(1176, 560);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Overige";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dgvTab1);
             this.tabPage1.Controls.Add(this.toolStripTab1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(852, 422);
+            this.tabPage1.Size = new System.Drawing.Size(1176, 560);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Overzicht orders";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabControl1
@@ -213,10 +214,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 80);
+            this.tabControl1.ItemSize = new System.Drawing.Size(58, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 80);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(860, 448);
+            this.tabControl1.Size = new System.Drawing.Size(1184, 598);
             this.tabControl1.TabIndex = 3;
             // 
             // btnConnect
@@ -238,7 +240,7 @@
             this.toolStripTab1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripTab1.Location = new System.Drawing.Point(3, 3);
             this.toolStripTab1.Name = "toolStripTab1";
-            this.toolStripTab1.Size = new System.Drawing.Size(846, 25);
+            this.toolStripTab1.Size = new System.Drawing.Size(1170, 25);
             this.toolStripTab1.TabIndex = 4;
             this.toolStripTab1.Text = "toolStrip2";
             // 
@@ -249,15 +251,20 @@
             this.dgvTab1.Location = new System.Drawing.Point(3, 28);
             this.dgvTab1.Name = "dgvTab1";
             this.dgvTab1.ReadOnly = true;
-            this.dgvTab1.Size = new System.Drawing.Size(846, 391);
+            this.dgvTab1.Size = new System.Drawing.Size(1170, 529);
             this.dgvTab1.TabIndex = 5;
             this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 49);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1184, 711);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStripMain);
@@ -305,6 +312,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.DataGridView dgvTab1;
         private System.Windows.Forms.ToolStrip toolStripTab1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

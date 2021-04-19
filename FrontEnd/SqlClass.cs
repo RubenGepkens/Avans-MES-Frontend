@@ -15,7 +15,7 @@ namespace FrontEnd
         public SqlClass()
         {
             strConnectionString = Properties.Settings.Default.connectionString;
-            Console.WriteLine("sqlVerbinding");
+            Console.WriteLine("sqlVerbinding: " + strConnectionString);
         }
 
         protected SqlConnection GetConnection()

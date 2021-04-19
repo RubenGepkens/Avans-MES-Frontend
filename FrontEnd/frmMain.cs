@@ -53,6 +53,7 @@ namespace FrontEnd
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			databaseConnectionLost();
+			btnTest.Enabled = false;
 		}
 
         private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -96,6 +97,9 @@ namespace FrontEnd
 			lblStatus.Text		= "Verbonden";
 			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
 			dbConnEstablished	= true;
+
+			// Unlock controls that require SQL queries
+			btnTest.Enabled = false;
 		}
 
 		private void databaseConnectionLost()
@@ -103,6 +107,9 @@ namespace FrontEnd
 			lblStatus.Text		= "Geen verbinding";
 			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
 			dbConnEstablished	= false;
+
+			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
+			btnTest.Enabled = true;
 		}
 
         private void btnTest_Click(object sender, EventArgs e)
