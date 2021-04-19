@@ -8,13 +8,14 @@ using System.Data.SqlClient; // Zelf toegevoegd
 
 namespace FrontEnd
 {
-    public class sqlVerbinding
+    public class SqlClass
     {
         private readonly string strConnectionString;
 
-        public sqlVerbinding()
+        public SqlClass()
         {
             strConnectionString = Properties.Settings.Default.connectionString;
+            Console.WriteLine("sqlVerbinding");
         }
 
         protected SqlConnection GetConnection()

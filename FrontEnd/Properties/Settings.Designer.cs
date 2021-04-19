@@ -26,60 +26,60 @@ namespace FrontEnd.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string laatsteGebruikersnaam {
+        public string lastUsername {
             get {
-                return ((string)(this["laatsteGebruikersnaam"]));
+                return ((string)(this["lastUsername"]));
             }
             set {
-                this["laatsteGebruikersnaam"] = value;
+                this["lastUsername"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string laatsteServerAdres {
+        public string lastServerAddress {
             get {
-                return ((string)(this["laatsteServerAdres"]));
+                return ((string)(this["lastServerAddress"]));
             }
             set {
-                this["laatsteServerAdres"] = value;
+                this["lastServerAddress"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string laatsteServerPoort {
+        public string lastServerPort {
             get {
-                return ((string)(this["laatsteServerPoort"]));
+                return ((string)(this["lastServerPort"]));
             }
             set {
-                this["laatsteServerPoort"] = value;
+                this["lastServerPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool wachtwoordOnthouden {
+        public bool rememberPassword {
             get {
-                return ((bool)(this["wachtwoordOnthouden"]));
+                return ((bool)(this["rememberPassword"]));
             }
             set {
-                this["wachtwoordOnthouden"] = value;
+                this["rememberPassword"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string laatsteWachtwoord {
+        public string lastPassword {
             get {
-                return ((string)(this["laatsteWachtwoord"]));
+                return ((string)(this["lastPassword"]));
             }
             set {
-                this["laatsteWachtwoord"] = value;
+                this["lastPassword"] = value;
             }
         }
         

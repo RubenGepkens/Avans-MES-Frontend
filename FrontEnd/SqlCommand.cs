@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FrontEnd
 {
-    public sealed class sqlCommando : sqlVerbinding
+    public sealed class SqlCommand : SqlClass
     {
         public bool checkConnection()
         {
@@ -17,12 +17,13 @@ namespace FrontEnd
 
             using( var connection = GetConnection())
             {
-                using (var command = new SqlCommand("SELECT 1", connection))
+                using (var command = new System.Data.SqlClient.SqlCommand("SELECT 1", connection))
                 {
                     try
                     {
                         connection.Open();                        
                         command.ExecuteScalar();
+                        blnReturnValue = true; // Declare connection successful
                     } 
                     catch (SqlException ex) // This will catch all SQL exceptions
                     {
@@ -44,5 +45,11 @@ namespace FrontEnd
                 }
             }
         }
+
+        public static void BindGridDataSource(DataGridView dataGridView)
+        {
+
+        }
+
     }
 }

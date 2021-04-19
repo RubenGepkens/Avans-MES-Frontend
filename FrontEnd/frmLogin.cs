@@ -43,15 +43,15 @@ namespace FrontEnd
         private void frmLogin_Load(object sender, EventArgs e)
         {
             // Laad laatstgebruikte inloggegevens.
-            txtGebruikersnaam.Text          = Properties.Settings.Default.laatsteGebruikersnaam;
-            txtServerAdres.Text             = Properties.Settings.Default.laatsteServerAdres;
-            txtServerPoort.Text             = Properties.Settings.Default.laatsteServerPoort;
-            cbxWachtwoordOnthouden.Checked  = Properties.Settings.Default.wachtwoordOnthouden;
+            txtGebruikersnaam.Text          = Properties.Settings.Default.lastUsername;
+            txtServerAdres.Text             = Properties.Settings.Default.lastServerAddress;
+            txtServerPoort.Text             = Properties.Settings.Default.lastServerPort;
+            cbxWachtwoordOnthouden.Checked  = Properties.Settings.Default.rememberPassword;
             
             // Laad alleen laatstgebruikte wachtwoord indien 'wachtwoord onthouden' was geselecteerd.
             if ( cbxWachtwoordOnthouden.Checked == true)
             {
-               txtWachtwoord.Text          = Properties.Settings.Default.laatsteWachtwoord;
+               txtWachtwoord.Text          = Properties.Settings.Default.lastPassword;
             }
         }
 
@@ -62,26 +62,30 @@ namespace FrontEnd
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // Store password if specified by the user
             if (cbxWachtwoordOnthouden.Checked == true)
             {
-                Properties.Settings.Default.laatsteWachtwoord = txtWachtwoord.Text;
+                Properties.Settings.Default.lastPassword = txtWachtwoord.Text;
             }
             else
             {
-                Properties.Settings.Default.laatsteWachtwoord = "";
+                Properties.Settings.Default.lastPassword = "";
             }
 
-            Properties.Settings.Default.laatsteGebruikersnaam   = txtGebruikersnaam.Text;
-            Properties.Settings.Default.laatsteServerAdres      = txtServerAdres.Text;
-            Properties.Settings.Default.laatsteServerPoort      = txtServerPoort.Text;
-            Properties.Settings.Default.wachtwoordOnthouden     = cbxWachtwoordOnthouden.Checked;
+            // Fill application settings file with data
+            Properties.Settings.Default.lastUsername            = txtGebruikersnaam.Text;
+            Properties.Settings.Default.lastServerAddress       = txtServerAdres.Text;
+            Properties.Settings.Default.lastServerPort          = txtServerPoort.Text;
+            Properties.Settings.Default.rememberPassword        = cbxWachtwoordOnthouden.Checked;
             Properties.Settings.Default.Save();
 
+            // Set public string as form property
             gebruikersnaam  = txtGebruikersnaam.Text;
             wachtwoord      = txtWachtwoord.Text;
             serverAdres     = txtServerAdres.Text;
             serverPoort     = txtServerPoort.Text;
 
+            // Close this form
             Close();
         }
     }

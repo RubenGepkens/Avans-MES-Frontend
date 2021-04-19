@@ -31,11 +31,17 @@ namespace FrontEnd
 	 * Where to put a common database connection for my classes;
 	 * https://softwareengineering.stackexchange.com/questions/280333/where-to-put-a-common-database-connection-for-my-classes
 	 * 
+	 * Connection strings for MS SQL;
+	 * https://www.connectionstrings.com/sql-server/
 	 * 
+	 * How to write in a DataGridView from a different class;
+	 * https://stackoverflow.com/questions/40343047/how-to-write-in-a-datagridview-from-a-different-class
 	 */
 
 	public partial class frmMain : Form
 	{
+		private bool dbConnEstablished = false;
+
 		public frmMain()
 		{
 			InitializeComponent();
@@ -43,8 +49,7 @@ namespace FrontEnd
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			lblStatus.Text = "Geen verbinding";
-			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_offline_svg;
+			databaseConnectionLost();
 		}
 
         private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -61,30 +66,45 @@ namespace FrontEnd
         private void btnConnect_Click(object sender, EventArgs e)
         {
 			using (frmLogin frmLogin = new frmLogin())
-            {
+            {				
 				DialogResult result = frmLogin.ShowDialog();
 
 				if (result == System.Windows.Forms.DialogResult.OK)
                 {
-					Console.WriteLine("OK");
+					// Form SQL connection string.
+					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord;
+					// Save connectionstring
+					Properties.Settings.Default.connectionString = strConnection;
 
-					string tmpString;
+					SqlCommand SqlCommand = new SqlCommand();					
+					if (SqlCommand.checkConnection())
+                    {
+						databaseConnectionEstablished();
+                    } else
+                    {
+						databaseConnectionLost();
+                    }
+				}	
+			}
+		}
 
+		private void databaseConnectionEstablished()
+        {
+			lblStatus.Text		= "Verbonden";
+			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
+			dbConnEstablished	= true;
+		}
 
-					tmpString = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord;
+		private void databaseConnectionLost()
+        {
+			lblStatus.Text		= "Geen verbinding";
+			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
+			dbConnEstablished	= false;
+		}
 
-					Properties.Settings.Default.connectionString = tmpString;
-					Properties.Settings.Default.Save();
+        private void btnTest_Click(object sender, EventArgs e)
+        {
 
-					sqlCommando sqlCommando = new sqlCommando();
-					
-					sqlCommando.checkConnection();
-
-				} else if (result == System.Windows.Forms.DialogResult.Cancel)
-                {
-					Console.WriteLine("NOK");
-				}
-            }
         }
     }
 }

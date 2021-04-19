@@ -2,19 +2,19 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FrontEnd.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="laatsteGebruikersnaam" Type="System.String" Scope="User">
+    <Setting Name="lastUsername" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="laatsteServerAdres" Type="System.String" Scope="User">
+    <Setting Name="lastServerAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="laatsteServerPoort" Type="System.String" Scope="User">
+    <Setting Name="lastServerPort" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="wachtwoordOnthouden" Type="System.Boolean" Scope="User">
+    <Setting Name="rememberPassword" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="laatsteWachtwoord" Type="System.String" Scope="User">
+    <Setting Name="lastPassword" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="connectionString" Type="System.String" Scope="User">
