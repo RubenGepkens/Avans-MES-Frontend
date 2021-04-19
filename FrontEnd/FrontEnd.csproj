@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>noun_bread_multiSizeIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\noun_bread_348857_muh_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.10.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
@@ -273,7 +273,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="noun_bread_multiSizeIcon.ico" />
+    <None Include="Resources\avans_university-emailsignature.png" />
+    <None Include="Resources\avans-hogeschool---logo.jpg" />
+    <None Include="Resources\noun_Bread_348857.png" />
+    <None Include="Resources\noun_bread_348857_muh_icon.ico" />
+    <None Include="Resources\noun_Bread_348857.ico" />
     <None Include="Resources\Gnome-network-idle.svg.png" />
     <None Include="Resources\Gnome-document-open-recent.svg.png" />
     <None Include="Resources\Gnome-applications-system.svg.png" />

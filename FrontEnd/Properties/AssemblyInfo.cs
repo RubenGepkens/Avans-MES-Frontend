@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FrontEnd")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Avans MES")]
+[assembly: AssemblyDescription("Manufacturing execution system (MES) voor het vak MOMS2. Bedrijfproject met Actemium voor 'Broodbakkerij Zoete Broodjes Corp.'.  Door; Leon van Elteren, Maurits Duel, Wes Verhagen, Tom Schellekens en Ruben Gepkens.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FrontEnd")]
+[assembly: AssemblyCompany("Avans Hogeschool")]
+[assembly: AssemblyProduct("FrontEnd (Avans MES-applicatie)")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

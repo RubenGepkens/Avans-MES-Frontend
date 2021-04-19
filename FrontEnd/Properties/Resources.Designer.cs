@@ -143,6 +143,26 @@ namespace FrontEnd.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avans_hogeschool___logo {
+            get {
+                object obj = ResourceManager.GetObject("avans_hogeschool___logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap avans_university_emailsignature {
+            get {
+                object obj = ResourceManager.GetObject("avans_university_emailsignature", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gnome_applications_system_svg {
             get {
                 object obj = ResourceManager.GetObject("Gnome_applications_system_svg", resourceCulture);
@@ -243,10 +263,20 @@ namespace FrontEnd.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap noun_bread {
+        internal static System.Drawing.Bitmap noun_Bread_348857 {
             get {
-                object obj = ResourceManager.GetObject("noun_bread", resourceCulture);
+                object obj = ResourceManager.GetObject("noun_Bread_348857", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon noun_bread_348857_muh_icon {
+            get {
+                object obj = ResourceManager.GetObject("noun_bread_348857_muh_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

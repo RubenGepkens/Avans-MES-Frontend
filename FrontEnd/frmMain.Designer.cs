@@ -30,18 +30,18 @@
 		{
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.afsluitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnApplicationInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -64,6 +64,43 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // bestandToolStripMenuItem
+            // 
+            this.bestandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.afsluitenToolStripMenuItem});
+            this.bestandToolStripMenuItem.Image = global::FrontEnd.Properties.Resources.Gnome_folder_svg;
+            this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
+            this.bestandToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
+            this.bestandToolStripMenuItem.Text = "&Bestand";
+            // 
+            // afsluitenToolStripMenuItem
+            // 
+            this.afsluitenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_application_exit_svg;
+            this.afsluitenToolStripMenuItem.Name = "afsluitenToolStripMenuItem";
+            this.afsluitenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.afsluitenToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.afsluitenToolStripMenuItem.Text = "&Afsluiten";
+            this.afsluitenToolStripMenuItem.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
+            // 
+            // infoToolStripMenuItem
+            // 
+            this.infoToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnApplicationInfo});
+            this.infoToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_dialog_question_svg;
+            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.infoToolStripMenuItem.Text = "&Info";
+            // 
+            // btnApplicationInfo
+            // 
+            this.btnApplicationInfo.Image = global::FrontEnd.Properties.Resources._240px_Gnome_help_faq_svg;
+            this.btnApplicationInfo.Name = "btnApplicationInfo";
+            this.btnApplicationInfo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.btnApplicationInfo.Size = new System.Drawing.Size(217, 22);
+            this.btnApplicationInfo.Text = "Over deze applicatie";
+            this.btnApplicationInfo.Click += new System.EventHandler(this.btnApplicationInfo_Click);
+            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(42, 42);
@@ -78,23 +115,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(884, 49);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Ready";
             // 
             // toolStripButton1
             // 
@@ -114,47 +134,19 @@
             this.toolStripButton2.Size = new System.Drawing.Size(46, 46);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // bestandToolStripMenuItem
-            // 
-            this.bestandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.afsluitenToolStripMenuItem});
-            this.bestandToolStripMenuItem.Image = global::FrontEnd.Properties.Resources.Gnome_folder_svg;
-            this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
-            this.bestandToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.bestandToolStripMenuItem.Text = "&Bestand";
-            // 
-            // afsluitenToolStripMenuItem
-            // 
-            this.afsluitenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_application_exit_svg;
-            this.afsluitenToolStripMenuItem.Name = "afsluitenToolStripMenuItem";
-            this.afsluitenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.afsluitenToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.afsluitenToolStripMenuItem.Text = "&Afsluiten";
-            this.afsluitenToolStripMenuItem.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
-            // 
-            // infoToolStripMenuItem
-            // 
-            this.infoToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnApplicationInfo});
-            this.infoToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_dialog_question_svg;
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
-            this.infoToolStripMenuItem.Text = "&Info";
-            // 
-            // btnApplicationInfo
-            // 
-            this.btnApplicationInfo.Image = global::FrontEnd.Properties.Resources._240px_Gnome_help_faq_svg;
-            this.btnApplicationInfo.Name = "btnApplicationInfo";
-            this.btnApplicationInfo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnApplicationInfo.Size = new System.Drawing.Size(221, 26);
-            this.btnApplicationInfo.Text = "Over deze applicatie";
-            this.btnApplicationInfo.Click += new System.EventHandler(this.btnApplicationInfo_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 49);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::FrontEnd.Properties.Resources.Gnome_document_open_recent_svg;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(46, 46);
+            this.toolStripButton4.Text = "toolStripButton4";
             // 
             // toolStripButton3
             // 
@@ -165,14 +157,22 @@
             this.toolStripButton3.Size = new System.Drawing.Size(46, 46);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
-            // toolStripButton4
+            // statusStrip1
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::FrontEnd.Properties.Resources.Gnome_document_open_recent_svg;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(46, 46);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel1.Text = "Ready";
             // 
             // tabPage2
             // 
