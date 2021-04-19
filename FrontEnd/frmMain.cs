@@ -36,6 +36,9 @@ namespace FrontEnd
 	 * 
 	 * How to write in a DataGridView from a different class;
 	 * https://stackoverflow.com/questions/40343047/how-to-write-in-a-datagridview-from-a-different-class
+	 * 
+	 * Walkthrough: Handling Errors that Occur During Data Entry in the Windows Forms DataGridView Control
+	 * https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/handling-errors-that-occur-during-data-entry-in-the-datagrid?view=netframeworkdesktop-4.8
 	 */
 
 	public partial class frmMain : Form
@@ -76,8 +79,8 @@ namespace FrontEnd
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 
-					SqlCommand SqlCommand = new SqlCommand();					
-					if (SqlCommand.checkConnection())
+					SqlData SqlData = new SqlData();					
+					if (SqlData.checkConnection())
                     {
 						databaseConnectionEstablished();
                     } else
@@ -104,7 +107,17 @@ namespace FrontEnd
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+			SqlData SqlData = new SqlData();
+			SqlData.exampleFunction(dgvTab1);
 
-        }
+		}
+
+        private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
+		{			
+			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
+			{				
+				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
     }
 }

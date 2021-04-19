@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 using System.Data.SqlClient; // Zelf toegevoegd
 using System.Windows.Forms;
+using System.Data;
 
 namespace FrontEnd
 {
-    public sealed class SqlCommand : SqlClass
+    public sealed class SqlData : SqlClass
     {
         public bool checkConnection()
         {
             bool blnReturnValue = false;
 
-            using( var connection = GetConnection())
+            using (var connection = GetConnection())
             {
-                using (var command = new System.Data.SqlClient.SqlCommand("SELECT 1", connection))
+                using (var command = new SqlCommand("SELECT 1", connection))
                 {
                     try
                     {
@@ -46,10 +47,28 @@ namespace FrontEnd
             }
         }
 
-        public static void BindGridDataSource(DataGridView dataGridView)
+        public void exampleFunction(DataGridView dataGridView)
         {
+            using (var connection = GetConnection())
+            {
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM dbo.Equipment", connection))
+                {
+                    using (DataTable dataTable = new DataTable())
+                    {
+                        sqlDataAdapter.Fill(dataTable);
+                        dataGridView.DataSource = dataTable;
+                        dataGridView.AutoResizeColumns();
 
+                        /*
+                        using (BindingSource bSource = new BindingSource())
+                        {                           
+                            bSource.DataSource = dataTable;                            
+                            dataGridView.DataSource = bSource;                            
+                        }
+                        */
+                    }
+                }
+            }
         }
-
     }
 }

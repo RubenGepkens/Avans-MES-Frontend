@@ -240,7 +240,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SqlCommand.cs" />
+    <Compile Include="SqlData.cs" />
     <Compile Include="SqlClass.cs" />
     <EmbeddedResource Include="frmAboutBox.resx">
       <DependentUpon>frmAboutBox.cs</DependentUpon>

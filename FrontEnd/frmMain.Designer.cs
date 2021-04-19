@@ -248,8 +248,10 @@
             this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTab1.Location = new System.Drawing.Point(3, 28);
             this.dgvTab1.Name = "dgvTab1";
+            this.dgvTab1.ReadOnly = true;
             this.dgvTab1.Size = new System.Drawing.Size(846, 391);
             this.dgvTab1.TabIndex = 5;
+            this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
             // 
             // frmMain
             // 
