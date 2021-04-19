@@ -53,7 +53,6 @@ namespace FrontEnd
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			databaseConnectionLost();
-			btnTest.Enabled = false;
 		}
 
         private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -76,7 +75,8 @@ namespace FrontEnd
 				if (result == System.Windows.Forms.DialogResult.OK)
                 {
 					// Form SQL connection string.
-					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord;
+					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord
+						+ "; Encrypt=True; TrustServerCertificate=True";
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 
@@ -99,7 +99,7 @@ namespace FrontEnd
 			dbConnEstablished	= true;
 
 			// Unlock controls that require SQL queries
-			btnTest.Enabled = false;
+			btnTest.Enabled		= true;
 		}
 
 		private void databaseConnectionLost()
@@ -109,14 +109,13 @@ namespace FrontEnd
 			dbConnEstablished	= false;
 
 			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
-			btnTest.Enabled = true;
+			btnTest.Enabled		= true;
 		}
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
+        private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
+		{
 			SqlData SqlData = new SqlData();
 			SqlData.exampleFunction(dgvTab1);
-
 		}
 
         private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView

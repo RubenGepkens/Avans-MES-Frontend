@@ -47,17 +47,26 @@ namespace FrontEnd
             }
         }
 
-        public void exampleFunction(DataGridView dataGridView)
+        public void exampleFunction(DataGridView dataGridView) // Example function used to demonstrate how a DataGridView can be filled.
         {
-            using (var connection = GetConnection())
+            using (var connection = GetConnection()) // Retrieve connectionstring
             {
-                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM dbo.Equipment", connection))
+                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM dbo.Equipment", connection)) // Create SqlDataAdapter used to retrieve/manipulate data from a database.
                 {
                     using (DataTable dataTable = new DataTable())
                     {
-                        sqlDataAdapter.Fill(dataTable);
-                        dataGridView.DataSource = dataTable;
-                        dataGridView.AutoResizeColumns();
+                        try
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+                            dataGridView.DataSource = dataTable;
+                            dataGridView.AutoResizeColumns();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Generic SQL exception: " + ex.Message);
+                            MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        
 
                         /*
                         using (BindingSource bSource = new BindingSource())
