@@ -71,14 +71,14 @@ namespace FrontEnd
 					string tmpString;
 
 
-					tmpString = "Server=" + frmLogin.serverAdres + "\\\\MSSQLSERVER01," +
-						frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" +
-						frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord;
+					tmpString = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord;
 
 					Properties.Settings.Default.connectionString = tmpString;
 					Properties.Settings.Default.Save();
 
+					sqlCommando sqlCommando = new sqlCommando();
 					
+					sqlCommando.checkConnection();
 
 				} else if (result == System.Windows.Forms.DialogResult.Cancel)
                 {

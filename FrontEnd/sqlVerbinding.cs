@@ -10,16 +10,16 @@ namespace FrontEnd
 {
     public class sqlVerbinding
     {
-        private readonly string connectionString;
+        private readonly string strConnectionString;
 
         public sqlVerbinding()
         {
-            //Properties.Settings.Default.connectionString
+            strConnectionString = Properties.Settings.Default.connectionString;
         }
 
         protected SqlConnection GetConnection()
         {
-            return new SqlConnection(connectionString);
+            return new SqlConnection(strConnectionString);
         }
     }
 }
