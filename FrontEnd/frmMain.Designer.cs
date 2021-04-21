@@ -47,25 +47,34 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvTab1 = new System.Windows.Forms.DataGridView();
             this.toolStripTab1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.cbxProductionLine = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOrderStart = new System.Windows.Forms.ToolStripButton();
             this.btnOrderPause = new System.Windows.Forms.ToolStripButton();
             this.btnOrderStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOrderEdit = new System.Windows.Forms.ToolStripButton();
             this.btnOrderRemove = new System.Windows.Forms.ToolStripButton();
-            this.cbxProductionLine = new System.Windows.Forms.ToolStripComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.dgvTab1_2 = new System.Windows.Forms.DataGridView();
             this.btnOrderAdd = new System.Windows.Forms.ToolStripButton();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -221,12 +230,12 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1176, 555);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Overige";
+            this.tabPage2.Text = "Afgehandelde orders";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dgvTab1);
+            this.tabPage1.Controls.Add(this.splitContainer1);
             this.tabPage1.Controls.Add(this.toolStripTab1);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
@@ -236,15 +245,33 @@
             this.tabPage1.Text = "Overzicht orders";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 52);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dgvTab1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvTab1_2);
+            this.splitContainer1.Size = new System.Drawing.Size(1170, 500);
+            this.splitContainer1.SplitterDistance = 344;
+            this.splitContainer1.TabIndex = 6;
+            // 
             // dgvTab1
             // 
             this.dgvTab1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTab1.Location = new System.Drawing.Point(3, 52);
+            this.dgvTab1.Location = new System.Drawing.Point(0, 0);
             this.dgvTab1.Name = "dgvTab1";
             this.dgvTab1.ReadOnly = true;
-            this.dgvTab1.Size = new System.Drawing.Size(1170, 500);
-            this.dgvTab1.TabIndex = 5;
+            this.dgvTab1.Size = new System.Drawing.Size(1170, 344);
+            this.dgvTab1.TabIndex = 6;
             this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
             // 
             // toolStripTab1
@@ -259,12 +286,35 @@
             this.btnOrderStop,
             this.toolStripSeparator4,
             this.btnOrderAdd,
+            this.btnOrderEdit,
             this.btnOrderRemove});
             this.toolStripTab1.Location = new System.Drawing.Point(3, 3);
             this.toolStripTab1.Name = "toolStripTab1";
             this.toolStripTab1.Size = new System.Drawing.Size(1170, 49);
             this.toolStripTab1.TabIndex = 4;
             this.toolStripTab1.Text = "toolStrip2";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(105, 46);
+            this.toolStripLabel1.Text = "Geselecteerde Lijn:";
+            // 
+            // cbxProductionLine
+            // 
+            this.cbxProductionLine.BackColor = System.Drawing.SystemColors.Control;
+            this.cbxProductionLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxProductionLine.Items.AddRange(new object[] {
+            "Lijn 1",
+            "Lijn 2"});
+            this.cbxProductionLine.Name = "cbxProductionLine";
+            this.cbxProductionLine.Size = new System.Drawing.Size(75, 49);
+            this.cbxProductionLine.ToolTipText = "Selecteer een productielijn om de orders op te halen.";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 49);
             // 
             // btnOrderStart
             // 
@@ -298,6 +348,15 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 49);
             // 
+            // btnOrderEdit
+            // 
+            this.btnOrderEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnOrderEdit.Image = global::FrontEnd.Properties.Resources._240px_Gnome_accessories_text_editor_svg;
+            this.btnOrderEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOrderEdit.Name = "btnOrderEdit";
+            this.btnOrderEdit.Size = new System.Drawing.Size(46, 46);
+            this.btnOrderEdit.Text = "toolStripButton1";
+            // 
             // btnOrderRemove
             // 
             this.btnOrderRemove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -307,17 +366,6 @@
             this.btnOrderRemove.Size = new System.Drawing.Size(46, 46);
             this.btnOrderRemove.Text = "toolStripButton7";
             // 
-            // cbxProductionLine
-            // 
-            this.cbxProductionLine.BackColor = System.Drawing.SystemColors.Control;
-            this.cbxProductionLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProductionLine.Items.AddRange(new object[] {
-            "Lijn 1",
-            "Lijn 2"});
-            this.cbxProductionLine.Name = "cbxProductionLine";
-            this.cbxProductionLine.Size = new System.Drawing.Size(75, 49);
-            this.cbxProductionLine.ToolTipText = "Selecteer een productielijn om de orders op te halen.";
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -325,6 +373,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.ItemSize = new System.Drawing.Size(58, 30);
             this.tabControl1.Location = new System.Drawing.Point(0, 80);
             this.tabControl1.Name = "tabControl1";
@@ -332,25 +381,34 @@
             this.tabControl1.Size = new System.Drawing.Size(1184, 593);
             this.tabControl1.TabIndex = 3;
             // 
-            // toolStripLabel1
+            // dgvTab1_2
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(105, 46);
-            this.toolStripLabel1.Text = "Geselecteerde Lijn:";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 49);
+            this.dgvTab1_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTab1_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTab1_2.Location = new System.Drawing.Point(0, 0);
+            this.dgvTab1_2.Name = "dgvTab1_2";
+            this.dgvTab1_2.ReadOnly = true;
+            this.dgvTab1_2.Size = new System.Drawing.Size(1170, 152);
+            this.dgvTab1_2.TabIndex = 0;
             // 
             // btnOrderAdd
             // 
             this.btnOrderAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btnOrderAdd.Image = global::FrontEnd.Properties.Resources._240px_Gnome_accessories_text_editor_svg;
+            this.btnOrderAdd.Image = global::FrontEnd.Properties.Resources.Gnome_window_new_svg;
             this.btnOrderAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnOrderAdd.Name = "btnOrderAdd";
             this.btnOrderAdd.Size = new System.Drawing.Size(46, 46);
             this.btnOrderAdd.Text = "toolStripButton1";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 34);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1176, 555);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Realtime data";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -375,10 +433,15 @@
             this.statusStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).EndInit();
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,7 +467,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripButton btnConnect;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.DataGridView dgvTab1;
         private System.Windows.Forms.ToolStrip toolStripTab1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnOrderStart;
@@ -415,7 +477,12 @@
         private System.Windows.Forms.ToolStripComboBox cbxProductionLine;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton btnOrderEdit;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridView dgvTab1;
+        private System.Windows.Forms.DataGridView dgvTab1_2;
         private System.Windows.Forms.ToolStripButton btnOrderAdd;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 
