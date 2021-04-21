@@ -39,11 +39,14 @@ namespace FrontEnd
 	 * 
 	 * Walkthrough: Handling Errors that Occur During Data Entry in the Windows Forms DataGridView Control
 	 * https://docs.microsoft.com/en-us/dotnet/desktop/winforms/controls/handling-errors-that-occur-during-data-entry-in-the-datagrid?view=netframeworkdesktop-4.8
+	 * 
+	 * SQL Encryption
+	 * https://stackoverflow.com/questions/3674160/using-encrypt-yes-in-a-sql-server-connection-string-provider-ssl-provider
 	 */
 
 	public partial class frmMain : Form
 	{
-		private bool dbConnEstablished = false;
+		private bool blnDBConnEstablished = false;
 
 		public frmMain()
 		{
@@ -94,22 +97,38 @@ namespace FrontEnd
 
 		private void databaseConnectionEstablished()
         {
-			lblStatus.Text		= "Verbonden";
-			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
-			dbConnEstablished	= true;
+			lblStatus.Text					= "Verbonden";
+			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
+			blnDBConnEstablished			= true;
 
 			// Unlock controls that require SQL queries
-			btnTest.Enabled		= true;
+			btnTest.Enabled					= true;
+			
+			cbxProductionLine.Enabled		= true;
+			cbxProductionLine.SelectedIndex = 0;
+			btnOrderStart.Enabled			= true;
+			btnOrderPause.Enabled			= true;
+			btnOrderStop.Enabled			= true;
+			btnOrderAdd.Enabled				= true;
+			btnOrderRemove.Enabled			= true;
 		}
 
 		private void databaseConnectionLost()
         {
-			lblStatus.Text		= "Geen verbinding";
-			lblStatus.Image		= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
-			dbConnEstablished	= false;
+			lblStatus.Text					= "Geen verbinding";
+			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
+			blnDBConnEstablished			= false;
 
 			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
-			btnTest.Enabled		= true;
+			btnTest.Enabled					= false;
+
+			cbxProductionLine.Enabled		= false;
+			cbxProductionLine.Text			= "Geen selectie";
+			btnOrderStart.Enabled			= false;
+			btnOrderPause.Enabled			= false;
+			btnOrderStop.Enabled			= false;
+			btnOrderAdd.Enabled				= false;
+			btnOrderRemove.Enabled			= false;
 		}
 
         private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
@@ -125,5 +144,10 @@ namespace FrontEnd
 				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+        private void toolStripComboBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

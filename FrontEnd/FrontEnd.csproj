@@ -301,6 +301,38 @@
     <None Include="Resources\240px-Gnome-dialog-question.svg.png" />
     <None Include="Resources\noun_bread.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\240px-Oxygen480-actions-dialog-close.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Oxygen480-actions-dialog-ok-apply.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Oxygen480-actions-edit-clear.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Oxygen480-actions-edit-delete.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen480-actions-media-playback-stop.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen480-actions-media-playback-pause.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Oxygen480-actions-go-next-view-page.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen15.04.1-dialog-cancel.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-media-playback-start.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-media-playback-pause.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-media-playback-stop.svg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

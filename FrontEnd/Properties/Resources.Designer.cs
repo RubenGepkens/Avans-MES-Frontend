@@ -123,6 +123,16 @@ namespace FrontEnd.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _240px_Gnome_media_playback_pause_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Gnome_media_playback_pause_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _240px_Gnome_x_office_document_svg {
             get {
                 object obj = ResourceManager.GetObject("_240px_Gnome_x_office_document_svg", resourceCulture);
@@ -136,6 +146,56 @@ namespace FrontEnd.Properties {
         internal static System.Drawing.Bitmap _240px_Gnumeric_svg {
             get {
                 object obj = ResourceManager.GetObject("_240px_Gnumeric_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _240px_Oxygen480_actions_dialog_close_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Oxygen480_actions_dialog_close_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _240px_Oxygen480_actions_dialog_ok_apply_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Oxygen480_actions_dialog_ok_apply_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _240px_Oxygen480_actions_edit_clear_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Oxygen480_actions_edit_clear_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _240px_Oxygen480_actions_edit_delete_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Oxygen480_actions_edit_delete_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _240px_Oxygen480_actions_go_next_view_page_svg {
+            get {
+                object obj = ResourceManager.GetObject("_240px_Oxygen480_actions_go_next_view_page_svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +246,26 @@ namespace FrontEnd.Properties {
         internal static System.Drawing.Bitmap Gnome_folder_svg {
             get {
                 object obj = ResourceManager.GetObject("Gnome_folder_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gnome_media_playback_start_svg {
+            get {
+                object obj = ResourceManager.GetObject("Gnome_media_playback_start_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gnome_media_playback_stop_svg {
+            get {
+                object obj = ResourceManager.GetObject("Gnome_media_playback_stop_svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -277,6 +357,36 @@ namespace FrontEnd.Properties {
             get {
                 object obj = ResourceManager.GetObject("noun_bread_348857_muh_icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Oxygen15_04_1_dialog_cancel_svg {
+            get {
+                object obj = ResourceManager.GetObject("Oxygen15_04_1_dialog_cancel_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Oxygen480_actions_media_playback_pause_svg {
+            get {
+                object obj = ResourceManager.GetObject("Oxygen480_actions_media_playback_pause_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Oxygen480_actions_media_playback_stop_svg {
+            get {
+                object obj = ResourceManager.GetObject("Oxygen480_actions_media_playback_stop_svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
