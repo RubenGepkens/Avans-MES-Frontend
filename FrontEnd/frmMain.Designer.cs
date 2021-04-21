@@ -317,7 +317,6 @@
             this.cbxProductionLine.Name = "cbxProductionLine";
             this.cbxProductionLine.Size = new System.Drawing.Size(75, 49);
             this.cbxProductionLine.ToolTipText = "Selecteer een productielijn om de orders op te halen.";
-            this.cbxProductionLine.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // tabControl1
             // 

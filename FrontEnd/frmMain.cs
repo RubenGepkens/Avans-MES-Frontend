@@ -9,9 +9,9 @@
  * Door:				Studentnummer:
  * Ruben Gepkens		2137822
  * Tom Schellekens		2135695
- * Wes Verhagen			x
- * Maurits Duel			x
- * Leon van Elteren		x
+ * Wes Verhagen			2135682
+ * Maurits Duel			2142917
+ * Leon van Elteren		2136163
  */
 
 using System;
@@ -42,6 +42,9 @@ namespace FrontEnd
 	 * 
 	 * SQL Encryption
 	 * https://stackoverflow.com/questions/3674160/using-encrypt-yes-in-a-sql-server-connection-string-provider-ssl-provider
+	 * 
+	 * Connection Strings and Configuration Files
+	 * https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/connection-strings-and-configuration-files?redirectedfrom=MSDN
 	 */
 
 	public partial class frmMain : Form
@@ -144,10 +147,5 @@ namespace FrontEnd
 				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
-
-        private void toolStripComboBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
