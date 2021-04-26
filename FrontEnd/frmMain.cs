@@ -50,6 +50,8 @@ namespace FrontEnd
 	public partial class frmMain : Form
 	{
 		private bool blnDBConnEstablished = false;
+		// Manier om sql te herbruiken.
+		private SqlData sqlData = new SqlData();
 
 		public frmMain()
 		{
@@ -69,7 +71,7 @@ namespace FrontEnd
 
         private void afsluitenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			this.Close();
+			this.Close();			
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -85,7 +87,7 @@ namespace FrontEnd
 						+ "; Encrypt=True; TrustServerCertificate=True";
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
-
+					
 					SqlData SqlData = new SqlData();					
 					if (SqlData.checkConnection())
                     {
@@ -137,7 +139,7 @@ namespace FrontEnd
         private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
 			SqlData SqlData = new SqlData();
-			SqlData.exampleFunction(dgvTab1);
+			SqlData.exampleFunction(dgvTab1);			
 		}
 
         private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView

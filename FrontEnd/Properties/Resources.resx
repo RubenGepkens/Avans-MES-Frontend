@@ -118,103 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="avans_hogeschool___logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\avans-hogeschool---logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="avans_university_emailsignature" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\avans_university-emailsignature.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_applications_system_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-applications-system.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_document_open_recent_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-document-open-recent.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_240px_Gnome_application_exit_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-application-exit.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Gnome_folder_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gnome-folder.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gnome_media_playback_start_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-media-playback-start.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_media_playback_stop_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-media-playback-stop.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_network_idle_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-network-idle.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_network_offline_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-network-offline.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_network_wired_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-network-wired.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_system_file_manager_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-system-file-manager.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_user_trash_full_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-user-trash-full.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_window_new_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-window-new.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Gnome_x_office_presentation_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gnome-x-office-presentation.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="noun_Bread_348857" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\noun_Bread_348857.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="noun_bread_348857_muh_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\noun_bread_348857_muh_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Oxygen15_04_1_dialog_cancel_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Oxygen15.04.1-dialog-cancel.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Oxygen480_actions_media_playback_pause_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Oxygen480-actions-media-playback-pause.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Oxygen480_actions_media_playback_stop_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Oxygen480-actions-media-playback-stop.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_accessories_text_editor_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-accessories-text-editor.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_application_exit_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-application-exit.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_dialog_question_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-dialog-question.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_document_new_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-document-new.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_edit_paste_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-edit-paste.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_help_faq_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-help-faq.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_media_playback_pause_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-media-playback-pause.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_240px_Gnome_x_office_document_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Gnome-x-office-document.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="_240px_Oxygen480_actions_go_next_view_page_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Oxygen480-actions-go-next-view-page.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="_240px_Gnumeric_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\240px-Gnumeric.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_240px_Oxygen480_actions_dialog_close_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Oxygen480-actions-dialog-close.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gnome_document_open_recent_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-document-open-recent.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_240px_Oxygen480_actions_dialog_ok_apply_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Oxygen480-actions-dialog-ok-apply.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gnome_media_playback_stop_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-media-playback-stop.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_240px_Oxygen480_actions_edit_clear_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Oxygen480-actions-edit-clear.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gnome_network_wired_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-network-wired.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_240px_Oxygen480_actions_edit_delete_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Oxygen480-actions-edit-delete.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gnome_applications_system_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-applications-system.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_240px_Oxygen480_actions_go_next_view_page_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\240px-Oxygen480-actions-go-next-view-page.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Gnome_network_idle_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-network-idle.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_media_playback_pause_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-media-playback-pause.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_x_office_presentation_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-x-office-presentation.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_edit_paste_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-edit-paste.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome-system-log-out.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-system-log-out.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun_Bread_348857" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_Bread_348857.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_media_playback_start_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-media-playback-start.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_dialog_question_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-dialog-question.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome-edit-delete.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-edit-delete.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_help_faq_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-help-faq.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_network_offline_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-network-offline.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_x_office_document_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-x-office-document.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_accessories_text_editor_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-accessories-text-editor.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Oxygen480-actions-edit-redo.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Oxygen480-actions-edit-redo.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="240px-Gnome-document-new.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-document-new.svg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noun_bread_348857_muh_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noun_bread_348857_muh_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_window_new_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-window-new.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_system_file_manager_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-system-file-manager.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="avans_university_emailsignature" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\avans_university-emailsignature.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="avans_hogeschool___logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\avans-hogeschool---logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome-video-display.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-video-display.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

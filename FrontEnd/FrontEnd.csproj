@@ -334,5 +334,26 @@
   <ItemGroup>
     <None Include="Resources\Gnome-media-playback-stop.svg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen480-actions-edit-redo.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-system-log-out.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-computer.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-edit-delete.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-document-new.svg1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-document-new.svg2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-video-display.svg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
