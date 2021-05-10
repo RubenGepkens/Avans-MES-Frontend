@@ -58,11 +58,119 @@ namespace FrontEnd
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
-		{
+		{			
+			// Locks all buttons and controls before the form is presented to the user.
 			databaseConnectionLost();
 		}
 
-        private void btnApplicationInfo_Click(object sender, EventArgs e)
+		private void frmMain_Shown(object sender, EventArgs e)
+		{
+			// Check if the application has connection information set and if not, open the dialog.
+			establishConnection();
+		}
+
+		/// <summary>
+		/// Check if the application has connection information set and then attempt to make a connection.
+		/// If no connection information has been entered, open a dialog and let the user enter it.
+		/// </summary>
+		private bool establishConnection()
+        {
+			if (String.IsNullOrWhiteSpace(Properties.Settings.Default.connectionString) |
+				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastUsername) |
+				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastPassword) |
+				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastServerAddress) |
+				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastServerPort)
+			)
+			{
+				// No prior (successfull) database connection established, let the user input the connection settings.
+				connectionSettings();
+			} else
+            {
+				// Attempt connection
+				if (sqlData.checkConnection())
+				{
+					databaseConnectionEstablished();
+				}
+				else
+				{
+					databaseConnectionLost();
+				}
+			}
+			return false;
+        }
+
+		private void connectionSettings()
+        {
+			using (frmLogin frmLogin = new frmLogin())
+			{
+				DialogResult result = frmLogin.ShowDialog();
+
+				if (result == System.Windows.Forms.DialogResult.OK)
+				{
+					// Form SQL connection string.
+					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord
+						+ "; Encrypt=True; TrustServerCertificate=True";
+					// Save connectionstring
+					Properties.Settings.Default.connectionString = strConnection;
+
+					if (sqlData.checkConnection())
+					{
+						databaseConnectionEstablished();
+					}
+					else
+					{
+						databaseConnectionLost();
+					}
+
+				}
+			}
+		}
+
+		/// <summary>
+		/// Unlock the tolbarbuttons and updates the statusstrip.
+		/// </summary>
+		private void databaseConnectionEstablished()
+		{
+			lblStatus.Text = "Verbonden";
+			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_idle_svg;
+			sqlData.blnConnectionStatus = true;
+
+			// Unlock controls that require SQL queries
+			btnTest.Enabled = true;
+
+			cbxProductionLine.Enabled = true;
+			cbxProductionLine.SelectedIndex = 0;
+			btnOrderStart.Enabled = true;
+			btnOrderPause.Enabled = true;
+			btnOrderStop.Enabled = true;
+			btnOrderAdd.Enabled = true;
+			btnOrderEdit.Enabled = true;
+			btnOrderRemove.Enabled = true;
+		}
+
+		/// <summary>
+		/// Locks the toolbarbuttons and updates the statusstrip.
+		/// </summary>
+		private void databaseConnectionLost()
+		{
+			lblStatus.Text = "Geen verbinding";
+			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_offline_svg;
+			sqlData.blnConnectionStatus = false;
+
+			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
+			btnTest.Enabled = false;
+
+			cbxProductionLine.Enabled = false;
+			cbxProductionLine.Text = "Geen selectie";
+			btnOrderStart.Enabled = false;
+			btnOrderPause.Enabled = false;
+			btnOrderStop.Enabled = false;
+			btnOrderAdd.Enabled = false;
+			btnOrderEdit.Enabled = false;
+			btnOrderRemove.Enabled = false;
+		}
+
+		private void btnApplicationInfo_Click(object sender, EventArgs e)
         {
 			Form frmAboutbox = new frmAboutBox();
 			frmAboutbox.Show();			
@@ -87,8 +195,8 @@ namespace FrontEnd
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 					
-					SqlData SqlData = new SqlData();					
-					if (SqlData.checkConnection())
+					//SqlData SqlData = new SqlData();					
+					if (sqlData.checkConnection())
                     {
 						databaseConnectionEstablished();
                     } else
@@ -99,52 +207,17 @@ namespace FrontEnd
 			}
 		}
 
-		private void databaseConnectionEstablished()
-        {
-			lblStatus.Text					= "Verbonden";
-			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
-			sqlData.blnConnectionStatus		= true;
-			
-
-			// Unlock controls that require SQL queries
-			btnTest.Enabled					= true;
-			
-			cbxProductionLine.Enabled		= true;
-			cbxProductionLine.SelectedIndex = 0;
-			btnOrderStart.Enabled			= true;
-			btnOrderPause.Enabled			= true;
-			btnOrderStop.Enabled			= true;
-			btnOrderAdd.Enabled				= true;
-			btnOrderEdit.Enabled			= true;
-			btnOrderRemove.Enabled			= true;
-		}
-
-		private void databaseConnectionLost()
-        {
-			lblStatus.Text					= "Geen verbinding";
-			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
-			sqlData.blnConnectionStatus		= false;
-
-			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
-			btnTest.Enabled					= false;
-
-			cbxProductionLine.Enabled		= false;
-			cbxProductionLine.Text			= "Geen selectie";
-			btnOrderStart.Enabled			= false;
-			btnOrderPause.Enabled			= false;
-			btnOrderStop.Enabled			= false;
-			btnOrderAdd.Enabled				= false;
-			btnOrderEdit.Enabled			= false;
-			btnOrderRemove.Enabled			= false;
-		}
-
         private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
 			SqlData SqlData = new SqlData();
 			SqlData.exampleFunction(dgvTab1);			
 		}
 
-        private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
+		/// <summary>
+		/// Without this exceptionhandler the DataGridView will crash the application.
+		/// Handle the exception and show a dialog if it occurs.
+		/// </summary>
+		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
 		{			
 			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
 			{				

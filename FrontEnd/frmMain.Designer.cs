@@ -489,6 +489,7 @@
             this.Name = "frmMain";
             this.Text = "Avans MES - Broodbakkerij Zoete Broodjes Corp.";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.menuStripMain.ResumeLayout(false);
             this.menuStripMain.PerformLayout();
             this.toolStripMain.ResumeLayout(false);
