@@ -119,8 +119,9 @@
             this.btnMnuSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuSettings.Name = "btnMnuSettings";
             this.btnMnuSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuSettings.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuSettings.Size = new System.Drawing.Size(219, 26);
             this.btnMnuSettings.Text = "Verbinding &instellen";
+            this.btnMnuSettings.Click += new System.EventHandler(this.btnMnuSettings_Click);
             // 
             // btnMnuClose
             // 
@@ -222,6 +223,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(46, 46);
             this.btnSettings.Text = "toolStripButton3";
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // toolStripSeparator1
             // 

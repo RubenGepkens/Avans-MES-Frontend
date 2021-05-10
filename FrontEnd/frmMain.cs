@@ -84,8 +84,11 @@ namespace FrontEnd
 			{
 				// No prior (successfull) database connection established, let the user input the connection settings.
 				connectionSettings();
+				checkConnection();
 			} else
             {
+				checkConnection();
+				/*
 				// Attempt connection
 				if (sqlData.checkConnection())
 				{
@@ -95,6 +98,7 @@ namespace FrontEnd
 				{
 					databaseConnectionLost();
 				}
+				*/
 			}
 			return false;
         }
@@ -113,6 +117,9 @@ namespace FrontEnd
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 
+					checkConnection();
+
+					/*
 					if (sqlData.checkConnection())
 					{
 						databaseConnectionEstablished();
@@ -121,8 +128,23 @@ namespace FrontEnd
 					{
 						databaseConnectionLost();
 					}
+					*/
 
 				}
+			}
+		}
+
+		private bool checkConnection()
+        {
+			if (sqlData.checkConnection())
+			{
+				databaseConnectionEstablished();
+				return true;
+			}
+			else
+			{
+				databaseConnectionLost();
+				return false;
 			}
 		}
 
@@ -137,6 +159,8 @@ namespace FrontEnd
 
 			// Unlock controls that require SQL queries
 			btnTest.Enabled = true;
+			btnConnect.Enabled = false;
+			btnMnuConnect.Enabled = false;
 
 			cbxProductionLine.Enabled = true;
 			cbxProductionLine.SelectedIndex = 0;
@@ -159,6 +183,8 @@ namespace FrontEnd
 
 			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
 			btnTest.Enabled = false;
+			btnConnect.Enabled = true;
+			btnMnuConnect.Enabled = true;
 
 			cbxProductionLine.Enabled = false;
 			cbxProductionLine.Text = "Geen selectie";
@@ -183,6 +209,9 @@ namespace FrontEnd
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+			
+			// Kan weg nadat de nieuwe verbindingslogica goed getest is (10-05-2021, -RGS).
+			/*
 			using (frmLogin frmLogin = new frmLogin())
             {				
 				DialogResult result = frmLogin.ShowDialog();
@@ -205,9 +234,22 @@ namespace FrontEnd
                     }
 				}	
 			}
+			*/
 		}
 
-        private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
+		private void btnSettings_Click(object sender, EventArgs e)
+		{
+			// Allow user to modify the connectionsettings.
+			connectionSettings();
+		}
+
+		private void btnMnuSettings_Click(object sender, EventArgs e)
+		{
+			// Allow user to modify the connectionsettings.
+			connectionSettings();
+		}
+
+		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
 			SqlData SqlData = new SqlData();
 			SqlData.exampleFunction(dgvTab1);			
