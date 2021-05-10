@@ -114,7 +114,8 @@ namespace FrontEnd
 			btnOrderStart.Enabled			= true;
 			btnOrderPause.Enabled			= true;
 			btnOrderStop.Enabled			= true;
-			btnOrderEdit.Enabled				= true;
+			btnOrderAdd.Enabled				= true;
+			btnOrderEdit.Enabled			= true;
 			btnOrderRemove.Enabled			= true;
 		}
 
@@ -132,7 +133,8 @@ namespace FrontEnd
 			btnOrderStart.Enabled			= false;
 			btnOrderPause.Enabled			= false;
 			btnOrderStop.Enabled			= false;
-			btnOrderEdit.Enabled				= false;
+			btnOrderAdd.Enabled				= false;
+			btnOrderEdit.Enabled			= false;
 			btnOrderRemove.Enabled			= false;
 		}
 
