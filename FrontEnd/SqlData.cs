@@ -95,5 +95,12 @@ namespace FrontEnd
                 }
             }
         }
+
+        public List<string> getRecipes()
+        {
+            List<string> lstRecipes = new List<string>{ "Witbrood", "Bruinbrood", "Herman Brood" }; ;
+
+            return lstRecipes;
+        }
     }
 }

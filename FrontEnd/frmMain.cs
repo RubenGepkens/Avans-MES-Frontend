@@ -167,38 +167,71 @@ namespace FrontEnd
 
         }
 
-        private void btnOrderAdd_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Open the new order dialog and process results, i.e. send the new order to the database.
+		/// </summary>
+		private void btnOrderAdd_Click(object sender, EventArgs e)
         {
 			int intBatchNumber;
 			string strCustomerName;
 			string strOrderDate;
-			List<string> lstRecipes = new List<string>{ "Herman Brood", "Bruinjood" };  // TODO: getRecipes
+			//List<string> lstRecipes = new List<string>{ "Witbrood", "Bruinbrood", "Herman Brood" };  // TODO: storedprocedure/functie voor 'getRecipes'
+			List<string> lstRecipes = sqlData.getRecipes();
 			string strSelectedRecipe;
 
-			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
+			using ( frmModifyOrder frmModifyOrder = new frmModifyOrder() )
 			{
-				frmModifyOrder.lstRecipes = lstRecipes;
+				// Preload variables before the form is shown to the user.
+				frmModifyOrder.lstRecipes		= lstRecipes;
+				frmModifyOrder.strFormTitle		= "Order toevoegen..";
 
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
 					intBatchNumber		= frmModifyOrder.intBatchNumber;
 					strCustomerName		= frmModifyOrder.strCustomerName;
-					strOrderDate		= frmModifyOrder.strOrderDate;
+					strOrderDate		= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
 					strSelectedRecipe	= frmModifyOrder.strSelectedRecipe;
 
-					Console.WriteLine("OK!\t {0}\t {1}\t {2}\t {3}", intBatchNumber, strCustomerName, strOrderDate, strSelectedRecipe);					
-				}
-				else
-				{
-					Console.WriteLine("NOK!");
+					Console.WriteLine("OK!\t {0}\t {1}\t", intBatchNumber, strCustomerName, strOrderDate);					
 				}
 			}
         }
 
-        private void btnOrderEdit_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Edit the currently selected order.
+		/// </summary>
+		private void btnOrderEdit_Click(object sender, EventArgs e)
         {
+			int intBatchNumber;
+			string strCustomerName;
+			string strOrderDate;
+			List<string> lstRecipes = sqlData.getRecipes();
+			string strSelectedRecipe;
 
-        }
+			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
+			{
+				// Preload variables before the form is shown to the user.
+				frmModifyOrder.lstRecipes			= lstRecipes;
+				frmModifyOrder.strFormTitle			= "Order bewerken..";
+
+				// Preload the order data before the form is shown.
+				frmModifyOrder.intBatchNumber		= 1000;					// PLACEHOLDER - TODO
+				frmModifyOrder.strCustomerName		= "Jumbo b.v.";         // PLACEHOLDER - TODO
+				frmModifyOrder.dtOrderDate			= DateTime.Now;         // PLACEHOLDER - TODO
+				frmModifyOrder.strSelectedRecipe	= "Witbrood";           // PLACEHOLDER - TODO
+
+				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
+				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
+					intBatchNumber					= frmModifyOrder.intBatchNumber;
+					strCustomerName					= frmModifyOrder.strCustomerName;
+					strOrderDate					= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
+					strSelectedRecipe				= frmModifyOrder.strSelectedRecipe;
+
+					Console.WriteLine("OK!\t {0}\t {1}\t", intBatchNumber, strCustomerName, strOrderDate);
+				}
+			}
+		}
 
         private void btnOrderRemove_Click(object sender, EventArgs e)
         {
