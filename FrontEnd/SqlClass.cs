@@ -27,10 +27,12 @@ namespace FrontEnd
     public class SqlClass
     {
         private readonly string strConnectionString;
+        public bool blnConnectionStatus { get; set; }
 
         public SqlClass()
         {
             strConnectionString = Properties.Settings.Default.connectionString;
+            blnConnectionStatus = false;
             Console.WriteLine("sqlVerbinding: " + strConnectionString);
         }
 

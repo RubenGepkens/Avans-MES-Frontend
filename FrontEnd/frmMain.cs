@@ -49,7 +49,6 @@ namespace FrontEnd
 
 	public partial class frmMain : Form
 	{
-		private bool blnDBConnEstablished = false;
 		// Manier om sql te herbruiken.
 		private SqlData sqlData = new SqlData();
 
@@ -104,7 +103,8 @@ namespace FrontEnd
         {
 			lblStatus.Text					= "Verbonden";
 			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_idle_svg;
-			blnDBConnEstablished			= true;
+			sqlData.blnConnectionStatus		= true;
+			
 
 			// Unlock controls that require SQL queries
 			btnTest.Enabled					= true;
@@ -123,7 +123,7 @@ namespace FrontEnd
         {
 			lblStatus.Text					= "Geen verbinding";
 			lblStatus.Image					= FrontEnd.Properties.Resources.Gnome_network_offline_svg;
-			blnDBConnEstablished			= false;
+			sqlData.blnConnectionStatus		= false;
 
 			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
 			btnTest.Enabled					= false;
@@ -151,5 +151,58 @@ namespace FrontEnd
 				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+        private void btnOrderStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderPause_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderStop_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderAdd_Click(object sender, EventArgs e)
+        {
+			int intBatchNumber;
+			string strCustomerName;
+			string strOrderDate;
+			List<string> lstRecipes = new List<string>{ "Herman Brood", "Bruinjood" };  // TODO: getRecipes
+			string strSelectedRecipe;
+
+			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
+			{
+				frmModifyOrder.lstRecipes = lstRecipes;
+
+				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
+					intBatchNumber		= frmModifyOrder.intBatchNumber;
+					strCustomerName		= frmModifyOrder.strCustomerName;
+					strOrderDate		= frmModifyOrder.strOrderDate;
+					strSelectedRecipe	= frmModifyOrder.strSelectedRecipe;
+
+					Console.WriteLine("OK!\t {0}\t {1}\t {2}\t {3}", intBatchNumber, strCustomerName, strOrderDate, strSelectedRecipe);					
+				}
+				else
+				{
+					Console.WriteLine("NOK!");
+				}
+			}
+        }
+
+        private void btnOrderEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnOrderRemove_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

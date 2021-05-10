@@ -111,7 +111,7 @@
             this.btnMnuConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuConnect.Name = "btnMnuConnect";
             this.btnMnuConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuConnect.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuConnect.Size = new System.Drawing.Size(215, 22);
             this.btnMnuConnect.Text = "Verbinding &maken";
             // 
             // btnMnuSettings
@@ -119,7 +119,7 @@
             this.btnMnuSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuSettings.Name = "btnMnuSettings";
             this.btnMnuSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuSettings.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuSettings.Size = new System.Drawing.Size(215, 22);
             this.btnMnuSettings.Text = "Verbinding &instellen";
             // 
             // btnMnuClose
@@ -127,7 +127,7 @@
             this.btnMnuClose.Image = global::FrontEnd.Properties.Resources.Gnome_system_log_out_svg;
             this.btnMnuClose.Name = "btnMnuClose";
             this.btnMnuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.btnMnuClose.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuClose.Size = new System.Drawing.Size(215, 22);
             this.btnMnuClose.Text = "&Afsluiten";
             this.btnMnuClose.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
             // 
@@ -377,6 +377,7 @@
             this.btnOrderStart.Size = new System.Drawing.Size(46, 46);
             this.btnOrderStart.Text = "toolStripButton1";
             this.btnOrderStart.ToolTipText = "Start de geselecteerde order";
+            this.btnOrderStart.Click += new System.EventHandler(this.btnOrderStart_Click);
             // 
             // btnOrderPause
             // 
@@ -387,6 +388,7 @@
             this.btnOrderPause.Size = new System.Drawing.Size(46, 46);
             this.btnOrderPause.Text = "toolStripButton5";
             this.btnOrderPause.ToolTipText = "Pauzeer de geselecteerde order";
+            this.btnOrderPause.Click += new System.EventHandler(this.btnOrderPause_Click);
             // 
             // btnOrderStop
             // 
@@ -397,6 +399,7 @@
             this.btnOrderStop.Size = new System.Drawing.Size(46, 46);
             this.btnOrderStop.Text = "toolStripButton6";
             this.btnOrderStop.ToolTipText = "Stop de geselecteerde order";
+            this.btnOrderStop.Click += new System.EventHandler(this.btnOrderStop_Click);
             // 
             // toolStripSeparator4
             // 
@@ -412,6 +415,7 @@
             this.btnOrderAdd.Size = new System.Drawing.Size(46, 46);
             this.btnOrderAdd.Text = "toolStripButton1";
             this.btnOrderAdd.ToolTipText = "Maak een nieuwe order";
+            this.btnOrderAdd.Click += new System.EventHandler(this.btnOrderAdd_Click);
             // 
             // btnOrderEdit
             // 
@@ -422,6 +426,7 @@
             this.btnOrderEdit.Size = new System.Drawing.Size(46, 46);
             this.btnOrderEdit.Text = "toolStripButton1";
             this.btnOrderEdit.ToolTipText = "Bewerk de geselecteerde order";
+            this.btnOrderEdit.Click += new System.EventHandler(this.btnOrderEdit_Click);
             // 
             // btnOrderRemove
             // 
@@ -432,6 +437,7 @@
             this.btnOrderRemove.Size = new System.Drawing.Size(46, 46);
             this.btnOrderRemove.Text = "toolStripButton7";
             this.btnOrderRemove.ToolTipText = "Verwijder de geselecteerde order";
+            this.btnOrderRemove.Click += new System.EventHandler(this.btnOrderRemove_Click);
             // 
             // btnRefresh
             // 
