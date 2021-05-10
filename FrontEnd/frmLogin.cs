@@ -57,6 +57,8 @@ namespace FrontEnd
 
         private void btnAnnuleer_Click(object sender, EventArgs e)
         {
+            // Set the dialogresult and close the form.
+            this.DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -85,7 +87,8 @@ namespace FrontEnd
             serverAdres     = txtServerAdres.Text;
             serverPoort     = txtServerPoort.Text;
 
-            // Close this form
+            // Set the dialogresult and close the form.
+            this.DialogResult = DialogResult.OK;
             Close();
         }
     }
