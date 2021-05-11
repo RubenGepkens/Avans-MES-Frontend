@@ -31,6 +31,7 @@ namespace FrontEnd
         public bool checkConnection()
         {
             bool blnReturnValue = false;
+            initializeConnectionString();
 
             using (var connection = GetConnection())
             {

@@ -26,14 +26,19 @@ namespace FrontEnd
 {
     public class SqlClass
     {
-        private readonly string strConnectionString;
+        private string strConnectionString;
         public bool blnConnectionStatus { get; set; }
 
         public SqlClass()
+        {            
+            blnConnectionStatus = false;
+            initializeConnectionString();
+        }
+
+        protected void initializeConnectionString()
         {
             strConnectionString = Properties.Settings.Default.connectionString;
-            blnConnectionStatus = false;
-            Console.WriteLine("sqlVerbinding: " + strConnectionString);
+            Console.WriteLine("SqlClass : makeConnectionString(): " + strConnectionString);
         }
 
         protected SqlConnection GetConnection()

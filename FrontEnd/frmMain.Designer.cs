@@ -101,9 +101,8 @@
             this.btnMnuConnect,
             this.btnMnuSettings,
             this.btnMnuClose});
-            this.bestandToolStripMenuItem.Image = global::FrontEnd.Properties.Resources.Gnome_video_display_svg;
             this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
-            this.bestandToolStripMenuItem.Size = new System.Drawing.Size(102, 24);
+            this.bestandToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.bestandToolStripMenuItem.Text = "&Programma";
             // 
             // btnMnuConnect
