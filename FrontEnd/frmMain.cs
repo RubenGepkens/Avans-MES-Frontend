@@ -84,7 +84,7 @@ namespace FrontEnd
 			{
 				// No prior (successfull) database connection established, let the user input the connection settings.
 				connectionSettings();
-				checkConnection();
+				//checkConnection(); // debug disable 11-05-2021 -RGS
 			} else
             {
 				checkConnection();
@@ -129,13 +129,14 @@ namespace FrontEnd
 						databaseConnectionLost();
 					}
 					*/
-
 				}
 			}
 		}
 
 		private bool checkConnection()
         {
+			Console.WriteLine("checkConnection()");
+
 			if (sqlData.checkConnection())
 			{
 				databaseConnectionEstablished();
@@ -208,8 +209,7 @@ namespace FrontEnd
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
-        {
-			
+        {			
 			// Kan weg nadat de nieuwe verbindingslogica goed getest is (10-05-2021, -RGS).
 			/*
 			using (frmLogin frmLogin = new frmLogin())
@@ -352,5 +352,10 @@ namespace FrontEnd
         {
 
         }
+
+        private void btnResetUserSettings_Click(object sender, EventArgs e)
+        {
+			Properties.Settings.Default.Reset();
+		}
     }
 }

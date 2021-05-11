@@ -165,7 +165,7 @@
             this.Name = "frmLogin";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Verbinding maken..";
+            this.Text = "Database verbinding instellen..";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);

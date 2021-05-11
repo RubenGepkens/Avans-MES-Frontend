@@ -42,7 +42,7 @@
             this.btnTest = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.btnResetUserSettings = new System.Windows.Forms.ToolStripButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -111,7 +111,7 @@
             this.btnMnuConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuConnect.Name = "btnMnuConnect";
             this.btnMnuConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuConnect.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuConnect.Size = new System.Drawing.Size(219, 26);
             this.btnMnuConnect.Text = "Verbinding &maken";
             // 
             // btnMnuSettings
@@ -128,7 +128,7 @@
             this.btnMnuClose.Image = global::FrontEnd.Properties.Resources.Gnome_system_log_out_svg;
             this.btnMnuClose.Name = "btnMnuClose";
             this.btnMnuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.btnMnuClose.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuClose.Size = new System.Drawing.Size(219, 26);
             this.btnMnuClose.Text = "&Afsluiten";
             this.btnMnuClose.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
             // 
@@ -156,12 +156,12 @@
             this.toolStripMain.ImageScalingSize = new System.Drawing.Size(42, 42);
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnConnect,
+            this.btnSettings,
             this.toolStripSeparator2,
             this.btnTest,
+            this.btnResetUserSettings,
             this.toolStripSeparator3,
             this.toolStripButton2,
-            this.toolStripButton4,
-            this.btnSettings,
             this.toolStripSeparator1});
             this.toolStripMain.Location = new System.Drawing.Point(0, 28);
             this.toolStripMain.Name = "toolStripMain";
@@ -206,14 +206,14 @@
             this.toolStripButton2.Size = new System.Drawing.Size(46, 46);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
-            // toolStripButton4
+            // btnResetUserSettings
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::FrontEnd.Properties.Resources.Gnome_document_open_recent_svg;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(46, 46);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.btnResetUserSettings.Image = global::FrontEnd.Properties.Resources.Gnome_document_open_recent_svg;
+            this.btnResetUserSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnResetUserSettings.Name = "btnResetUserSettings";
+            this.btnResetUserSettings.Size = new System.Drawing.Size(125, 46);
+            this.btnResetUserSettings.Text = "Reset settings";
+            this.btnResetUserSettings.Click += new System.EventHandler(this.btnResetUserSettings_Click);
             // 
             // btnSettings
             // 
@@ -528,7 +528,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnSettings;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton btnResetUserSettings;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripButton btnConnect;

@@ -38,6 +38,7 @@ namespace FrontEnd
                 {
                     try
                     {
+                        Console.WriteLine("checkConnection()\t {0}", connection.ConnectionString);
                         connection.Open();                        
                         command.ExecuteScalar();
                         blnReturnValue = true; // Declare connection successful
