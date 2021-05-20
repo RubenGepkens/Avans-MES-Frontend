@@ -65,12 +65,14 @@ namespace FrontEnd
 
 		private void frmMain_Shown(object sender, EventArgs e)
 		{
+			/*
 			// Debug info
 			Console.WriteLine("connectionString: {0}", Properties.Settings.Default.connectionString);
 			Console.WriteLine("lastUsername: {0}", Properties.Settings.Default.lastUsername);
 			Console.WriteLine("lastPassword: {0}", Properties.Settings.Default.lastPassword);
 			Console.WriteLine("lastServerAddress: {0}", Properties.Settings.Default.lastServerAddress);
 			Console.WriteLine("lastServerPort: {0}", Properties.Settings.Default.lastServerPort);
+			*/
 
 			// Check if the application has connection information set and if not, open the dialog.
 			establishConnection();
@@ -91,11 +93,10 @@ namespace FrontEnd
 			{
 				// No prior (successfull) database connection established, let the user input the connection settings.
 				Console.WriteLine("establishConnection() ; IsNullOrWhiteSpace");
-				connectionSettings();
-				//checkConnection(); // debug disable 11-05-2021 -RGS
+				enterConnectionSettings();
 			} else
             {
-				checkConnection();
+				checkConnectionSettings();
 			}
 			return false;
         }
@@ -103,7 +104,7 @@ namespace FrontEnd
 		/// <summary>
 		/// Dialog for allowing user to enter the database connection settings suchs as address, port, username etc..
 		/// </summary>
-		private void connectionSettings()
+		private void enterConnectionSettings()
         {
 			using (frmLogin frmLogin = new frmLogin())
 			{
@@ -114,16 +115,22 @@ namespace FrontEnd
 					// Form SQL connection string.
 					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord
 						+ "; Encrypt=True; TrustServerCertificate=True";
+					
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 					Properties.Settings.Default.Save();
 
-					checkConnection();
+					// Check if a connection can be established.
+					checkConnectionSettings();
 				}
 			}
 		}
 
-		private bool checkConnection()
+		/// <summary>
+		/// Check if a database connection can be established.
+		/// </summary>
+		/// <returns>True if connection succeeded and False if not.</returns>
+		private bool checkConnectionSettings()
         {
 			Console.WriteLine("checkConnection()");
 
@@ -214,44 +221,25 @@ namespace FrontEnd
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
-        {			
-			// Kan weg nadat de nieuwe verbindingslogica goed getest is (10-05-2021, -RGS).
-			/*
-			using (frmLogin frmLogin = new frmLogin())
-            {				
-				DialogResult result = frmLogin.ShowDialog();
+        {
+			enterConnectionSettings();
+		}
 
-				if (result == System.Windows.Forms.DialogResult.OK)
-                {
-					// Form SQL connection string.
-					string strConnection = "Server=" + frmLogin.serverAdres + "," + frmLogin.serverPoort + "; Database=Avans_ISA95; User Id=" + frmLogin.gebruikersnaam + "; Password=" + frmLogin.wachtwoord
-						+ "; Encrypt=True; TrustServerCertificate=True";
-					// Save connectionstring
-					Properties.Settings.Default.connectionString = strConnection;
-					
-					//SqlData SqlData = new SqlData();					
-					if (sqlData.checkConnection())
-                    {
-						databaseConnectionEstablished();
-                    } else
-                    {
-						databaseConnectionLost();
-                    }
-				}	
-			}
-			*/
+		private void btnMnuConnect_Click(object sender, EventArgs e)
+		{
+			enterConnectionSettings();
 		}
 
 		private void btnSettings_Click(object sender, EventArgs e)
 		{
 			// Allow user to modify the connectionsettings.
-			connectionSettings();
+			enterConnectionSettings();
 		}
 
 		private void btnMnuSettings_Click(object sender, EventArgs e)
 		{
 			// Allow user to modify the connectionsettings.
-			connectionSettings();
+			enterConnectionSettings();
 		}
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.

@@ -115,6 +115,7 @@
             this.btnMnuConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.btnMnuConnect.Size = new System.Drawing.Size(243, 26);
             this.btnMnuConnect.Text = "Verbinding &maken";
+            this.btnMnuConnect.Click += new System.EventHandler(this.btnMnuConnect_Click);
             // 
             // btnMnuSettings
             // 
