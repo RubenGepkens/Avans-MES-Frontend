@@ -197,6 +197,19 @@ namespace FrontEnd
 			btnOrderRemove.Enabled = false;
 		}
 
+		/// <summary>
+		/// Reset application settings.
+		/// </summary>
+		void resetSettings()
+		{
+			var msgBxResult = MessageBox.Show("Gebruikersinstellingen resetten?", "Weet je zeker dat je de gebruikersinstellingen wilt resetten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+			if (msgBxResult == DialogResult.OK)
+			{
+				Properties.Settings.Default.Reset();
+			}
+		}
+
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
         {
 			Form frmAboutbox = new frmAboutBox();
@@ -355,7 +368,12 @@ namespace FrontEnd
 
         private void btnResetUserSettings_Click(object sender, EventArgs e)
         {
-			Properties.Settings.Default.Reset();
+			resetSettings();
+		}
+
+        private void btnMnuResetUserSettings_Click(object sender, EventArgs e)
+        {
+			resetSettings();
 		}
     }
 }
