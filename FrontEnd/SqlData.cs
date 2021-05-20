@@ -26,8 +26,16 @@ using System.Data;
 
 namespace FrontEnd
 {
+    /// <summary>
+    /// Child class of SqlClass holding the SQL queries to interact with the database.
+    /// </summary>
     public sealed class SqlData : SqlClass
     {
+        /// <summary>
+        /// Method that executes a dummy SQL statement to check the database connection.
+        /// Contains various try .. catch statements to caputure connection related exceptions.
+        /// </summary>
+        /// <returns>True if connection could be established and if not returns False.</returns>
         public bool checkConnection()
         {
             bool blnReturnValue = false;
@@ -65,6 +73,21 @@ namespace FrontEnd
             }
         }
 
+        /// <summary>
+        /// Function to retrieve recipes.
+        /// </summary>
+        /// <returns>List containing all recipes</returns>
+        public List<string> getRecipes()
+        {
+            List<string> lstRecipes = new List<string> { "Witbrood", "Bruinbrood", "Herman Brood" }; ;
+
+            return lstRecipes;
+        }
+
+        /// <summary>
+        /// Example method retrieving nonsense (dummy) data to demonstrate the filling of a DataGridView control.
+        /// </summary>
+        /// <param name="dataGridView"></param>
         public void exampleFunction(DataGridView dataGridView) // Example function used to demonstrate how a DataGridView can be filled.
         {
             using (var connection = GetConnection()) // Retrieve connectionstring
@@ -83,9 +106,7 @@ namespace FrontEnd
                         {
                             Console.WriteLine("Generic SQL exception: " + ex.Message);
                             MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        
-
+                        }                        
                         /*
                         using (BindingSource bSource = new BindingSource())
                         {                           
@@ -98,11 +119,31 @@ namespace FrontEnd
             }
         }
 
-        public List<string> getRecipes()
+        /// <summary>
+        /// Retrieve production orders and allow for filtering based on production line and order status.
+        /// </summary>
+        public void getOrders(DataGridView dataGridView)
         {
-            List<string> lstRecipes = new List<string>{ "Witbrood", "Bruinbrood", "Herman Brood" }; ;
-
-            return lstRecipes;
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetOrder", connection))
+                    {
+                        using (DataTable dataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+                            dataGridView.DataSource = dataTable;
+                            dataGridView.RowHeadersVisible = false;
+                            dataGridView.AutoResizeColumns();
+                        }
+                    }
+                }
+            } catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
     }
 }

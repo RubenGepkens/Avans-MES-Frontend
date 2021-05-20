@@ -263,7 +263,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvTab1_2);
             this.splitContainer1.Size = new System.Drawing.Size(1170, 500);
-            this.splitContainer1.SplitterDistance = 344;
+            this.splitContainer1.SplitterDistance = 335;
             this.splitContainer1.TabIndex = 6;
             // 
             // dgvTab1
@@ -273,7 +273,7 @@
             this.dgvTab1.Location = new System.Drawing.Point(0, 0);
             this.dgvTab1.Name = "dgvTab1";
             this.dgvTab1.ReadOnly = true;
-            this.dgvTab1.Size = new System.Drawing.Size(1170, 344);
+            this.dgvTab1.Size = new System.Drawing.Size(1170, 335);
             this.dgvTab1.TabIndex = 6;
             this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
             // 
@@ -284,7 +284,7 @@
             this.dgvTab1_2.Location = new System.Drawing.Point(0, 0);
             this.dgvTab1_2.Name = "dgvTab1_2";
             this.dgvTab1_2.ReadOnly = true;
-            this.dgvTab1_2.Size = new System.Drawing.Size(1170, 152);
+            this.dgvTab1_2.Size = new System.Drawing.Size(1170, 161);
             this.dgvTab1_2.TabIndex = 0;
             // 
             // toolStripTab1

@@ -211,7 +211,35 @@ namespace FrontEnd
 			}
 		}
 
+		/// <summary>
+		/// Example function showing how to use the sqlData class for excecuting SQL queries.
+		/// </summary>
+		void getExampleData()
+        {
+			sqlData.exampleFunction(dgvTab1);
+		}
+
+		/// <summary>
+		/// Retrieve production orders and allow for filtering based on production line and order status.
+		/// </summary>
+		void getOrderData()
+        {
+			sqlData.getOrders(dgvTab1);
+        }
+
 		// =========================================================================================================================================================================================
+
+		/// <summary>
+		/// Without this exceptionhandler the DataGridView will crash the application.
+		/// Handle the exception and show a dialog if it occurs.
+		/// </summary>
+		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
+		{
+			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
+			{
+				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
         {
@@ -248,20 +276,8 @@ namespace FrontEnd
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
-			SqlData SqlData = new SqlData();
-			SqlData.exampleFunction(dgvTab1);			
-		}
-
-		/// <summary>
-		/// Without this exceptionhandler the DataGridView will crash the application.
-		/// Handle the exception and show a dialog if it occurs.
-		/// </summary>
-		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
-		{			
-			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
-			{				
-				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
+			//getExampleData();
+			getOrderData();
 		}
 
         private void btnOrderStart_Click(object sender, EventArgs e)

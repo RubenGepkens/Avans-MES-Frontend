@@ -24,24 +24,36 @@ using System.Data.SqlClient; // Zelf toegevoegd
 
 namespace FrontEnd
 {
+    /// <summary>
+    /// Class for storing the SQL connection and connection related information.
+    /// </summary>
     public class SqlClass
     {
         private string strConnectionString;
         public bool blnConnectionStatus { get; set; }
 
+        /// <summary>
+        /// Initialize SqlClass
+        /// </summary>
         public SqlClass()
         {            
             blnConnectionStatus = false;
             initializeConnectionString();
         }
 
+        /// <summary>
+        /// Initialize the connectionstring.
+        /// </summary>
         protected void initializeConnectionString()
         {
-            Console.WriteLine("initializeConnectionString()");
-            strConnectionString = Properties.Settings.Default.connectionString;
             Console.WriteLine("SqlClass : makeConnectionString(): " + strConnectionString);
+            strConnectionString = Properties.Settings.Default.connectionString;            
         }
 
+        /// <summary>
+        /// Function for retrieving the SqlConnection containing the connection string information.
+        /// </summary>
+        /// <returns>SqlConnection</returns>
         protected SqlConnection GetConnection()
         {
             Console.WriteLine("sqlVerbinding: " + strConnectionString);
