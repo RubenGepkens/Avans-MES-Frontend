@@ -429,5 +429,25 @@ namespace FrontEnd
         {
 			txtOrdernumber.Clear();
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+			getOrderData();
+		}
+
+        private void txtOrdernumber_TextChanged(object sender, EventArgs e)
+        {
+			getOrderData();
+		}
+
+        private void cbxProductionLine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			getOrderData();
+		}
+
+        private void cbxOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			getOrderData();
+		}
     }
 }

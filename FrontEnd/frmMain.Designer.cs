@@ -344,8 +344,9 @@
             this.txtOrdernumber.BackColor = System.Drawing.SystemColors.Control;
             this.txtOrdernumber.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtOrdernumber.Name = "txtOrdernumber";
-            this.txtOrdernumber.Size = new System.Drawing.Size(100, 49);
+            this.txtOrdernumber.Size = new System.Drawing.Size(120, 49);
             this.txtOrdernumber.ToolTipText = "Typ een ordernummer om de gegevens te filteren.";
+            this.txtOrdernumber.TextChanged += new System.EventHandler(this.txtOrdernumber_TextChanged);
             // 
             // btnClearOrderFilter
             // 
@@ -378,8 +379,9 @@
             "Lijn 1",
             "Lijn 2"});
             this.cbxProductionLine.Name = "cbxProductionLine";
-            this.cbxProductionLine.Size = new System.Drawing.Size(100, 49);
+            this.cbxProductionLine.Size = new System.Drawing.Size(120, 49);
             this.cbxProductionLine.ToolTipText = "Selecteer een productielijn om de orders op te halen";
+            this.cbxProductionLine.SelectedIndexChanged += new System.EventHandler(this.cbxProductionLine_SelectedIndexChanged);
             // 
             // toolStripSeparator5
             // 
@@ -403,8 +405,9 @@
             "In productie",
             "Afgehandeld"});
             this.cbxOrderStatus.Name = "cbxOrderStatus";
-            this.cbxOrderStatus.Size = new System.Drawing.Size(100, 49);
+            this.cbxOrderStatus.Size = new System.Drawing.Size(120, 49);
             this.cbxOrderStatus.ToolTipText = "Filter de orders op basis van de orderstatus";
+            this.cbxOrderStatus.SelectedIndexChanged += new System.EventHandler(this.cbxOrderStatus_SelectedIndexChanged);
             // 
             // toolStripSeparator6
             // 
@@ -507,6 +510,7 @@
             this.btnRefresh.Size = new System.Drawing.Size(46, 46);
             this.btnRefresh.Text = "toolStripButton1";
             this.btnRefresh.ToolTipText = "Ververs venster";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // toolStripSeparator1
             // 
