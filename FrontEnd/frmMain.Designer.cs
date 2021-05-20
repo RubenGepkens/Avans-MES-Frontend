@@ -325,10 +325,11 @@
             this.cbxProductionLine.BackColor = System.Drawing.SystemColors.Control;
             this.cbxProductionLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProductionLine.Items.AddRange(new object[] {
+            "[geen filter]",
             "Lijn 1",
             "Lijn 2"});
             this.cbxProductionLine.Name = "cbxProductionLine";
-            this.cbxProductionLine.Size = new System.Drawing.Size(75, 49);
+            this.cbxProductionLine.Size = new System.Drawing.Size(100, 49);
             this.cbxProductionLine.ToolTipText = "Selecteer een productielijn om de orders op te halen";
             // 
             // toolStripSeparator5

@@ -162,6 +162,8 @@ namespace FrontEnd
 
 			cbxProductionLine.Enabled = true;
 			cbxProductionLine.SelectedIndex = 0;
+			cbxOrderStatus.Enabled = true;
+			cbxOrderStatus.SelectedIndex = 0;
 			btnOrderStart.Enabled = true;
 			btnOrderPause.Enabled = true;
 			btnOrderStop.Enabled = true;
@@ -185,7 +187,9 @@ namespace FrontEnd
 			btnMnuConnect.Enabled = true;
 
 			cbxProductionLine.Enabled = false;
-			cbxProductionLine.Text = "Geen selectie";
+			cbxProductionLine.SelectedIndex = 0;
+			cbxOrderStatus.Enabled = false;
+			cbxOrderStatus.SelectedIndex = 0;
 			btnOrderStart.Enabled = false;
 			btnOrderPause.Enabled = false;
 			btnOrderStop.Enabled = false;
