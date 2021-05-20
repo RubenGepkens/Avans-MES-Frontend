@@ -65,6 +65,13 @@ namespace FrontEnd
 
 		private void frmMain_Shown(object sender, EventArgs e)
 		{
+			// Debug info
+			Console.WriteLine("connectionString: {0}", Properties.Settings.Default.connectionString);
+			Console.WriteLine("lastUsername: {0}", Properties.Settings.Default.lastUsername);
+			Console.WriteLine("lastPassword: {0}", Properties.Settings.Default.lastPassword);
+			Console.WriteLine("lastServerAddress: {0}", Properties.Settings.Default.lastServerAddress);
+			Console.WriteLine("lastServerPort: {0}", Properties.Settings.Default.lastServerPort);
+
 			// Check if the application has connection information set and if not, open the dialog.
 			establishConnection();
 		}
@@ -83,26 +90,19 @@ namespace FrontEnd
 			)
 			{
 				// No prior (successfull) database connection established, let the user input the connection settings.
+				Console.WriteLine("establishConnection() ; IsNullOrWhiteSpace");
 				connectionSettings();
 				//checkConnection(); // debug disable 11-05-2021 -RGS
 			} else
             {
 				checkConnection();
-				/*
-				// Attempt connection
-				if (sqlData.checkConnection())
-				{
-					databaseConnectionEstablished();
-				}
-				else
-				{
-					databaseConnectionLost();
-				}
-				*/
 			}
 			return false;
         }
 
+		/// <summary>
+		/// Dialog for allowing user to enter the database connection settings suchs as address, port, username etc..
+		/// </summary>
 		private void connectionSettings()
         {
 			using (frmLogin frmLogin = new frmLogin())
@@ -116,19 +116,9 @@ namespace FrontEnd
 						+ "; Encrypt=True; TrustServerCertificate=True";
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
+					Properties.Settings.Default.Save();
 
 					checkConnection();
-
-					/*
-					if (sqlData.checkConnection())
-					{
-						databaseConnectionEstablished();
-					}
-					else
-					{
-						databaseConnectionLost();
-					}
-					*/
 				}
 			}
 		}
@@ -209,6 +199,8 @@ namespace FrontEnd
 				Properties.Settings.Default.Reset();
 			}
 		}
+
+		// =========================================================================================================================================================================================
 
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
         {

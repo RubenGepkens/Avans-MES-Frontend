@@ -37,6 +37,7 @@ namespace FrontEnd
 
         protected void initializeConnectionString()
         {
+            Console.WriteLine("initializeConnectionString()");
             strConnectionString = Properties.Settings.Default.connectionString;
             Console.WriteLine("SqlClass : makeConnectionString(): " + strConnectionString);
         }
