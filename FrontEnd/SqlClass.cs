@@ -32,6 +32,9 @@ namespace FrontEnd
         private string strConnectionString;
         public bool blnConnectionStatus { get; set; }
 
+        public List<string> lstProductionlines = new List<string> { };
+        public List<string> lstOrderstatusses = new List<string> { };
+
         /// <summary>
         /// Initialize SqlClass
         /// </summary>

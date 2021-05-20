@@ -58,13 +58,14 @@ namespace FrontEnd
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
-		{			
+		{
 			// Locks all buttons and controls before the form is presented to the user.
 			databaseConnectionLost();
 		}
 
 		private void frmMain_Shown(object sender, EventArgs e)
 		{
+			Console.WriteLine("frmMain_Shown(object sender, EventArgs e)");
 			/*
 			// Debug info
 			Console.WriteLine("connectionString: {0}", Properties.Settings.Default.connectionString);
@@ -84,6 +85,8 @@ namespace FrontEnd
 		/// </summary>
 		private bool establishConnection()
         {
+			Console.WriteLine("frmMain - establishConnection()");
+
 			if (String.IsNullOrWhiteSpace(Properties.Settings.Default.connectionString) |
 				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastUsername) |
 				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastPassword) |
@@ -94,6 +97,7 @@ namespace FrontEnd
 				// No prior (successfull) database connection established, let the user input the connection settings.
 				Console.WriteLine("establishConnection() ; IsNullOrWhiteSpace");
 				enterConnectionSettings();
+				checkConnectionSettings();
 			} else
             {
 				checkConnectionSettings();
@@ -119,9 +123,6 @@ namespace FrontEnd
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 					Properties.Settings.Default.Save();
-
-					// Check if a connection can be established.
-					checkConnectionSettings();
 				}
 			}
 		}
@@ -132,22 +133,29 @@ namespace FrontEnd
 		/// <returns>True if connection succeeded and False if not.</returns>
 		private bool checkConnectionSettings()
         {
-			Console.WriteLine("checkConnection()");
+			Console.WriteLine("frmMain - checkConnectionSettings()");
 
-			if (sqlData.checkConnection())
-			{
+			string strLblStatus = lblStatus.Text;
+			lblStatus.Text = "Verbinding maken, even geduld..";
+			UseWaitCursor = true;
+
+			bool blnCheckConnection = sqlData.checkConnection();
+
+			if ( blnCheckConnection )
+            {
 				databaseConnectionEstablished();
-				return true;
-			}
-			else
-			{
+            } else
+            {
 				databaseConnectionLost();
-				return false;
-			}
+            }
+
+			UseWaitCursor = false;
+			lblStatus.Text = strLblStatus;
+			return blnCheckConnection;
 		}
 
 		/// <summary>
-		/// Unlock the tolbarbuttons and updates the statusstrip.
+		/// Unlock the toolbarbuttons and updates the statusstrip.
 		/// </summary>
 		private void databaseConnectionEstablished()
 		{
@@ -160,16 +168,22 @@ namespace FrontEnd
 			btnConnect.Enabled = false;
 			btnMnuConnect.Enabled = false;
 
+			txtOrdernumber.Enabled = true;
+			btnClearOrderFilter.Enabled = true;
 			cbxProductionLine.Enabled = true;
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = true;
 			cbxOrderStatus.SelectedIndex = 0;
+			btnReleaseOrder.Enabled = true;
 			btnOrderStart.Enabled = true;
 			btnOrderPause.Enabled = true;
 			btnOrderStop.Enabled = true;
 			btnOrderAdd.Enabled = true;
 			btnOrderEdit.Enabled = true;
 			btnOrderRemove.Enabled = true;
+
+			// Set up the data filters
+			initializeFilters();
 		}
 
 		/// <summary>
@@ -186,10 +200,13 @@ namespace FrontEnd
 			btnConnect.Enabled = true;
 			btnMnuConnect.Enabled = true;
 
+			txtOrdernumber.Enabled = false;
+			btnClearOrderFilter.Enabled = false;
 			cbxProductionLine.Enabled = false;
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = false;
 			cbxOrderStatus.SelectedIndex = 0;
+			btnReleaseOrder.Enabled = false;
 			btnOrderStart.Enabled = false;
 			btnOrderPause.Enabled = false;
 			btnOrderStop.Enabled = false;
@@ -224,10 +241,42 @@ namespace FrontEnd
 		/// </summary>
 		void getOrderData()
         {
-			sqlData.getOrders(dgvTab1);
+			sqlData.getOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);			
         }
 
+		/// <summary>
+		/// Prepares all filters for use. Retrieves available filter options from the database and sets the comboboxes.
+		/// </summary>
+		void initializeFilters()
+        {
+			// Retrieve all production lines and order statusses.
+			sqlData.lstProductionlines = sqlData.getProductionlines();
+			sqlData.lstOrderstatusses = sqlData.getOrderStatusses();
+
+			// Clear the comboboxes
+			cbxProductionLine.Items.Clear();
+			cbxOrderStatus.Items.Clear();
+
+			// Add an empty item to use as an empty filter.
+			cbxProductionLine.Items.Add("");
+			cbxOrderStatus.Items.Add("");
+
+			// Add each item from the list to the combobox control.
+			foreach (string strListItem in sqlData.lstProductionlines)
+            {
+				cbxProductionLine.Items.Add(strListItem);
+            }
+
+			// Add each item from the list to the combobox control.
+			foreach (string strListItem in sqlData.lstOrderstatusses)
+            {
+				cbxOrderStatus.Items.Add(strListItem);
+            }
+		}
+
+
 		// =========================================================================================================================================================================================
+
 
 		/// <summary>
 		/// Without this exceptionhandler the DataGridView will crash the application.
@@ -249,17 +298,17 @@ namespace FrontEnd
 
         private void afsluitenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			this.Close();			
+			Close();			
         }
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-			enterConnectionSettings();
+			establishConnection();
 		}
 
 		private void btnMnuConnect_Click(object sender, EventArgs e)
 		{
-			enterConnectionSettings();
+			establishConnection();
 		}
 
 		private void btnSettings_Click(object sender, EventArgs e)
@@ -375,5 +424,10 @@ namespace FrontEnd
         {
 			resetSettings();
 		}
+
+        private void btnClearOrderFilter_Click(object sender, EventArgs e)
+        {
+			txtOrdernumber.Clear();
+        }
     }
 }

@@ -85,6 +85,74 @@ namespace FrontEnd
         }
 
         /// <summary>
+        /// Retrieves all the names of the available produciton lines.
+        /// </summary>
+        /// <returns>List containing strings</returns>
+        public List<string> getProductionlines()
+        {
+            List<string> lstProductionlines = new List<string> { };
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetProductionlines", connection))
+                    {
+                        using (DataTable dataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+                            
+                            foreach ( DataRow row in dataTable.Rows)
+                            {
+                                lstProductionlines.Add( row[0].ToString() );
+                            }
+                            return lstProductionlines;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves all the available order statusses.
+        /// </summary>
+        /// <returns>List containing strings</returns>
+        public List<string> getOrderStatusses()
+        {
+            List<string> lstOrderStatusses = new List<string> { };
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetOrderStatusses", connection))
+                    {
+                        using (DataTable dataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                lstOrderStatusses.Add(row[0].ToString());
+                            }
+                            return lstOrderStatusses;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Example method retrieving nonsense (dummy) data to demonstrate the filling of a DataGridView control.
         /// </summary>
         /// <param name="dataGridView"></param>
@@ -122,14 +190,24 @@ namespace FrontEnd
         /// <summary>
         /// Retrieve production orders and allow for filtering based on production line and order status.
         /// </summary>
-        public void getOrders(DataGridView dataGridView)
+        public void getOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)
         {
+            /*
+            Voorbeeld van Leon:
+            EXEC spGetOrder @Productielijn= 'Productie lijn 1', @Ordernummer= 'SO3', @Orderstatus = 'FORECAST'
+
+            spGetOrderStatusses
+            spGetProductionlines
+            */
+
+            string strQuery = "EXECUTE spGetOrder @Productielijn= '" + strProductionline + "', @Ordernummer= '" + strOrdernumber + "', @Orderstatus= '" + strOrderstatus + "'";
+
             try
             {
                 using (var connection = GetConnection())
                 {
-                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetOrder", connection))
-                    {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(strQuery, connection))
+                    {                       
                         using (DataTable dataTable = new DataTable())
                         {
                             sqlDataAdapter.Fill(dataTable);

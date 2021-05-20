@@ -205,4 +205,34 @@
   <data name="Gnome-video-display.svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Gnome-video-display.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gnome_preferences_desktop_personal_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-preferences-desktop-personal.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_process_stop_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-process-stop.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_settings_ui_behavior_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-settings-ui-behavior.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_view_refresh_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-view-refresh.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gnome_view_sort_descending_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-view-sort-descending.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_applications_other_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-applications-other.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_applications_science_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-applications-science.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_emblem_shared_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-emblem-shared.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_preferences_other_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-preferences-other.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_window_close_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-window-close.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

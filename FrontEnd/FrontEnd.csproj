@@ -364,5 +364,35 @@
   <ItemGroup>
     <None Include="Resources\Gnome-video-display.svg.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-view-refresh.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-preferences-desktop-personal.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-process-stop.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-settings-ui-behavior.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-window-close.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-emblem-shared.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-preferences-other.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-applications-other.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\240px-Gnome-applications-science.svg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gnome-view-sort-descending.svg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
