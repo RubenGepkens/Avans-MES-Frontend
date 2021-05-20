@@ -202,9 +202,9 @@ namespace FrontEnd
 		/// </summary>
 		void resetSettings()
 		{
-			var msgBxResult = MessageBox.Show("Gebruikersinstellingen resetten?", "Weet je zeker dat je de gebruikersinstellingen wilt resetten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			var msgBxResult = MessageBox.Show("Weet je zeker dat je de gebruikersinstellingen wilt resetten?", "Gebruikersinstellingen resetten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-			if (msgBxResult == DialogResult.OK)
+			if ( msgBxResult == DialogResult.Yes )
 			{
 				Properties.Settings.Default.Reset();
 			}
