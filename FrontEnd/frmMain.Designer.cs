@@ -74,14 +74,18 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lstbxCustomers = new System.Windows.Forms.ListBox();
-            this.lstbxRecipes = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lstbxProductionlines = new System.Windows.Forms.ListBox();
+            this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verbindingInstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.lstbxOrderstatusses = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstbxProductionlines = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstbxRecipes = new System.Windows.Forms.ListBox();
+            this.lstbxCustomers = new System.Windows.Forms.ListBox();
+            this.tESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -94,7 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -102,7 +106,8 @@
             this.menuStripMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bestandToolStripMenuItem,
-            this.infoToolStripMenuItem});
+            this.infoToolStripMenuItem,
+            this.oPCToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -532,6 +537,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.ItemSize = new System.Drawing.Size(58, 30);
             this.tabControl1.Location = new System.Drawing.Point(0, 80);
             this.tabControl1.Name = "tabControl1";
@@ -541,14 +547,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label4);
-            this.tabPage3.Controls.Add(this.lstbxOrderstatusses);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Controls.Add(this.lstbxProductionlines);
-            this.tabPage3.Controls.Add(this.label2);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.lstbxRecipes);
-            this.tabPage3.Controls.Add(this.lstbxCustomers);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -557,73 +555,114 @@
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // lstbxCustomers
+            // oPCToolStripMenuItem
             // 
-            this.lstbxCustomers.FormattingEnabled = true;
-            this.lstbxCustomers.Location = new System.Drawing.Point(115, 112);
-            this.lstbxCustomers.Name = "lstbxCustomers";
-            this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
-            this.lstbxCustomers.TabIndex = 0;
+            this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verbindingInstellenToolStripMenuItem,
+            this.tESTToolStripMenuItem});
+            this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
+            this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
+            this.oPCToolStripMenuItem.Text = "OPC";
             // 
-            // lstbxRecipes
+            // verbindingInstellenToolStripMenuItem
             // 
-            this.lstbxRecipes.FormattingEnabled = true;
-            this.lstbxRecipes.Location = new System.Drawing.Point(321, 112);
-            this.lstbxRecipes.Name = "lstbxRecipes";
-            this.lstbxRecipes.Size = new System.Drawing.Size(200, 251);
-            this.lstbxRecipes.TabIndex = 1;
+            this.verbindingInstellenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
+            this.verbindingInstellenToolStripMenuItem.Name = "verbindingInstellenToolStripMenuItem";
+            this.verbindingInstellenToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.verbindingInstellenToolStripMenuItem.Text = "Verbinding instellen";
             // 
-            // label1
+            // tabPage2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Customers:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(318, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Recipes:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(524, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Productionlines:";
-            // 
-            // lstbxProductionlines
-            // 
-            this.lstbxProductionlines.FormattingEnabled = true;
-            this.lstbxProductionlines.Location = new System.Drawing.Point(527, 112);
-            this.lstbxProductionlines.Name = "lstbxProductionlines";
-            this.lstbxProductionlines.Size = new System.Drawing.Size(200, 251);
-            this.lstbxProductionlines.TabIndex = 4;
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.lstbxOrderstatusses);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.lstbxProductionlines);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.lstbxRecipes);
+            this.tabPage2.Controls.Add(this.lstbxCustomers);
+            this.tabPage2.Location = new System.Drawing.Point(4, 34);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1176, 555);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(730, 96);
+            this.label4.Location = new System.Drawing.Point(659, 48);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 15;
             this.label4.Text = "Order statusses:";
             // 
             // lstbxOrderstatusses
             // 
             this.lstbxOrderstatusses.FormattingEnabled = true;
-            this.lstbxOrderstatusses.Location = new System.Drawing.Point(733, 112);
+            this.lstbxOrderstatusses.Location = new System.Drawing.Point(662, 64);
             this.lstbxOrderstatusses.Name = "lstbxOrderstatusses";
             this.lstbxOrderstatusses.Size = new System.Drawing.Size(200, 251);
-            this.lstbxOrderstatusses.TabIndex = 6;
+            this.lstbxOrderstatusses.TabIndex = 14;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(453, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Productionlines:";
+            // 
+            // lstbxProductionlines
+            // 
+            this.lstbxProductionlines.FormattingEnabled = true;
+            this.lstbxProductionlines.Location = new System.Drawing.Point(456, 64);
+            this.lstbxProductionlines.Name = "lstbxProductionlines";
+            this.lstbxProductionlines.Size = new System.Drawing.Size(200, 251);
+            this.lstbxProductionlines.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(247, 48);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Recipes:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Customers:";
+            // 
+            // lstbxRecipes
+            // 
+            this.lstbxRecipes.FormattingEnabled = true;
+            this.lstbxRecipes.Location = new System.Drawing.Point(250, 64);
+            this.lstbxRecipes.Name = "lstbxRecipes";
+            this.lstbxRecipes.Size = new System.Drawing.Size(200, 251);
+            this.lstbxRecipes.TabIndex = 9;
+            // 
+            // lstbxCustomers
+            // 
+            this.lstbxCustomers.FormattingEnabled = true;
+            this.lstbxCustomers.Location = new System.Drawing.Point(44, 64);
+            this.lstbxCustomers.Name = "lstbxCustomers";
+            this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
+            this.lstbxCustomers.TabIndex = 8;
+            // 
+            // tESTToolStripMenuItem
+            // 
+            this.tESTToolStripMenuItem.Name = "tESTToolStripMenuItem";
+            this.tESTToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.tESTToolStripMenuItem.Text = "TEST";
+            this.tESTToolStripMenuItem.Click += new System.EventHandler(this.tESTToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -658,8 +697,8 @@
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -712,14 +751,18 @@
         private System.Windows.Forms.ToolStripTextBox txtOrdernumber;
         private System.Windows.Forms.ToolStripButton btnClearOrderFilter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ListBox lstbxRecipes;
-        private System.Windows.Forms.ListBox lstbxCustomers;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem oPCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verbindingInstellenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tESTToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lstbxOrderstatusses;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lstbxProductionlines;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lstbxRecipes;
+        private System.Windows.Forms.ListBox lstbxCustomers;
     }
 }
 

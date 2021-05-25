@@ -478,5 +478,10 @@ namespace FrontEnd
         {
 			getOrderData();
 		}
+
+        private void tESTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			OPC opc = new OPC();			
+        }
     }
 }

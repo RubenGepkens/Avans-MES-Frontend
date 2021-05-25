@@ -231,6 +231,28 @@ namespace FrontEnd.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;ApplicationConfiguration
+        ///  xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        ///  xmlns:ua=&quot;http://opcfoundation.org/UA/2008/02/Types.xsd&quot;
+        ///  xmlns=&quot;http://opcfoundation.org/UA/SDK/Configuration.xsd&quot;
+        ///&gt;
+        ///  &lt;ApplicationName&gt;FrontEnd&lt;/ApplicationName&gt;
+        ///  &lt;ApplicationUri&gt;urn:localhost:FrontEnd&lt;/ApplicationUri&gt;
+        ///  &lt;ProductUri&gt;uri:opcfoundation.org:FrontEnd&lt;/ProductUri&gt;
+        ///  &lt;ApplicationType&gt;Client_1&lt;/ApplicationType&gt;
+        ///  
+        ///  &lt;SecurityConfiguration&gt;
+        ///
+        ///    &lt;!-- Where the  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string FrontEnd_Config {
+            get {
+                return ResourceManager.GetString("FrontEnd_Config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Gnome_applications_system_svg {
