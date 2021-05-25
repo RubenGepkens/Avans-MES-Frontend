@@ -34,7 +34,7 @@ namespace FrontEnd
             
             foreach (string item in lstRecipes)
             {
-                cbxRecipe.Items.Add(item);
+                //cbxRecipe.Items.Add(item);
             }
 
             foreach (string item in lstCustomers)
@@ -58,11 +58,11 @@ namespace FrontEnd
             if ( strSelectedRecipe == null)
             {
                 Console.WriteLine("strSelectedRecipe == null");
-                cbxRecipe.SelectedIndex = 0;
+                //cbxRecipe.SelectedIndex = 0;
             } else
             {
                 Console.WriteLine("strSelectedRecipe != null");
-                cbxRecipe.SelectedItem = strSelectedRecipe;
+                //cbxRecipe.SelectedItem = strSelectedRecipe;
             }                        
         }
 
@@ -79,7 +79,7 @@ namespace FrontEnd
             strSelectedCustomer = cbxCustomer.Text;
             dtOrderDate         = dtpOrderDate.Value;
             intOrderSize        = (int)txtOrderize1.Value;
-            strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
+            //strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
 
             this.Close();
         }

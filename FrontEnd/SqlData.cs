@@ -265,14 +265,6 @@ namespace FrontEnd
         /// </summary>
         public void getOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)
         {
-            /*
-            Voorbeeld van Leon:
-            EXEC spGetOrder @Productielijn= 'Productie lijn 1', @Ordernummer= 'SO3', @Orderstatus = 'FORECAST'
-
-            spGetOrderStatusses
-            spGetProductionlines
-            */
-
             string strQuery = "EXECUTE spGetOrder @Productielijn= '" + strProductionline + "', @Ordernummer= '" + strOrdernumber + "', @Orderstatus= '" + strOrderstatus + "'";
 
             try

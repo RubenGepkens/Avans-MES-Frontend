@@ -205,12 +205,11 @@
             // 
             // btnSettings
             // 
-            this.btnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(46, 46);
-            this.btnSettings.Text = "toolStripButton3";
+            this.btnSettings.Size = new System.Drawing.Size(114, 46);
+            this.btnSettings.Text = "Instellingen";
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // toolStripSeparator2
