@@ -33,26 +33,29 @@ namespace FrontEnd
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxCustomer = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbxProductionLine = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtOrderize = new System.Windows.Forms.NumericUpDown();
-            this.cbxRecipe = new System.Windows.Forms.ComboBox();
+            this.txtOrderize1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbxProductionLine = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtOrderize2 = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(12, 271);
+            this.btnAccept.Location = new System.Drawing.Point(12, 279);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(110, 23);
             this.btnAccept.TabIndex = 0;
@@ -63,7 +66,7 @@ namespace FrontEnd
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(226, 271);
+            this.btnCancel.Location = new System.Drawing.Point(226, 279);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 23);
             this.btnCancel.TabIndex = 1;
@@ -96,6 +99,15 @@ namespace FrontEnd
             this.cbxCustomer.Size = new System.Drawing.Size(200, 21);
             this.cbxCustomer.TabIndex = 7;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 114);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Productielijn:";
+            // 
             // txtOrdernumber
             // 
             this.txtOrdernumber.Location = new System.Drawing.Point(105, 29);
@@ -123,6 +135,14 @@ namespace FrontEnd
             this.label5.TabIndex = 5;
             this.label5.Text = "Levertijd:";
             // 
+            // cbxProductionLine
+            // 
+            this.cbxProductionLine.FormattingEnabled = true;
+            this.cbxProductionLine.Location = new System.Drawing.Point(105, 111);
+            this.cbxProductionLine.Name = "cbxProductionLine";
+            this.cbxProductionLine.Size = new System.Drawing.Size(200, 21);
+            this.cbxProductionLine.TabIndex = 7;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -144,76 +164,78 @@ namespace FrontEnd
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 35);
+            this.label3.Location = new System.Drawing.Point(6, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
+            this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Aantal";
+            this.label3.Text = "Aantal:";
             // 
-            // label4
+            // txtOrderize1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 64);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Recept";
-            // 
-            // txtOrderize
-            // 
-            this.txtOrderize.Increment = new decimal(new int[] {
+            this.txtOrderize1.Increment = new decimal(new int[] {
             100,
             0,
             0,
             0});
-            this.txtOrderize.Location = new System.Drawing.Point(105, 35);
-            this.txtOrderize.Maximum = new decimal(new int[] {
+            this.txtOrderize1.Location = new System.Drawing.Point(105, 19);
+            this.txtOrderize1.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.txtOrderize.Name = "txtOrderize";
-            this.txtOrderize.Size = new System.Drawing.Size(200, 20);
-            this.txtOrderize.TabIndex = 6;
-            this.txtOrderize.ThousandsSeparator = true;
-            // 
-            // cbxRecipe
-            // 
-            this.cbxRecipe.FormattingEnabled = true;
-            this.cbxRecipe.Location = new System.Drawing.Point(105, 61);
-            this.cbxRecipe.Name = "cbxRecipe";
-            this.cbxRecipe.Size = new System.Drawing.Size(200, 21);
-            this.cbxRecipe.TabIndex = 3;
+            this.txtOrderize1.Name = "txtOrderize1";
+            this.txtOrderize1.Size = new System.Drawing.Size(200, 20);
+            this.txtOrderize1.TabIndex = 6;
+            this.txtOrderize1.ThousandsSeparator = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbxRecipe);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.txtOrderize);
-            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.txtOrderize1);
             this.groupBox2.Location = new System.Drawing.Point(12, 161);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 104);
+            this.groupBox2.Size = new System.Drawing.Size(325, 53);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Recept";
+            this.groupBox2.Text = "Recept #1";
             // 
-            // label6
+            // groupBox3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 114);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Productielijn:";
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.txtOrderize2);
+            this.groupBox3.Location = new System.Drawing.Point(12, 220);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(325, 53);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Recept #2";
             // 
-            // cbxProductionLine
+            // label4
             // 
-            this.cbxProductionLine.FormattingEnabled = true;
-            this.cbxProductionLine.Location = new System.Drawing.Point(105, 111);
-            this.cbxProductionLine.Name = "cbxProductionLine";
-            this.cbxProductionLine.Size = new System.Drawing.Size(200, 21);
-            this.cbxProductionLine.TabIndex = 7;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Aantal:1";
+            // 
+            // txtOrderize2
+            // 
+            this.txtOrderize2.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.txtOrderize2.Location = new System.Drawing.Point(105, 19);
+            this.txtOrderize2.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.txtOrderize2.Name = "txtOrderize2";
+            this.txtOrderize2.Size = new System.Drawing.Size(200, 20);
+            this.txtOrderize2.TabIndex = 6;
+            this.txtOrderize2.ThousandsSeparator = true;
             // 
             // frmModifyOrder
             // 
@@ -221,7 +243,8 @@ namespace FrontEnd
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(348, 307);
+            this.ClientSize = new System.Drawing.Size(348, 317);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
@@ -235,9 +258,12 @@ namespace FrontEnd
             this.Load += new System.EventHandler(this.frmModifyOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOrderize2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -252,13 +278,14 @@ namespace FrontEnd
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown txtOrderize;
-        private System.Windows.Forms.ComboBox cbxRecipe;
+        private System.Windows.Forms.NumericUpDown txtOrderize1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxProductionLine;
         private System.Windows.Forms.TextBox txtOrdernumber;
         private System.Windows.Forms.ComboBox cbxCustomer;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown txtOrderize2;
     }
 }

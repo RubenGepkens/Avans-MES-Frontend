@@ -53,7 +53,7 @@ namespace FrontEnd
             txtOrdernumber.Text     = strOrdernumber;
             cbxCustomer.Text        = strSelectedCustomer;
             dtpOrderDate.Value      = dtOrderDate;
-            txtOrderize.Value       = intOrderSize;
+            txtOrderize1.Value       = intOrderSize;
             
             if ( strSelectedRecipe == null)
             {
@@ -78,7 +78,7 @@ namespace FrontEnd
             strOrdernumber      = txtOrdernumber.Text;
             strSelectedCustomer = cbxCustomer.Text;
             dtOrderDate         = dtpOrderDate.Value;
-            intOrderSize        = (int)txtOrderize.Value;
+            intOrderSize        = (int)txtOrderize1.Value;
             strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
 
             this.Close();
