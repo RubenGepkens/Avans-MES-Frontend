@@ -375,9 +375,18 @@ namespace FrontEnd
 			string strOrderDate;
 			string strSelectedRecipe;
 
+			// Retrieve the highest order number and add 1
+			string T_strOrdernumber = dgvTab1.Rows[0].Cells[0].Value.ToString();			// retrieve the highest order number from datagridview
+			T_strOrdernumber = T_strOrdernumber.Substring(2, T_strOrdernumber.Length-2);	// slice off the 'OS' at the start of the string
+			int T_intOrdernumber;
+			int.TryParse(T_strOrdernumber, out T_intOrdernumber);                           // Parse the string to convert the number part to int.
+			strOrdernumber = "SO" + (T_intOrdernumber + 1).ToString();						// Add 'SO' to the start of the ordernumber string
+			
+
 			using ( frmModifyOrder frmModifyOrder = new frmModifyOrder() )
 			{
 				// Preload variables before the form is shown to the user.
+				frmModifyOrder.strOrdernumber		= strOrdernumber;
 				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
 				frmModifyOrder.lstCustomers			= sqlData.lstCustomers;
 				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
