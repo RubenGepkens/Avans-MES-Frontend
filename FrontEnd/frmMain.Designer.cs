@@ -74,6 +74,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lstbxCustomers = new System.Windows.Forms.ListBox();
+            this.lstbxRecipes = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lstbxProductionlines = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lstbxOrderstatusses = new System.Windows.Forms.ListBox();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -86,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -533,6 +542,14 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.lstbxOrderstatusses);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.lstbxProductionlines);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.lstbxRecipes);
+            this.tabPage3.Controls.Add(this.lstbxCustomers);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -540,6 +557,74 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lstbxCustomers
+            // 
+            this.lstbxCustomers.FormattingEnabled = true;
+            this.lstbxCustomers.Location = new System.Drawing.Point(115, 112);
+            this.lstbxCustomers.Name = "lstbxCustomers";
+            this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
+            this.lstbxCustomers.TabIndex = 0;
+            // 
+            // lstbxRecipes
+            // 
+            this.lstbxRecipes.FormattingEnabled = true;
+            this.lstbxRecipes.Location = new System.Drawing.Point(321, 112);
+            this.lstbxRecipes.Name = "lstbxRecipes";
+            this.lstbxRecipes.Size = new System.Drawing.Size(200, 251);
+            this.lstbxRecipes.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Customers:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(318, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Recipes:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(524, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Productionlines:";
+            // 
+            // lstbxProductionlines
+            // 
+            this.lstbxProductionlines.FormattingEnabled = true;
+            this.lstbxProductionlines.Location = new System.Drawing.Point(527, 112);
+            this.lstbxProductionlines.Name = "lstbxProductionlines";
+            this.lstbxProductionlines.Size = new System.Drawing.Size(200, 251);
+            this.lstbxProductionlines.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(730, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Order statusses:";
+            // 
+            // lstbxOrderstatusses
+            // 
+            this.lstbxOrderstatusses.FormattingEnabled = true;
+            this.lstbxOrderstatusses.Location = new System.Drawing.Point(733, 112);
+            this.lstbxOrderstatusses.Name = "lstbxOrderstatusses";
+            this.lstbxOrderstatusses.Size = new System.Drawing.Size(200, 251);
+            this.lstbxOrderstatusses.TabIndex = 6;
             // 
             // frmMain
             // 
@@ -574,6 +659,8 @@
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,6 +713,14 @@
         private System.Windows.Forms.ToolStripTextBox txtOrdernumber;
         private System.Windows.Forms.ToolStripButton btnClearOrderFilter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ListBox lstbxRecipes;
+        private System.Windows.Forms.ListBox lstbxCustomers;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox lstbxOrderstatusses;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lstbxProductionlines;
     }
 }
 

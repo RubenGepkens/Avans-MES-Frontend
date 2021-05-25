@@ -74,14 +74,85 @@ namespace FrontEnd
         }
 
         /// <summary>
+        /// Initialze the list information in the SqlClass.
+        /// To be used as filters and customer names.
+        /// </summary>
+        public void initializeGlobalData()
+        {
+            lstRecipes          = getRecipes();
+            lstCustomers        = getCustomers();
+            lstProductionlines  = getProductionlines();
+            lstOrderstatusses   = getOrderStatusses();
+        }
+
+        /// <summary>
         /// Function to retrieve recipes.
         /// </summary>
         /// <returns>List containing all recipes</returns>
         public List<string> getRecipes()
         {
-            List<string> lstRecipes = new List<string> { "Witbrood", "Bruinbrood", "Herman Brood" }; ;
+            List<string> lstRecipes = new List<string> { }; ;
 
-            return lstRecipes;
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetRecipe", connection))
+                    {
+                        using (DataTable dataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                lstRecipes.Add(row[0].ToString());
+                            }
+                            return lstRecipes;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Function to retrieve order types.
+        /// </summary>
+        /// <returns>List containing all order types</returns>
+        public List<string> getCustomers()
+        {
+            List<string> lstCustomers = new List<string> { };
+
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("EXECUTE spGetCustomers", connection))
+                    {
+                        using (DataTable dataTable = new DataTable())
+                        {
+                            sqlDataAdapter.Fill(dataTable);
+
+                            foreach (DataRow row in dataTable.Rows)
+                            {
+                                lstCustomers.Add(row[0].ToString());
+                            }
+                            return lstCustomers;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         /// <summary>
@@ -91,6 +162,7 @@ namespace FrontEnd
         public List<string> getProductionlines()
         {
             List<string> lstProductionlines = new List<string> { };
+
             try
             {
                 using (var connection = GetConnection())
@@ -125,6 +197,7 @@ namespace FrontEnd
         public List<string> getOrderStatusses()
         {
             List<string> lstOrderStatusses = new List<string> { };
+            
             try
             {
                 using (var connection = GetConnection())

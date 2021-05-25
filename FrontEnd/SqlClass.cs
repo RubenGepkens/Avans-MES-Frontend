@@ -32,6 +32,8 @@ namespace FrontEnd
         private string strConnectionString;
         public bool blnConnectionStatus { get; set; }
 
+        public List<string> lstRecipes = new List<string> { }; // TODO
+        public List<string> lstCustomers = new List<string> { }; // TODO
         public List<string> lstProductionlines = new List<string> { };
         public List<string> lstOrderstatusses = new List<string> { };
 

@@ -13,12 +13,15 @@ namespace FrontEnd
     public partial class frmModifyOrder : Form
     {
         public string strFormTitle { get; set; }
-        public int intBatchNumber { get; set; }
-        public string strCustomerName { get; set; }
+        public string strOrdernumber { get; set; }
         public DateTime dtOrderDate { get; set; }
         public int intOrderSize { get; set; }
         public List<string> lstRecipes { get; set; }
+        public List<string> lstCustomers { get; set; }
+        public List<string> lstProductionlines { get; set; }
+
         public string strSelectedRecipe { get; set; }
+        public string strSelectedCustomer{ get; set; }
 
         public frmModifyOrder()
         {
@@ -29,21 +32,26 @@ namespace FrontEnd
         {
             this.Text = strFormTitle;
             
-            int intRecipeSize = lstRecipes.Count;
-
-            if ( intRecipeSize > 0)
+            foreach (string item in lstRecipes)
             {
-                for ( int x = 0; x < intRecipeSize; x++)
-                {
-                    cbxRecipe.Items.Add(lstRecipes[x]);
-                }                
+                cbxRecipe.Items.Add(item);
+            }
+
+            foreach (string item in lstCustomers)
+            {
+                cbxCustomer.Items.Add(item);
+            }
+
+            foreach (string item in lstProductionlines)
+            {
+                cbxProductionLine.Items.Add(item);
             }
 
 
-            DateTime dtOrderDate = Convert.ToDateTime( DateTime.Now.ToString("dd-MM-yyyy") );
+            DateTime dtOrderDate = Convert.ToDateTime( DateTime.Now.ToString("dd-MM-yyyy HH:mm") );
 
-            txtBatchnumber.Value    = intBatchNumber;
-            txtCustomerName.Text    = strCustomerName;
+            txtOrdernumber.Text     = strOrdernumber;
+            cbxCustomer.Text        = strSelectedCustomer;
             dtpOrderDate.Value      = dtOrderDate;
             txtOrderize.Value       = intOrderSize;
             
@@ -67,11 +75,11 @@ namespace FrontEnd
         {
             this.DialogResult = DialogResult.OK;
 
-            intBatchNumber = (int)txtBatchnumber.Value;
-            strCustomerName = txtCustomerName.Text;
-            dtOrderDate = dtpOrderDate.Value;
-            intOrderSize = (int)txtOrderize.Value;
-            strSelectedRecipe = cbxRecipe.SelectedItem.ToString();
+            strOrdernumber      = txtOrdernumber.Text;
+            strSelectedCustomer = cbxCustomer.Text;
+            dtOrderDate         = dtpOrderDate.Value;
+            intOrderSize        = (int)txtOrderize.Value;
+            strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
 
             this.Close();
         }

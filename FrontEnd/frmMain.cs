@@ -150,7 +150,7 @@ namespace FrontEnd
             }
 
 			UseWaitCursor = false;
-			lblStatus.Text = strLblStatus;
+			//lblStatus.Text = strLblStatus;
 			return blnCheckConnection;
 		}
 
@@ -159,11 +159,15 @@ namespace FrontEnd
 		/// </summary>
 		private void databaseConnectionEstablished()
 		{
+			// Initialize the list information in SqlClass.
+			sqlData.initializeGlobalData();
+
+			// Update statuslabel in the frmMain UI.
 			lblStatus.Text = "Verbonden";
 			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_idle_svg;
 			sqlData.blnConnectionStatus = true;
 
-			// Unlock controls that require SQL queries
+			// Unlock the UI controls that require SQL queries.
 			btnTest.Enabled = true;
 			btnConnect.Enabled = false;
 			btnMnuConnect.Enabled = false;
@@ -250,8 +254,8 @@ namespace FrontEnd
 		void initializeFilters()
         {
 			// Retrieve all production lines and order statusses.
-			sqlData.lstProductionlines = sqlData.getProductionlines();
-			sqlData.lstOrderstatusses = sqlData.getOrderStatusses();
+			//sqlData.lstProductionlines = sqlData.getProductionlines();
+			//sqlData.lstOrderstatusses = sqlData.getOrderStatusses();
 
 			// Clear the comboboxes
 			cbxProductionLine.Items.Clear();
@@ -325,8 +329,25 @@ namespace FrontEnd
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
-			//getExampleData();
-			getOrderData();
+			foreach ( string ding in sqlData.lstCustomers)
+            {
+				lstbxCustomers.Items.Add(ding);
+            }
+
+			foreach ( string ding in sqlData.lstRecipes)
+            {
+				lstbxRecipes.Items.Add(ding);
+            }
+
+			foreach ( string ding in sqlData.lstProductionlines)
+            {
+				lstbxProductionlines.Items.Add(ding);
+            }
+
+			foreach ( string ding in sqlData.lstOrderstatusses)
+            {
+				lstbxOrderstatusses.Items.Add(ding);
+            }
 		}
 
         private void btnOrderStart_Click(object sender, EventArgs e)
@@ -349,27 +370,27 @@ namespace FrontEnd
 		/// </summary>
 		private void btnOrderAdd_Click(object sender, EventArgs e)
         {
-			int intBatchNumber;
+			string strOrdernumber;
 			string strCustomerName;
 			string strOrderDate;
-			//List<string> lstRecipes = new List<string>{ "Witbrood", "Bruinbrood", "Herman Brood" };  // TODO: storedprocedure/functie voor 'getRecipes'
-			List<string> lstRecipes = sqlData.getRecipes();
 			string strSelectedRecipe;
 
 			using ( frmModifyOrder frmModifyOrder = new frmModifyOrder() )
 			{
 				// Preload variables before the form is shown to the user.
-				frmModifyOrder.lstRecipes		= lstRecipes;
-				frmModifyOrder.strFormTitle		= "Order toevoegen..";
+				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
+				frmModifyOrder.lstCustomers			= sqlData.lstCustomers;
+				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
+				frmModifyOrder.strFormTitle			= "Order toevoegen..";
 
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
-					intBatchNumber		= frmModifyOrder.intBatchNumber;
-					strCustomerName		= frmModifyOrder.strCustomerName;
+					strOrdernumber		= frmModifyOrder.strOrdernumber;
+					strCustomerName		= "";
 					strOrderDate		= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
 					strSelectedRecipe	= frmModifyOrder.strSelectedRecipe;
 
-					Console.WriteLine("OK!\t {0}\t {1}\t", intBatchNumber, strCustomerName, strOrderDate);					
+					Console.WriteLine("OK!\t {0}\t {1}\t", strOrdernumber, strCustomerName, strOrderDate);					
 				}
 			}
         }
@@ -379,33 +400,32 @@ namespace FrontEnd
 		/// </summary>
 		private void btnOrderEdit_Click(object sender, EventArgs e)
         {
-			int intBatchNumber;
+			string strOrdernumber;
 			string strCustomerName;
 			string strOrderDate;
-			List<string> lstRecipes = sqlData.getRecipes();
 			string strSelectedRecipe;
 
 			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 			{
 				// Preload variables before the form is shown to the user.
-				frmModifyOrder.lstRecipes			= lstRecipes;
+				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
 				frmModifyOrder.strFormTitle			= "Order bewerken..";
 
 				// Preload the order data before the form is shown.
-				frmModifyOrder.intBatchNumber		= 1000;					// PLACEHOLDER - TODO
-				frmModifyOrder.strCustomerName		= "Jumbo b.v.";         // PLACEHOLDER - TODO
+				frmModifyOrder.strOrdernumber		= "1000";					// PLACEHOLDER - TODO
+				frmModifyOrder.strSelectedCustomer	= "Jumbo b.v.";         // PLACEHOLDER - TODO
 				frmModifyOrder.dtOrderDate			= DateTime.Now;         // PLACEHOLDER - TODO
 				frmModifyOrder.strSelectedRecipe	= "Witbrood";           // PLACEHOLDER - TODO
 
 				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
-					intBatchNumber					= frmModifyOrder.intBatchNumber;
-					strCustomerName					= frmModifyOrder.strCustomerName;
+					strOrdernumber					= frmModifyOrder.strOrdernumber;
+					strCustomerName					= frmModifyOrder.strSelectedCustomer;
 					strOrderDate					= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
 					strSelectedRecipe				= frmModifyOrder.strSelectedRecipe;
 
-					Console.WriteLine("OK!\t {0}\t {1}\t", intBatchNumber, strCustomerName, strOrderDate);
+					Console.WriteLine("OK!\t {0}\t {1}\t", strOrdernumber, strCustomerName, strOrderDate);
 				}
 			}
 		}

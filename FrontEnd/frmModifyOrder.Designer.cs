@@ -32,8 +32,8 @@ namespace FrontEnd
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.txtBatchnumber = new System.Windows.Forms.NumericUpDown();
+            this.cbxCustomer = new System.Windows.Forms.ComboBox();
+            this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,7 +46,6 @@ namespace FrontEnd
             this.label6 = new System.Windows.Forms.Label();
             this.cbxProductionLine = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBatchnumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +63,7 @@ namespace FrontEnd
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(227, 271);
+            this.btnCancel.Location = new System.Drawing.Point(226, 271);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 23);
             this.btnCancel.TabIndex = 1;
@@ -74,41 +73,41 @@ namespace FrontEnd
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtCustomerName);
-            this.groupBox1.Controls.Add(this.txtBatchnumber);
+            this.groupBox1.Controls.Add(this.cbxCustomer);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtOrdernumber);
             this.groupBox1.Controls.Add(this.dtpOrderDate);
             this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.cbxProductionLine);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 123);
+            this.groupBox1.Size = new System.Drawing.Size(325, 143);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gegevens";
             // 
-            // txtCustomerName
+            // cbxCustomer
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(106, 58);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(199, 20);
-            this.txtCustomerName.TabIndex = 9;
+            this.cbxCustomer.FormattingEnabled = true;
+            this.cbxCustomer.Location = new System.Drawing.Point(105, 58);
+            this.cbxCustomer.Name = "cbxCustomer";
+            this.cbxCustomer.Size = new System.Drawing.Size(200, 21);
+            this.cbxCustomer.TabIndex = 7;
             // 
-            // txtBatchnumber
+            // txtOrdernumber
             // 
-            this.txtBatchnumber.Location = new System.Drawing.Point(105, 32);
-            this.txtBatchnumber.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.txtBatchnumber.Name = "txtBatchnumber";
-            this.txtBatchnumber.Size = new System.Drawing.Size(100, 20);
-            this.txtBatchnumber.TabIndex = 8;
+            this.txtOrdernumber.Location = new System.Drawing.Point(105, 29);
+            this.txtOrdernumber.Name = "txtOrdernumber";
+            this.txtOrdernumber.Size = new System.Drawing.Size(200, 20);
+            this.txtOrdernumber.TabIndex = 9;
             // 
             // dtpOrderDate
             // 
-            this.dtpOrderDate.Location = new System.Drawing.Point(105, 84);
+            this.dtpOrderDate.CustomFormat = "dd-MM-yyyy HH:mm";
+            this.dtpOrderDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpOrderDate.Location = new System.Drawing.Point(105, 85);
             this.dtpOrderDate.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
             this.dtpOrderDate.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.dtpOrderDate.Name = "dtpOrderDate";
@@ -118,29 +117,29 @@ namespace FrontEnd
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 90);
+            this.label5.Location = new System.Drawing.Point(6, 91);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Leverdatum";
+            this.label5.Text = "Levertijd:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 61);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Klantnaam";
+            this.label2.Text = "Klantnaam:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Batchnummer";
+            this.label1.Text = "Ordernummer:";
             // 
             // label3
             // 
@@ -174,7 +173,7 @@ namespace FrontEnd
             0,
             0});
             this.txtOrderize.Name = "txtOrderize";
-            this.txtOrderize.Size = new System.Drawing.Size(100, 20);
+            this.txtOrderize.Size = new System.Drawing.Size(200, 20);
             this.txtOrderize.TabIndex = 6;
             this.txtOrderize.ThousandsSeparator = true;
             // 
@@ -188,15 +187,13 @@ namespace FrontEnd
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.cbxProductionLine);
             this.groupBox2.Controls.Add(this.cbxRecipe);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtOrderize);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(12, 141);
+            this.groupBox2.Location = new System.Drawing.Point(12, 161);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(325, 124);
+            this.groupBox2.Size = new System.Drawing.Size(325, 104);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recept";
@@ -204,18 +201,18 @@ namespace FrontEnd
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 91);
+            this.label6.Location = new System.Drawing.Point(6, 114);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 13);
+            this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 8;
-            this.label6.Text = "Productielijn";
+            this.label6.Text = "Productielijn:";
             // 
             // cbxProductionLine
             // 
             this.cbxProductionLine.FormattingEnabled = true;
-            this.cbxProductionLine.Location = new System.Drawing.Point(105, 88);
+            this.cbxProductionLine.Location = new System.Drawing.Point(105, 111);
             this.cbxProductionLine.Name = "cbxProductionLine";
-            this.cbxProductionLine.Size = new System.Drawing.Size(100, 21);
+            this.cbxProductionLine.Size = new System.Drawing.Size(200, 21);
             this.cbxProductionLine.TabIndex = 7;
             // 
             // frmModifyOrder
@@ -224,7 +221,7 @@ namespace FrontEnd
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(349, 301);
+            this.ClientSize = new System.Drawing.Size(348, 307);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
@@ -238,7 +235,6 @@ namespace FrontEnd
             this.Load += new System.EventHandler(this.frmModifyOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtBatchnumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -252,8 +248,6 @@ namespace FrontEnd
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.NumericUpDown txtBatchnumber;
         private System.Windows.Forms.DateTimePicker dtpOrderDate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
@@ -264,5 +258,7 @@ namespace FrontEnd
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxProductionLine;
+        private System.Windows.Forms.TextBox txtOrdernumber;
+        private System.Windows.Forms.ComboBox cbxCustomer;
     }
 }
