@@ -13,6 +13,9 @@ namespace FrontEnd
 {
 	class OPC
 	{
+        ApplicationInstance application = new ApplicationInstance();
+        ConfiguredEndpoint endpoint;
+
         /// <summary>
         /// 
         /// </summary>
@@ -23,7 +26,7 @@ namespace FrontEnd
                 Console.WriteLine("Trying to connect to OPC...");
 
                 // Define the UA Client application
-                ApplicationInstance application = new ApplicationInstance();
+                //ApplicationInstance application = new ApplicationInstance();
                 application.ApplicationName = "FrontEnd";
                 application.ApplicationType = ApplicationType.Client;
 
@@ -38,12 +41,13 @@ namespace FrontEnd
                 //var endpointDescription = CoreClientUtils.SelectEndpoint("opc.tcp://192.168.8.145:4840", false);
                 var endpointDescription = CoreClientUtils.SelectEndpoint("opc.tcp://192.168.2.112:4840", false);
 
-                ConfiguredEndpoint endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
+                //ConfiguredEndpoint endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
+                endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
 
                 //UAClient uaClient = new UAClient(application.ApplicationConfiguration);
                 application.ApplicationConfiguration.CertificateValidator.CertificateValidation += CertificateValidation;
 
-                makeSession(application, endpoint);
+                //makeSession();
             } catch ( Exception ex )
             {
                 MessageBox.Show("OPC Error: " + ex.Message, "OPC connection issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,7 +59,7 @@ namespace FrontEnd
         /// </summary>
         /// <param name="application"></param>
         /// <param name="endpoint"></param>
-        private static void makeSession(ApplicationInstance application, ConfiguredEndpoint endpoint)
+        private void makeSession()
         {
             //start session to the OPC server
             using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
@@ -139,6 +143,24 @@ namespace FrontEnd
             }
 
             e.AcceptAll = certificateAccepted;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="application"></param>
+        /// <param name="endpoint"></param>
+        public void GetRealtimeData()
+        {
+            //start session to the OPC server
+            using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+            {
+                Console.WriteLine("Connected.");
+
+                bool data = (bool)session.ReadValue(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""I_b_Cmd_Start""").Value;
+                Console.WriteLine("OPCZOOI: {0}", data);
+                MessageBox.Show(data.ToString());
+            }
         }
     }
 }

@@ -481,7 +481,9 @@ namespace FrontEnd
 
         private void tESTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			OPC opc = new OPC();			
-        }
+			OPC opc = new OPC();
+			opc.GetRealtimeData();
+
+		}
     }
 }

@@ -37,6 +37,9 @@
             this.btnMnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnApplicationInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verbindingInstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
@@ -74,8 +77,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verbindingInstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.lstbxOrderstatusses = new System.Windows.Forms.ListBox();
@@ -85,7 +86,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
-            this.tESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -182,6 +182,29 @@
             this.btnApplicationInfo.Size = new System.Drawing.Size(217, 22);
             this.btnApplicationInfo.Text = "Over deze applicatie";
             this.btnApplicationInfo.Click += new System.EventHandler(this.btnApplicationInfo_Click);
+            // 
+            // oPCToolStripMenuItem
+            // 
+            this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.verbindingInstellenToolStripMenuItem,
+            this.tESTToolStripMenuItem});
+            this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
+            this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
+            this.oPCToolStripMenuItem.Text = "OPC";
+            // 
+            // verbindingInstellenToolStripMenuItem
+            // 
+            this.verbindingInstellenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
+            this.verbindingInstellenToolStripMenuItem.Name = "verbindingInstellenToolStripMenuItem";
+            this.verbindingInstellenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.verbindingInstellenToolStripMenuItem.Text = "Verbinding instellen";
+            // 
+            // tESTToolStripMenuItem
+            // 
+            this.tESTToolStripMenuItem.Name = "tESTToolStripMenuItem";
+            this.tESTToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.tESTToolStripMenuItem.Text = "TEST";
+            this.tESTToolStripMenuItem.Click += new System.EventHandler(this.tESTToolStripMenuItem_Click);
             // 
             // toolStripMain
             // 
@@ -555,22 +578,6 @@
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // oPCToolStripMenuItem
-            // 
-            this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verbindingInstellenToolStripMenuItem,
-            this.tESTToolStripMenuItem});
-            this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
-            this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
-            this.oPCToolStripMenuItem.Text = "OPC";
-            // 
-            // verbindingInstellenToolStripMenuItem
-            // 
-            this.verbindingInstellenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
-            this.verbindingInstellenToolStripMenuItem.Name = "verbindingInstellenToolStripMenuItem";
-            this.verbindingInstellenToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.verbindingInstellenToolStripMenuItem.Text = "Verbinding instellen";
-            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label4);
@@ -586,7 +593,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1176, 555);
             this.tabPage2.TabIndex = 3;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Database";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label4
@@ -656,13 +663,6 @@
             this.lstbxCustomers.Name = "lstbxCustomers";
             this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
             this.lstbxCustomers.TabIndex = 8;
-            // 
-            // tESTToolStripMenuItem
-            // 
-            this.tESTToolStripMenuItem.Name = "tESTToolStripMenuItem";
-            this.tESTToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
-            this.tESTToolStripMenuItem.Text = "TEST";
-            this.tESTToolStripMenuItem.Click += new System.EventHandler(this.tESTToolStripMenuItem_Click);
             // 
             // frmMain
             // 
