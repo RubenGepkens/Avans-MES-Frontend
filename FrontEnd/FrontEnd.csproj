@@ -248,6 +248,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmOPCSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOPCSettings.Designer.cs">
+      <DependentUpon>frmOPCSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="OPC.cs" />
     <Compile Include="frmAboutBox.cs">
       <SubType>Form</SubType>
@@ -288,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmModifyOrder.resx">
       <DependentUpon>frmModifyOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOPCSettings.resx">
+      <DependentUpon>frmOPCSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -428,6 +437,7 @@
     <Content Include="FrontEnd.Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\240px-Gnome-preferences-other.svg.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
