@@ -298,12 +298,12 @@ namespace FrontEnd
 
 		private void btnMnuDBConnect_Click(object sender, EventArgs e)
 		{
-
+			establishConnection();
 		}
 
 		private void btnMnuDBSettings_Click(object sender, EventArgs e)
 		{
-
+			enterConnectionSettings();
 		}
 
 		private void btnMnuOPCConnect_Click(object sender, EventArgs e)
@@ -381,13 +381,33 @@ namespace FrontEnd
 			}
 		}
 
-		private void btnMnuSettings_Click(object sender, EventArgs e)
+		#region Tabcontrol : "Overzicht orders"
+		private void txtOrdernumber_TextChanged(object sender, EventArgs e)
 		{
-			// Allow user to modify the connectionsettings.
-			enterConnectionSettings();
+			getOrderData();
 		}
 
-        private void btnOrderStart_Click(object sender, EventArgs e)
+		private void btnClearOrderFilter_Click(object sender, EventArgs e)
+		{
+			txtOrdernumber.Clear();
+		}
+
+		private void cbxProductionLine_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			getOrderData();
+		}
+
+		private void cbxOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			getOrderData();
+		}
+
+		private void btnReleaseOrder_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnOrderStart_Click(object sender, EventArgs e)
         {
 
         }
@@ -481,29 +501,10 @@ namespace FrontEnd
 
         }
 
-        private void btnClearOrderFilter_Click(object sender, EventArgs e)
-        {
-			txtOrdernumber.Clear();
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
 			getOrderData();
 		}
-
-        private void txtOrdernumber_TextChanged(object sender, EventArgs e)
-        {
-			getOrderData();
-		}
-
-        private void cbxProductionLine_SelectedIndexChanged(object sender, EventArgs e)
-        {
-			getOrderData();
-		}
-
-        private void cbxOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-			getOrderData();
-		}
+        #endregion
     }
 }

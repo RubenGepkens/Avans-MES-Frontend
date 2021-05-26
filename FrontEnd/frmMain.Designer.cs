@@ -215,6 +215,7 @@
             // 
             // btnMnuOPCConnect
             // 
+            this.btnMnuOPCConnect.Image = global::FrontEnd.Properties.Resources.Gnome_video_display_svg;
             this.btnMnuOPCConnect.Name = "btnMnuOPCConnect";
             this.btnMnuOPCConnect.Size = new System.Drawing.Size(184, 26);
             this.btnMnuOPCConnect.Text = "Verbinding &maken";
@@ -481,6 +482,7 @@
             this.btnReleaseOrder.Size = new System.Drawing.Size(46, 46);
             this.btnReleaseOrder.Text = "toolStripButton1";
             this.btnReleaseOrder.ToolTipText = "Markeer de geselecteerde order als vrijgegeven.";
+            this.btnReleaseOrder.Click += new System.EventHandler(this.btnReleaseOrder_Click);
             // 
             // toolStripSeparator7
             // 
