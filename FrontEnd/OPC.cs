@@ -228,14 +228,26 @@ namespace FrontEnd
         {
             switch (IintState)
             {
+                case 0:
+                    return "Resetting";
                 case 10:
                     return "Idle";
+                case 20:
+                    return "Starting";
                 case 30:
                     return "Execute";
+                case 40:
+                    return "Completing";
                 case 50:
                     return "Complete";
+                case 60:
+                    return "Holding";
                 case 70:
                     return "Hold";
+                case 80:
+                    return "Unhold";
+                case 90:
+                    return "Stopping";
                 case 100:
                     return "Stopped";
                 default:
