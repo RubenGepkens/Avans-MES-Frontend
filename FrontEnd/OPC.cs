@@ -13,25 +13,29 @@ namespace FrontEnd
 {
 	class OPC
 	{
-        ApplicationInstance application = new ApplicationInstance();
-        ConfiguredEndpoint endpoint;
+        public string strServerAddress { get; set; }
+        public int intServerPort { get; set; }
+        public bool blnConnectionStatus { get; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public OPC()
-		{
+        private ApplicationInstance application = new ApplicationInstance();
+        private ConfiguredEndpoint endpoint;
+
+        public OPC(string IstrServerAddress, int IintServerPort)
+        {
+            strServerAddress = IstrServerAddress;
+            intServerPort = IintServerPort;
+
             try
             {
                 Console.WriteLine("Trying to connect to OPC...");
 
-                // Define the UA Client application
+                // Define the UA Client application                
                 //ApplicationInstance application = new ApplicationInstance();
                 application.ApplicationName = "FrontEnd";
                 application.ApplicationType = ApplicationType.Client;
 
                 // load the application configuration.
-                application.LoadApplicationConfiguration("FrontEnd.Config.xml", silent: false);              
+                application.LoadApplicationConfiguration("FrontEnd.Config.xml", silent: false);
 
                 // check the application certificate.
                 application.CheckApplicationInstanceCertificate(silent: false, minimumKeySize: 0);
@@ -39,7 +43,10 @@ namespace FrontEnd
                 EndpointConfiguration endpointConfiguration = EndpointConfiguration.Create(application.ApplicationConfiguration);
 
                 //var endpointDescription = CoreClientUtils.SelectEndpoint("opc.tcp://192.168.8.145:4840", false);
-                var endpointDescription = CoreClientUtils.SelectEndpoint("opc.tcp://192.168.2.112:4840", false);
+                //var endpointDescription = CoreClientUtils.SelectEndpoint("opc.tcp://192.168.2.112:4840", false);
+
+                string strConnection = "opc.tcp://" + strServerAddress + ":" + intServerPort.ToString();
+                var endpointDescription = CoreClientUtils.SelectEndpoint(strConnection, false);
 
                 //ConfiguredEndpoint endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
                 endpoint = new ConfiguredEndpoint(null, endpointDescription, endpointConfiguration);
@@ -47,15 +54,47 @@ namespace FrontEnd
                 //UAClient uaClient = new UAClient(application.ApplicationConfiguration);
                 application.ApplicationConfiguration.CertificateValidator.CertificateValidation += CertificateValidation;
 
-                //makeSession();
-            } catch ( Exception ex )
+                // Check if a connection could be made.
+                blnConnectionStatus = CheckConnection();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("OPC Error: " + ex.Message, "OPC connection issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
         /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void CertificateValidation(CertificateValidator sender, CertificateValidationEventArgs e)
+        {
+            bool certificateAccepted = true;
+
+            // ****
+            // Implement a custom logic to decide if the certificate should be
+            // accepted or not and set certificateAccepted flag accordingly.
+            // The certificate can be retrieved from the e.Certificate field
+            // ***
+
+            ServiceResult error = e.Error;
+            while (error != null)
+            {
+                Console.WriteLine(error);
+                error = error.InnerResult;
+            }
+
+            if (certificateAccepted)
+            {
+                Console.WriteLine("Untrusted Certificate accepted. SubjectName = {0}", e.Certificate.SubjectName);
+            }
+
+            e.AcceptAll = certificateAccepted;
+        }
+
+        /// <summary>
+        /// Example function
         /// </summary>
         /// <param name="application"></param>
         /// <param name="endpoint"></param>
@@ -68,7 +107,11 @@ namespace FrontEnd
 
 
                 bool data = (bool)session.ReadValue(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""I_b_Cmd_Start""").Value;
-                Console.WriteLine("OPCZOOI: {0}", data);
+
+                // ns=3;s="Clock_2.5Hz"
+                bool data2 = (bool)session.ReadValue(@"ns=3;s=""Clock_2.5Hz""").Value;
+                
+                Console.WriteLine("OPCZOOI: {0}", data2);
                 //float cableLength = (float)session.ReadValue("ns=6;s=::Blob:Cables.CableLength").Value;
                 //float pixeltomm = (float)session.ReadValue("ns=6;s=::Blob:Cables.PixelToMM").Value;
                 //long orderNumber = Convert.ToInt64((double)session.ReadValue("ns=6;s=::Blob:Cables.OrderNumber").Value);
@@ -115,34 +158,20 @@ namespace FrontEnd
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private static void CertificateValidation(CertificateValidator sender, CertificateValidationEventArgs e)
+        public bool CheckConnection()
         {
-            bool certificateAccepted = true;
-
-            // ****
-            // Implement a custom logic to decide if the certificate should be
-            // accepted or not and set certificateAccepted flag accordingly.
-            // The certificate can be retrieved from the e.Certificate field
-            // ***
-
-            ServiceResult error = e.Error;
-            while (error != null)
+            try
             {
-                Console.WriteLine(error);
-                error = error.InnerResult;
-            }
-
-            if (certificateAccepted)
+                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+                {                    
+                    bool blnAlwaysTrue = (bool)session.ReadValue(@"ns=3;s=""AlwaysTRUE""").Value;                    
+                    return true;
+                }
+            } catch ( Exception ex )
             {
-                Console.WriteLine("Untrusted Certificate accepted. SubjectName = {0}", e.Certificate.SubjectName);
+                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: CheckConnection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
-
-            e.AcceptAll = certificateAccepted;
         }
 
         /// <summary>
@@ -155,11 +184,47 @@ namespace FrontEnd
             //start session to the OPC server
             using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
             {
-                Console.WriteLine("Connected.");
+                //Read nodes
+                IList<Type> types = new List<Type>();
+                IList<NodeId> nodeIdsRead = new List<NodeId>();
+                List<object> readValues;
+                List<ServiceResult> readResult;
 
-                bool data = (bool)session.ReadValue(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""I_b_Cmd_Start""").Value;
-                Console.WriteLine("OPCZOOI: {0}", data);
-                MessageBox.Show(data.ToString());
+                types.Add(typeof(Int16));
+                types.Add(typeof(Int16));
+                types.Add(typeof(Int16));
+
+                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackMl_Deegverwerking"".""O_i_State"""));
+                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""O_i_State"""));
+                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Verpakken"".""O_i_State"""));
+
+                session.ReadValues(nodeIdsRead, types, out readValues, out readResult);
+
+                foreach (var value1 in readValues)
+                {
+                    short s = (short)value1;
+                    Console.WriteLine( GetPackMLSate(s) );
+                    
+                }
+            }
+        }
+
+        private string GetPackMLSate(short IintState)
+        {
+            switch (IintState)
+            {
+                case 10:
+                    return "Idle";
+                case 30:
+                    return "Execute";
+                case 50:
+                    return "Complete";
+                case 70:
+                    return "Hold";
+                case 100:
+                    return "Stopped";
+                default:
+                    return "Unknown status";
             }
         }
     }
