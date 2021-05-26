@@ -31,15 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMnuConnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnMnuSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuResetUserSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnApplicationInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMnuDBConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMnuDBSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verbindingInstellenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tESTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMnuOPCConnect = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMnuOPCSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
@@ -119,6 +120,7 @@
             this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bestandToolStripMenuItem,
             this.infoToolStripMenuItem,
+            this.databaseToolStripMenuItem,
             this.oPCToolStripMenuItem});
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
@@ -130,31 +132,11 @@
             // bestandToolStripMenuItem
             // 
             this.bestandToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnMnuConnect,
-            this.btnMnuSettings,
             this.btnMnuResetUserSettings,
             this.btnMnuClose});
             this.bestandToolStripMenuItem.Name = "bestandToolStripMenuItem";
             this.bestandToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.bestandToolStripMenuItem.Text = "&Programma";
-            // 
-            // btnMnuConnect
-            // 
-            this.btnMnuConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
-            this.btnMnuConnect.Name = "btnMnuConnect";
-            this.btnMnuConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuConnect.Size = new System.Drawing.Size(239, 22);
-            this.btnMnuConnect.Text = "Verbinding &maken";
-            this.btnMnuConnect.Click += new System.EventHandler(this.btnMnuConnect_Click);
-            // 
-            // btnMnuSettings
-            // 
-            this.btnMnuSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
-            this.btnMnuSettings.Name = "btnMnuSettings";
-            this.btnMnuSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuSettings.Size = new System.Drawing.Size(239, 22);
-            this.btnMnuSettings.Text = "Verbinding &instellen";
-            this.btnMnuSettings.Click += new System.EventHandler(this.btnMnuSettings_Click);
             // 
             // btnMnuResetUserSettings
             // 
@@ -195,28 +177,56 @@
             this.btnApplicationInfo.Text = "Over deze applicatie";
             this.btnApplicationInfo.Click += new System.EventHandler(this.btnApplicationInfo_Click);
             // 
+            // databaseToolStripMenuItem
+            // 
+            this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnMnuDBConnect,
+            this.btnMnuDBSettings});
+            this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
+            this.databaseToolStripMenuItem.Text = "&Database";
+            // 
+            // btnMnuDBConnect
+            // 
+            this.btnMnuDBConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
+            this.btnMnuDBConnect.Name = "btnMnuDBConnect";
+            this.btnMnuDBConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.btnMnuDBConnect.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBConnect.Text = "Verbinding &maken";
+            this.btnMnuDBConnect.Click += new System.EventHandler(this.btnMnuDBConnect_Click);
+            // 
+            // btnMnuDBSettings
+            // 
+            this.btnMnuDBSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
+            this.btnMnuDBSettings.Name = "btnMnuDBSettings";
+            this.btnMnuDBSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.btnMnuDBSettings.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBSettings.Text = "Verbinding &instellen";
+            this.btnMnuDBSettings.Click += new System.EventHandler(this.btnMnuDBSettings_Click);
+            // 
             // oPCToolStripMenuItem
             // 
             this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.verbindingInstellenToolStripMenuItem,
-            this.tESTToolStripMenuItem});
+            this.btnMnuOPCConnect,
+            this.btnMnuOPCSettings});
             this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
             this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
-            this.oPCToolStripMenuItem.Text = "OPC";
+            this.oPCToolStripMenuItem.Text = "&OPC";
             // 
-            // verbindingInstellenToolStripMenuItem
+            // btnMnuOPCConnect
             // 
-            this.verbindingInstellenToolStripMenuItem.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
-            this.verbindingInstellenToolStripMenuItem.Name = "verbindingInstellenToolStripMenuItem";
-            this.verbindingInstellenToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.verbindingInstellenToolStripMenuItem.Text = "Verbinding instellen";
+            this.btnMnuOPCConnect.Name = "btnMnuOPCConnect";
+            this.btnMnuOPCConnect.Size = new System.Drawing.Size(184, 26);
+            this.btnMnuOPCConnect.Text = "Verbinding &maken";
+            this.btnMnuOPCConnect.Click += new System.EventHandler(this.btnMnuOPCConnect_Click);
             // 
-            // tESTToolStripMenuItem
+            // btnMnuOPCSettings
             // 
-            this.tESTToolStripMenuItem.Name = "tESTToolStripMenuItem";
-            this.tESTToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.tESTToolStripMenuItem.Text = "TEST";
-            this.tESTToolStripMenuItem.Click += new System.EventHandler(this.tESTToolStripMenuItem_Click);
+            this.btnMnuOPCSettings.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
+            this.btnMnuOPCSettings.Name = "btnMnuOPCSettings";
+            this.btnMnuOPCSettings.Size = new System.Drawing.Size(184, 26);
+            this.btnMnuOPCSettings.Text = "Verbinding instellen";
+            this.btnMnuOPCSettings.Click += new System.EventHandler(this.btnMnuOPCSettings_Click);
             // 
             // toolStripMain
             // 
@@ -853,8 +863,6 @@
         private System.Windows.Forms.ToolStripComboBox cbxOrderStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripButton btnRefresh;
-        private System.Windows.Forms.ToolStripMenuItem btnMnuConnect;
-        private System.Windows.Forms.ToolStripMenuItem btnMnuSettings;
         private System.Windows.Forms.ToolStripMenuItem btnMnuResetUserSettings;
         private System.Windows.Forms.ToolStripButton btnReleaseOrder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
@@ -864,8 +872,7 @@
         private System.Windows.Forms.ToolStripButton btnClearOrderFilter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripMenuItem oPCToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem verbindingInstellenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tESTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuOPCSettings;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lstbxOrderstatusses;
@@ -885,6 +892,10 @@
         private System.Windows.Forms.TextBox txtLine1M2PackML;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuDBConnect;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuDBSettings;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuOPCConnect;
     }
 }
 

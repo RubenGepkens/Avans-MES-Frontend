@@ -69,11 +69,12 @@ namespace FrontEnd
 			establishConnection();
 		}
 
-		/// <summary>
-		/// Check if the application has connection information set and then attempt to make a connection.
-		/// If no connection information has been entered, open a dialog and let the user enter it.
-		/// </summary>
-		private bool establishConnection()
+        #region Database connection functions
+        /// <summary>
+        /// Check if the application has connection information set and then attempt to make a connection.
+        /// If no connection information has been entered, open a dialog and let the user enter it.
+        /// </summary>
+        private bool establishConnection()
         {
 			// Check if there database connection information stored in the application memory.
 			if (String.IsNullOrWhiteSpace(Properties.Settings.Default.connectionString) |
@@ -170,7 +171,7 @@ namespace FrontEnd
 			// Unlock the UI controls that require SQL queries.
 			btnTest.Enabled = true;
 			btnConnect.Enabled = false;
-			btnMnuConnect.Enabled = false;
+			btnMnuDBConnect.Enabled = false;
 
 			txtOrdernumber.Enabled = true;
 			btnClearOrderFilter.Enabled = true;
@@ -202,7 +203,7 @@ namespace FrontEnd
 			// Lock controls that require SQL queries, preventing queries to be fired when database connectivity has not been checked.
 			btnTest.Enabled = false;
 			btnConnect.Enabled = true;
-			btnMnuConnect.Enabled = true;
+			btnMnuDBConnect.Enabled = true;
 
 			txtOrdernumber.Enabled = false;
 			btnClearOrderFilter.Enabled = false;
@@ -218,11 +219,13 @@ namespace FrontEnd
 			btnOrderEdit.Enabled = false;
 			btnOrderRemove.Enabled = false;
 		}
+        #endregion
 
-		/// <summary>
-		/// Reset application settings.
-		/// </summary>
-		void resetSettings()
+        #region General application functions
+        /// <summary>
+        /// Reset application settings.
+        /// </summary>
+        void resetSettings()
 		{
 			var msgBxResult = MessageBox.Show("Weet je zeker dat je de gebruikersinstellingen wilt resetten?", "Gebruikersinstellingen resetten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -280,10 +283,91 @@ namespace FrontEnd
 				cbxOrderStatus.Items.Add(strListItem);
             }
 		}
+        #endregion
 
+        #region Menustrip items eventhandlers
+        private void btnMnuResetUserSettings_Click(object sender, EventArgs e)
+		{
+			resetSettings();
+		}
+
+		private void afsluitenToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Close();
+		}
+
+		private void btnMnuDBConnect_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnMnuDBSettings_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnMnuOPCConnect_Click(object sender, EventArgs e)
+		{
+			OPC opc = new OPC();
+			opc.GetRealtimeData();
+		}
+
+		private void btnMnuOPCSettings_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnApplicationInfo_Click(object sender, EventArgs e)
+		{
+			Form frmAboutbox = new frmAboutBox();
+			frmAboutbox.Show();
+		}
+
+		#endregion
+
+		#region Toolstrip items eventhandlers
+		private void btnConnect_Click(object sender, EventArgs e)
+		{
+			establishConnection();
+		}
+
+		private void btnSettings_Click(object sender, EventArgs e)
+		{
+			// Allow user to modify the connectionsettings.
+			enterConnectionSettings();
+		}
+
+		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
+		{
+			foreach (string ding in sqlData.lstCustomers)
+			{
+				lstbxCustomers.Items.Add(ding);
+			}
+
+			foreach (string ding in sqlData.lstRecipes)
+			{
+				lstbxRecipes.Items.Add(ding);
+			}
+
+			foreach (string ding in sqlData.lstProductionlines)
+			{
+				lstbxProductionlines.Items.Add(ding);
+			}
+
+			foreach (string ding in sqlData.lstOrderstatusses)
+			{
+				lstbxOrderstatusses.Items.Add(ding);
+			}
+		}
+
+		private void btnResetUserSettings_Click(object sender, EventArgs e)
+		{
+			resetSettings();
+		}
+		#endregion
 
 		// =========================================================================================================================================================================================
-
+		// #### Other functions ####
 
 		/// <summary>
 		/// Without this exceptionhandler the DataGridView will crash the application.
@@ -297,60 +381,10 @@ namespace FrontEnd
 			}
 		}
 
-		private void btnApplicationInfo_Click(object sender, EventArgs e)
-        {
-			Form frmAboutbox = new frmAboutBox();
-			frmAboutbox.Show();			
-		}
-
-        private void afsluitenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-			Close();			
-        }
-
-        private void btnConnect_Click(object sender, EventArgs e)
-        {
-			establishConnection();
-		}
-
-		private void btnMnuConnect_Click(object sender, EventArgs e)
-		{
-			establishConnection();
-		}
-
-		private void btnSettings_Click(object sender, EventArgs e)
-		{
-			// Allow user to modify the connectionsettings.
-			enterConnectionSettings();
-		}
-
 		private void btnMnuSettings_Click(object sender, EventArgs e)
 		{
 			// Allow user to modify the connectionsettings.
 			enterConnectionSettings();
-		}
-
-		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
-		{
-			foreach ( string ding in sqlData.lstCustomers)
-            {
-				lstbxCustomers.Items.Add(ding);
-            }
-
-			foreach ( string ding in sqlData.lstRecipes)
-            {
-				lstbxRecipes.Items.Add(ding);
-            }
-
-			foreach ( string ding in sqlData.lstProductionlines)
-            {
-				lstbxProductionlines.Items.Add(ding);
-            }
-
-			foreach ( string ding in sqlData.lstOrderstatusses)
-            {
-				lstbxOrderstatusses.Items.Add(ding);
-            }
 		}
 
         private void btnOrderStart_Click(object sender, EventArgs e)
@@ -447,16 +481,6 @@ namespace FrontEnd
 
         }
 
-        private void btnResetUserSettings_Click(object sender, EventArgs e)
-        {
-			resetSettings();
-		}
-
-        private void btnMnuResetUserSettings_Click(object sender, EventArgs e)
-        {
-			resetSettings();
-		}
-
         private void btnClearOrderFilter_Click(object sender, EventArgs e)
         {
 			txtOrdernumber.Clear();
@@ -480,13 +504,6 @@ namespace FrontEnd
         private void cbxOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
 			getOrderData();
-		}
-
-        private void tESTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-			OPC opc = new OPC();
-			opc.GetRealtimeData();
-
 		}
     }
 }
