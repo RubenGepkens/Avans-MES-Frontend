@@ -77,6 +77,16 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLine1M3PackML = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtLine1M1PackML = new System.Windows.Forms.TextBox();
+            this.txtLine1M2PackML = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.lstbxOrderstatusses = new System.Windows.Forms.ListBox();
@@ -98,6 +108,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -570,6 +582,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -577,6 +590,102 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtLine1M3PackML);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtLine1M1PackML);
+            this.groupBox1.Controls.Add(this.txtLine1M2PackML);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Location = new System.Drawing.Point(37, 40);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(285, 159);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Lijn 1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(90, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Verpakken";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(90, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "Bakken";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(90, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(85, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Deegverwerking";
+            // 
+            // txtLine1M3PackML
+            // 
+            this.txtLine1M3PackML.Location = new System.Drawing.Point(93, 110);
+            this.txtLine1M3PackML.Name = "txtLine1M3PackML";
+            this.txtLine1M3PackML.ReadOnly = true;
+            this.txtLine1M3PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M3PackML.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(81, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "PackML status:";
+            // 
+            // txtLine1M1PackML
+            // 
+            this.txtLine1M1PackML.Location = new System.Drawing.Point(93, 32);
+            this.txtLine1M1PackML.Name = "txtLine1M1PackML";
+            this.txtLine1M1PackML.ReadOnly = true;
+            this.txtLine1M1PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M1PackML.TabIndex = 1;
+            // 
+            // txtLine1M2PackML
+            // 
+            this.txtLine1M2PackML.Location = new System.Drawing.Point(93, 71);
+            this.txtLine1M2PackML.Name = "txtLine1M2PackML";
+            this.txtLine1M2PackML.ReadOnly = true;
+            this.txtLine1M2PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M2PackML.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 35);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "PackML status:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "PackML status:";
             // 
             // tabPage2
             // 
@@ -697,6 +806,9 @@
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
@@ -763,6 +875,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstbxRecipes;
         private System.Windows.Forms.ListBox lstbxCustomers;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtLine1M3PackML;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtLine1M1PackML;
+        private System.Windows.Forms.TextBox txtLine1M2PackML;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
