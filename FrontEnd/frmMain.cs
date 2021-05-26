@@ -283,10 +283,22 @@ namespace FrontEnd
 				cbxOrderStatus.Items.Add(strListItem);
             }
 		}
-        #endregion
 
-        #region Menustrip items eventhandlers
-        private void btnMnuResetUserSettings_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Without this exceptionhandler the DataGridView will crash the application.
+		/// Handle the exception and show a dialog if it occurs.
+		/// </summary>
+		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
+		{
+			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
+			{
+				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+		#endregion
+
+		#region Menustrip items eventhandlers
+		private void btnMnuResetUserSettings_Click(object sender, EventArgs e)
 		{
 			resetSettings();
 		}
@@ -365,21 +377,6 @@ namespace FrontEnd
 			resetSettings();
 		}
 		#endregion
-
-		// =========================================================================================================================================================================================
-		// #### Other functions ####
-
-		/// <summary>
-		/// Without this exceptionhandler the DataGridView will crash the application.
-		/// Handle the exception and show a dialog if it occurs.
-		/// </summary>
-		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
-		{
-			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
-			{
-				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
 
 		#region Tabcontrol : "Overzicht orders"
 		private void txtOrdernumber_TextChanged(object sender, EventArgs e)
