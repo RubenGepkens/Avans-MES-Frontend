@@ -97,6 +97,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -191,7 +192,7 @@
             this.btnMnuDBConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuDBConnect.Name = "btnMnuDBConnect";
             this.btnMnuDBConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuDBConnect.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBConnect.Size = new System.Drawing.Size(215, 22);
             this.btnMnuDBConnect.Text = "Verbinding &maken";
             this.btnMnuDBConnect.Click += new System.EventHandler(this.btnMnuDBConnect_Click);
             // 
@@ -200,7 +201,7 @@
             this.btnMnuDBSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuDBSettings.Name = "btnMnuDBSettings";
             this.btnMnuDBSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuDBSettings.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBSettings.Size = new System.Drawing.Size(215, 22);
             this.btnMnuDBSettings.Text = "Verbinding &instellen";
             this.btnMnuDBSettings.Click += new System.EventHandler(this.btnMnuDBSettings_Click);
             // 
@@ -596,6 +597,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
@@ -787,6 +789,16 @@
             this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
             this.lstbxCustomers.TabIndex = 8;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(343, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -900,6 +912,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnMnuDBConnect;
         private System.Windows.Forms.ToolStripMenuItem btnMnuDBSettings;
         private System.Windows.Forms.ToolStripMenuItem btnMnuOPCConnect;
+        private System.Windows.Forms.Button button1;
     }
 }
 

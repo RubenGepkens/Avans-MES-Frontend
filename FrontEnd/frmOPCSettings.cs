@@ -12,9 +12,38 @@ namespace FrontEnd
 {
     public partial class frmOPCSettings : Form
     {
+        public string strServerAdress { get; set; }
+        public int intServerPort { get; set; }
+
         public frmOPCSettings()
         {
             InitializeComponent();
+            DialogResult = DialogResult.None;
+        }
+
+        private void frmOPCSettings_Load(object sender, EventArgs e)
+        {
+            if ( strServerAdress != null && intServerPort >= 0 && intServerPort <= 65536 )
+            {
+                txtServerAdress.Text    = strServerAdress;
+                txtServerPort.Value     = (decimal)intServerPort;
+            }            
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+
+            strServerAdress     = txtServerAdress.Text;
+            intServerPort       = (int)txtServerPort.Value;
+
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

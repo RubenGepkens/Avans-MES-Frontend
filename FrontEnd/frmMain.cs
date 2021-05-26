@@ -49,8 +49,11 @@ namespace FrontEnd
 
 	public partial class frmMain : Form
 	{
-		// Manier om sql te herbruiken.
+		// SQL database class
 		private SqlData sqlData = new SqlData();
+
+		// Object for use with the OPC server
+		private OPC objOPC;
 
 		public frmMain()
 		{
@@ -164,7 +167,7 @@ namespace FrontEnd
 			sqlData.initializeGlobalData();
 
 			// Update statuslabel in the frmMain UI.
-			lblStatus.Text = "Verbonden";
+			lblStatus.Text = "Verbonden met de database";
 			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_idle_svg;
 			sqlData.blnConnectionStatus = true;
 
@@ -196,7 +199,7 @@ namespace FrontEnd
 		/// </summary>
 		private void databaseConnectionLost()
 		{
-			lblStatus.Text = "Geen verbinding";
+			lblStatus.Text = "Geen verbinding met de database";
 			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_offline_svg;
 			sqlData.blnConnectionStatus = false;
 
@@ -219,13 +222,79 @@ namespace FrontEnd
 			btnOrderEdit.Enabled = false;
 			btnOrderRemove.Enabled = false;
 		}
-        #endregion
+		#endregion
 
-        #region General application functions
-        /// <summary>
-        /// Reset application settings.
-        /// </summary>
-        void resetSettings()
+		#region OPC connection functions
+
+		/// <summary>
+		/// Dialog for setting the OPC server connection parameters.
+		/// </summary>
+		/// <returns>True if dialog was accepted and False if dialog input was cancelled.</returns>
+		private bool enterOPCConnectionSettings()
+        {
+			using ( frmOPCSettings frmOPCSettings = new frmOPCSettings())
+            {
+				frmOPCSettings.strServerAdress	= Properties.Settings.Default.OPCServerAddress;
+				frmOPCSettings.intServerPort	= Properties.Settings.Default.OPCServerPort;
+
+				DialogResult result = frmOPCSettings.ShowDialog();
+
+				if ( result == DialogResult.OK)
+                {
+					Properties.Settings.Default.OPCServerAddress	= frmOPCSettings.strServerAdress;
+					Properties.Settings.Default.OPCServerPort		= frmOPCSettings.intServerPort;
+					Properties.Settings.Default.Save();
+					return true;
+                } else
+                {
+					return false;
+                }
+            }
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void establishOPCConnection()
+        {
+			UseWaitCursor = true;
+
+			string strOPCServerAddress = Properties.Settings.Default.OPCServerAddress;
+			int intOPCServerPort = Properties.Settings.Default.OPCServerPort;
+
+			OPC tmpObjOPC = new OPC(strOPCServerAddress, intOPCServerPort);
+			if (tmpObjOPC.blnConnectionStatus)
+			{
+				objOPC = tmpObjOPC;
+			}
+			
+			
+			UseWaitCursor = false;
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void OPCConnectionEstablished()
+        {
+
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void OPCConnectionLost()
+        {
+
+        }
+
+		#endregion
+
+		#region General application functions
+		/// <summary>
+		/// Reset application settings.
+		/// </summary>
+		void resetSettings()
 		{
 			var msgBxResult = MessageBox.Show("Weet je zeker dat je de gebruikersinstellingen wilt resetten?", "Gebruikersinstellingen resetten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -320,13 +389,12 @@ namespace FrontEnd
 
 		private void btnMnuOPCConnect_Click(object sender, EventArgs e)
 		{
-			OPC opc = new OPC();
-			opc.GetRealtimeData();
+			establishOPCConnection();
 		}
 
 		private void btnMnuOPCSettings_Click(object sender, EventArgs e)
 		{
-
+			enterOPCConnectionSettings();
 		}
 
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -503,5 +571,13 @@ namespace FrontEnd
 			getOrderData();
 		}
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			if ( objOPC.blnConnectionStatus)
+            {
+				objOPC.GetRealtimeData();
+            }
+        }
     }
 }
