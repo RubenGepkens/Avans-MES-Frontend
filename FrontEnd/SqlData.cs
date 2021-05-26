@@ -38,8 +38,6 @@ namespace FrontEnd
         /// <returns>True if connection could be established and if not returns False.</returns>
         public bool checkConnection()
         {
-            Console.WriteLine("checkConnection()");
-
             bool blnReturnValue = false;
             initializeConnectionString();
 
