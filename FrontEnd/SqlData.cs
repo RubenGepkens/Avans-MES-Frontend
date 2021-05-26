@@ -55,17 +55,17 @@ namespace FrontEnd
                     catch (SqlException ex) // This will catch all SQL exceptions
                     {
                         Console.WriteLine("Exception E101");
-                        MessageBox.Show("Execute exception issue: " + ex.Message, "Connection issue: E101", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("SqlException: " + ex.Message, "Connection issue: E101", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (InvalidOperationException ex)
                     {
                         Console.WriteLine("Exception E102");
-                        MessageBox.Show("Connection exception issue: " + ex.Message, "Connection issue: E102", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("InvalidOperationException: " + ex.Message, "Connection issue: E102", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     catch (Exception ex) // This will catch every Exception
                     {
                         Console.WriteLine("Exception E103");
-                        MessageBox.Show("Exception message: " + ex.Message, "Connection issue: E103", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Generic exception: " + ex.Message, "Connection issue: E103", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     return blnReturnValue;
