@@ -217,7 +217,8 @@
             // 
             this.btnMnuOPCConnect.Image = global::FrontEnd.Properties.Resources.Gnome_video_display_svg;
             this.btnMnuOPCConnect.Name = "btnMnuOPCConnect";
-            this.btnMnuOPCConnect.Size = new System.Drawing.Size(184, 26);
+            this.btnMnuOPCConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.btnMnuOPCConnect.Size = new System.Drawing.Size(225, 26);
             this.btnMnuOPCConnect.Text = "Verbinding &maken";
             this.btnMnuOPCConnect.Click += new System.EventHandler(this.btnMnuOPCConnect_Click);
             // 
@@ -225,7 +226,8 @@
             // 
             this.btnMnuOPCSettings.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
             this.btnMnuOPCSettings.Name = "btnMnuOPCSettings";
-            this.btnMnuOPCSettings.Size = new System.Drawing.Size(184, 26);
+            this.btnMnuOPCSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.btnMnuOPCSettings.Size = new System.Drawing.Size(225, 26);
             this.btnMnuOPCSettings.Text = "Verbinding instellen";
             this.btnMnuOPCSettings.Click += new System.EventHandler(this.btnMnuOPCSettings_Click);
             // 
