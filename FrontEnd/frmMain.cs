@@ -24,6 +24,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace FrontEnd
 {
@@ -253,7 +254,7 @@ namespace FrontEnd
         }
 
 		/// <summary>
-		/// 
+		/// Attempt connection with the OPC server
 		/// </summary>
 		private void establishOPCConnection()
         {
@@ -266,27 +267,32 @@ namespace FrontEnd
 			if (tmpObjOPC.blnConnectionStatus)
 			{
 				objOPC = tmpObjOPC;
-			}
-			
-			
+				OPCConnectionEstablished();
+			} else
+            {
+				OPCConnectionLost();
+            }						
 			UseWaitCursor = false;
 		}
 
 		/// <summary>
-		/// 
+		/// Function to be executed when connection with the OPC server is made
 		/// </summary>
 		private void OPCConnectionEstablished()
         {
-
-        }
+			txtOPCStatus.Text = "Verbonden met " + objOPC.strServerAddress + ":" + objOPC.intServerPort.ToString();
+			txtOPCStatus.BackColor = Color.LightGreen;
+			tabControl1.SelectedIndex = 1;
+		}
 
 		/// <summary>
-		/// 
+		/// Function to be executed when connection with the OPC server is lost
 		/// </summary>
 		private void OPCConnectionLost()
         {
-
-        }
+			txtOPCStatus.Text = "Geen verbinding";
+			txtOPCStatus.BackColor = SystemColors.Control;
+		}
 
 		#endregion
 
@@ -395,6 +401,17 @@ namespace FrontEnd
 		private void btnMnuOPCSettings_Click(object sender, EventArgs e)
 		{
 			enterOPCConnectionSettings();
+		}
+
+		private void btnMnuEnableRealtimeData_Click(object sender, EventArgs e)
+		{
+			if ( btnMnuEnableRealtimeData.Checked)
+            {
+				timerRetrieveOPC.Enabled = true;
+            } else
+            {
+				timerRetrieveOPC.Enabled = false;
+            }
 		}
 
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -573,11 +590,21 @@ namespace FrontEnd
         #endregion
 
         private void button1_Click(object sender, EventArgs e)
-        {
-			if ( objOPC.blnConnectionStatus)
+        {			
+			if ( objOPC != null && objOPC.blnConnectionStatus )
             {
-				objOPC.GetRealtimeData();
-            }
+				List<string> lstTemp =  objOPC.GetRealtimeData();
+				
+				foreach ( string ding in lstTemp)
+                {
+					Console.WriteLine(ding);
+                }
+			}
+        }
+
+        private void timerRetrieveOPC_Tick(object sender, EventArgs e)
+        {
+			SystemSounds.Beep.Play();
         }
     }
 }

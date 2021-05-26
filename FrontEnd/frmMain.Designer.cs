@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.bestandToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +79,17 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtLine2M3PackML = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtLine2M1PackML = new System.Windows.Forms.TextBox();
+            this.txtLine2M2PackML = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnUpdateOPCdata = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -97,7 +109,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMnuEnableRealtimeData = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
+            this.txtOPCStatus = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -111,8 +127,10 @@
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -145,7 +163,7 @@
             this.btnMnuResetUserSettings.Name = "btnMnuResetUserSettings";
             this.btnMnuResetUserSettings.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
-            this.btnMnuResetUserSettings.Size = new System.Drawing.Size(239, 22);
+            this.btnMnuResetUserSettings.Size = new System.Drawing.Size(243, 26);
             this.btnMnuResetUserSettings.Text = "&Reset instellingen";
             this.btnMnuResetUserSettings.ToolTipText = "Reset alle instellingen";
             this.btnMnuResetUserSettings.Click += new System.EventHandler(this.btnMnuResetUserSettings_Click);
@@ -155,7 +173,7 @@
             this.btnMnuClose.Image = global::FrontEnd.Properties.Resources.Gnome_system_log_out_svg;
             this.btnMnuClose.Name = "btnMnuClose";
             this.btnMnuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.btnMnuClose.Size = new System.Drawing.Size(239, 22);
+            this.btnMnuClose.Size = new System.Drawing.Size(243, 26);
             this.btnMnuClose.Text = "&Afsluiten";
             this.btnMnuClose.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
             // 
@@ -192,7 +210,7 @@
             this.btnMnuDBConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuDBConnect.Name = "btnMnuDBConnect";
             this.btnMnuDBConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuDBConnect.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuDBConnect.Size = new System.Drawing.Size(219, 26);
             this.btnMnuDBConnect.Text = "Verbinding &maken";
             this.btnMnuDBConnect.Click += new System.EventHandler(this.btnMnuDBConnect_Click);
             // 
@@ -201,7 +219,7 @@
             this.btnMnuDBSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuDBSettings.Name = "btnMnuDBSettings";
             this.btnMnuDBSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuDBSettings.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuDBSettings.Size = new System.Drawing.Size(219, 26);
             this.btnMnuDBSettings.Text = "Verbinding &instellen";
             this.btnMnuDBSettings.Click += new System.EventHandler(this.btnMnuDBSettings_Click);
             // 
@@ -209,7 +227,8 @@
             // 
             this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnMnuOPCConnect,
-            this.btnMnuOPCSettings});
+            this.btnMnuOPCSettings,
+            this.btnMnuEnableRealtimeData});
             this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
             this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
             this.oPCToolStripMenuItem.Text = "&OPC";
@@ -219,7 +238,7 @@
             this.btnMnuOPCConnect.Image = global::FrontEnd.Properties.Resources.Gnome_video_display_svg;
             this.btnMnuOPCConnect.Name = "btnMnuOPCConnect";
             this.btnMnuOPCConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.btnMnuOPCConnect.Size = new System.Drawing.Size(225, 26);
+            this.btnMnuOPCConnect.Size = new System.Drawing.Size(237, 26);
             this.btnMnuOPCConnect.Text = "Verbinding &maken";
             this.btnMnuOPCConnect.Click += new System.EventHandler(this.btnMnuOPCConnect_Click);
             // 
@@ -228,7 +247,7 @@
             this.btnMnuOPCSettings.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
             this.btnMnuOPCSettings.Name = "btnMnuOPCSettings";
             this.btnMnuOPCSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.btnMnuOPCSettings.Size = new System.Drawing.Size(225, 26);
+            this.btnMnuOPCSettings.Size = new System.Drawing.Size(237, 26);
             this.btnMnuOPCSettings.Text = "Verbinding instellen";
             this.btnMnuOPCSettings.Click += new System.EventHandler(this.btnMnuOPCSettings_Click);
             // 
@@ -597,7 +616,8 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.groupBox1);
             this.tabPage3.Location = new System.Drawing.Point(4, 34);
             this.tabPage3.Name = "tabPage3";
@@ -606,6 +626,112 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.label13);
+            this.groupBox2.Controls.Add(this.txtLine2M3PackML);
+            this.groupBox2.Controls.Add(this.label14);
+            this.groupBox2.Controls.Add(this.txtLine2M1PackML);
+            this.groupBox2.Controls.Add(this.txtLine2M2PackML);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Location = new System.Drawing.Point(299, 112);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(285, 159);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Lijn 2";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(90, 94);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 13);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Verpakken";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(90, 55);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 13);
+            this.label12.TabIndex = 7;
+            this.label12.Text = "Bakken";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(90, 16);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Deegverwerking";
+            // 
+            // txtLine2M3PackML
+            // 
+            this.txtLine2M3PackML.Location = new System.Drawing.Point(93, 110);
+            this.txtLine2M3PackML.Name = "txtLine2M3PackML";
+            this.txtLine2M3PackML.ReadOnly = true;
+            this.txtLine2M3PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M3PackML.TabIndex = 5;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 113);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "PackML status:";
+            // 
+            // txtLine2M1PackML
+            // 
+            this.txtLine2M1PackML.Location = new System.Drawing.Point(93, 32);
+            this.txtLine2M1PackML.Name = "txtLine2M1PackML";
+            this.txtLine2M1PackML.ReadOnly = true;
+            this.txtLine2M1PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M1PackML.TabIndex = 1;
+            // 
+            // txtLine2M2PackML
+            // 
+            this.txtLine2M2PackML.Location = new System.Drawing.Point(93, 71);
+            this.txtLine2M2PackML.Name = "txtLine2M2PackML";
+            this.txtLine2M2PackML.ReadOnly = true;
+            this.txtLine2M2PackML.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M2PackML.TabIndex = 3;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 35);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(81, 13);
+            this.label15.TabIndex = 0;
+            this.label15.Text = "PackML status:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 74);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(81, 13);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "PackML status:";
+            // 
+            // btnUpdateOPCdata
+            // 
+            this.btnUpdateOPCdata.Location = new System.Drawing.Point(93, 54);
+            this.btnUpdateOPCdata.Name = "btnUpdateOPCdata";
+            this.btnUpdateOPCdata.Size = new System.Drawing.Size(150, 23);
+            this.btnUpdateOPCdata.TabIndex = 1;
+            this.btnUpdateOPCdata.Text = "Update gegevens";
+            this.btnUpdateOPCdata.UseVisualStyleBackColor = true;
+            this.btnUpdateOPCdata.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -618,7 +744,7 @@
             this.groupBox1.Controls.Add(this.txtLine1M2PackML);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(37, 40);
+            this.groupBox1.Location = new System.Drawing.Point(8, 112);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(285, 159);
             this.groupBox1.TabIndex = 0;
@@ -789,15 +915,50 @@
             this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
             this.lstbxCustomers.TabIndex = 8;
             // 
-            // button1
+            // btnMnuEnableRealtimeData
             // 
-            this.button1.Location = new System.Drawing.Point(343, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnMnuEnableRealtimeData.CheckOnClick = true;
+            this.btnMnuEnableRealtimeData.Image = global::FrontEnd.Properties.Resources._240px_Gnome_emblem_shared_svg;
+            this.btnMnuEnableRealtimeData.Name = "btnMnuEnableRealtimeData";
+            this.btnMnuEnableRealtimeData.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.btnMnuEnableRealtimeData.Size = new System.Drawing.Size(237, 26);
+            this.btnMnuEnableRealtimeData.Text = "&Realtime data ophalen";
+            this.btnMnuEnableRealtimeData.ToolTipText = "Haal periodiek productiedata op uit de OPC server";
+            this.btnMnuEnableRealtimeData.Click += new System.EventHandler(this.btnMnuEnableRealtimeData_Click);
+            // 
+            // timerRetrieveOPC
+            // 
+            this.timerRetrieveOPC.Interval = 10000;
+            this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
+            // 
+            // txtOPCStatus
+            // 
+            this.txtOPCStatus.Location = new System.Drawing.Point(93, 28);
+            this.txtOPCStatus.Name = "txtOPCStatus";
+            this.txtOPCStatus.ReadOnly = true;
+            this.txtOPCStatus.Size = new System.Drawing.Size(441, 20);
+            this.txtOPCStatus.TabIndex = 10;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 31);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Status:";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.txtOPCStatus);
+            this.groupBox3.Controls.Add(this.btnUpdateOPCdata);
+            this.groupBox3.Location = new System.Drawing.Point(8, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(576, 100);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "OPC server";
             // 
             // frmMain
             // 
@@ -833,10 +994,14 @@
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -912,7 +1077,22 @@
         private System.Windows.Forms.ToolStripMenuItem btnMnuDBConnect;
         private System.Windows.Forms.ToolStripMenuItem btnMnuDBSettings;
         private System.Windows.Forms.ToolStripMenuItem btnMnuOPCConnect;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnUpdateOPCdata;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtLine2M3PackML;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtLine2M1PackML;
+        private System.Windows.Forms.TextBox txtLine2M2PackML;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuEnableRealtimeData;
+        private System.Windows.Forms.Timer timerRetrieveOPC;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox txtOPCStatus;
     }
 }
 

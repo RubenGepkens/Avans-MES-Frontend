@@ -179,33 +179,48 @@ namespace FrontEnd
         /// </summary>
         /// <param name="application"></param>
         /// <param name="endpoint"></param>
-        public void GetRealtimeData()
+        public List<string> GetRealtimeData()
         {
-            //start session to the OPC server
-            using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+            List<string> lstRetVal = new List<string> { };
+            try
             {
-                //Read nodes
-                IList<Type> types = new List<Type>();
-                IList<NodeId> nodeIdsRead = new List<NodeId>();
-                List<object> readValues;
-                List<ServiceResult> readResult;
-
-                types.Add(typeof(Int16));
-                types.Add(typeof(Int16));
-                types.Add(typeof(Int16));
-
-                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackMl_Deegverwerking"".""O_i_State"""));
-                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""O_i_State"""));
-                nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Verpakken"".""O_i_State"""));
-
-                session.ReadValues(nodeIdsRead, types, out readValues, out readResult);
-
-                foreach (var value1 in readValues)
+                //start session to the OPC server
+                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
                 {
-                    short s = (short)value1;
-                    Console.WriteLine( GetPackMLSate(s) );
-                    
+                    //Read nodes
+                    IList<Type> types = new List<Type>();
+                    IList<NodeId> nodeIdsRead = new List<NodeId>();
+                    List<object> readValues;
+                    List<ServiceResult> readResult;
+
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackMl_Deegverwerking"".""O_i_State"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""O_i_State"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Verpakken"".""O_i_State"""));
+
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackMl_Deegverwerking"".""O_i_State"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackML_Bakken"".""O_i_State"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackML_Verpakken"".""O_i_State"""));
+
+                    session.ReadValues(nodeIdsRead, types, out readValues, out readResult);
+
+                    foreach (var value in readValues)
+                    {
+                        short sValue = (short)value;
+                        lstRetVal.Add(GetPackMLSate(sValue));
+                    }
+                    return lstRetVal;
                 }
+            } catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: CheckConnection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return lstRetVal;
             }
         }
 
