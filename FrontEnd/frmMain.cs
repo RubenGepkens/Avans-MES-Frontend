@@ -65,16 +65,6 @@ namespace FrontEnd
 
 		private void frmMain_Shown(object sender, EventArgs e)
 		{
-			Console.WriteLine("frmMain_Shown(object sender, EventArgs e)");
-			/*
-			// Debug info
-			Console.WriteLine("connectionString: {0}", Properties.Settings.Default.connectionString);
-			Console.WriteLine("lastUsername: {0}", Properties.Settings.Default.lastUsername);
-			Console.WriteLine("lastPassword: {0}", Properties.Settings.Default.lastPassword);
-			Console.WriteLine("lastServerAddress: {0}", Properties.Settings.Default.lastServerAddress);
-			Console.WriteLine("lastServerPort: {0}", Properties.Settings.Default.lastServerPort);
-			*/
-
 			// Check if the application has connection information set and if not, open the dialog.
 			establishConnection();
 		}
@@ -85,8 +75,7 @@ namespace FrontEnd
 		/// </summary>
 		private bool establishConnection()
         {
-			Console.WriteLine("frmMain - establishConnection()");
-
+			// Check if there database connection information stored in the application memory.
 			if (String.IsNullOrWhiteSpace(Properties.Settings.Default.connectionString) |
 				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastUsername) |
 				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastPassword) |
@@ -94,12 +83,17 @@ namespace FrontEnd
 				String.IsNullOrWhiteSpace(Properties.Settings.Default.lastServerPort)
 			)
 			{
-				// No prior (successfull) database connection established, let the user input the connection settings.
-				Console.WriteLine("establishConnection() ; IsNullOrWhiteSpace");
-				enterConnectionSettings();
-				checkConnectionSettings();
+				// Application memory contains no or incomplete connection information -> let the user input the connection settings.
+
+				// Show dialog to allow user to enter connection information.
+				if ( enterConnectionSettings() )
+                {
+					// If possible valid information was entered in the dialog, check the connection.
+					checkConnectionSettings();
+				}				
 			} else
             {
+				// Application memory *may* contain valid connection information -> validate the information by checking for a successful connection.
 				checkConnectionSettings();
 			}
 			return false;
@@ -108,7 +102,8 @@ namespace FrontEnd
 		/// <summary>
 		/// Dialog for allowing user to enter the database connection settings suchs as address, port, username etc..
 		/// </summary>
-		private void enterConnectionSettings()
+		/// <returns>True if possible valid connection information was entered and False if no information was provided.</returns>
+		private bool enterConnectionSettings()
         {
 			using (frmLogin frmLogin = new frmLogin())
 			{
@@ -123,7 +118,14 @@ namespace FrontEnd
 					// Save connectionstring
 					Properties.Settings.Default.connectionString = strConnection;
 					Properties.Settings.Default.Save();
-				}
+
+					// Dialog was accepted, possible valid connection information was entered.
+					return true;
+				} else
+                {
+					// Dialog was not accepted, return false. 
+					return false;
+                }
 			}
 		}
 
@@ -133,8 +135,6 @@ namespace FrontEnd
 		/// <returns>True if connection succeeded and False if not.</returns>
 		private bool checkConnectionSettings()
         {
-			Console.WriteLine("frmMain - checkConnectionSettings()");
-
 			string strLblStatus = lblStatus.Text;
 			lblStatus.Text = "Verbinding maken, even geduld..";
 			UseWaitCursor = true;
@@ -245,7 +245,10 @@ namespace FrontEnd
 		/// </summary>
 		void getOrderData()
         {
-			sqlData.getOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);			
+			if ( sqlData.blnConnectionStatus)
+            {
+				sqlData.getOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
+			}			
         }
 
 		/// <summary>

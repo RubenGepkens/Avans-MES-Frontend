@@ -41,7 +41,8 @@ namespace FrontEnd
         /// Initialize SqlClass
         /// </summary>
         public SqlClass()
-        {            
+        {
+            Console.WriteLine("SqlClass()");
             blnConnectionStatus = false;
             initializeConnectionString();
         }
@@ -51,7 +52,6 @@ namespace FrontEnd
         /// </summary>
         protected void initializeConnectionString()
         {
-            Console.WriteLine("SqlClass : makeConnectionString(): " + strConnectionString);
             strConnectionString = Properties.Settings.Default.connectionString;            
         }
 
@@ -61,7 +61,6 @@ namespace FrontEnd
         /// <returns>SqlConnection</returns>
         protected SqlConnection GetConnection()
         {
-            Console.WriteLine("sqlVerbinding: " + strConnectionString);
             return new SqlConnection(strConnectionString);
         }
     }
