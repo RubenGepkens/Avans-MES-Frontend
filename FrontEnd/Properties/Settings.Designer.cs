@@ -94,5 +94,29 @@ namespace FrontEnd.Properties {
                 this["connectionString"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OPCServerAddress {
+            get {
+                return ((string)(this["OPCServerAddress"]));
+            }
+            set {
+                this["OPCServerAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int OPCServerPort {
+            get {
+                return ((int)(this["OPCServerPort"]));
+            }
+            set {
+                this["OPCServerPort"] = value;
+            }
+        }
     }
 }
