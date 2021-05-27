@@ -194,9 +194,13 @@ namespace FrontEnd
 			btnOrderAdd.Enabled = true;
 			btnOrderEdit.Enabled = true;
 			btnOrderRemove.Enabled = true;
+			btnRefresh.Enabled = true;
 
 			// Set up the data filters
 			initializeFilters();
+
+			// Fill dgv
+			getOrderData();
 		}
 
 		/// <summary>
@@ -226,6 +230,7 @@ namespace FrontEnd
 			btnOrderAdd.Enabled = false;
 			btnOrderEdit.Enabled = false;
 			btnOrderRemove.Enabled = false;
+			btnRefresh.Enabled = false;
 		}
 		#endregion
 
