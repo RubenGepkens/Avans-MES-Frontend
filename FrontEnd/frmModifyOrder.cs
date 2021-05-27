@@ -15,16 +15,17 @@ namespace FrontEnd
         public string strFormTitle { get; set; }
         public string strOrdername { get; set; }
         public string strOrdernumber { get; set; }
-        public DateTime dtOrderDate { get; set; }
-        public int intOrderSize { get; set; }
+        public string strDescription { get; set; }
+        public DateTime dtOrderDate { get; set; }      
+        
         public List<string> lstRecipes { get; set; }
-        public List<string> lstCustomers { get; set; }
+        public List<string> lstOrdername { get; set; }
         public List<string> lstProductionlines { get; set; }
-
-        public string strSelectedRecipe { get; set; }
-        public string strSelectedCustomer{ get; set; }
+        
         public string strSelectedProducionline { get; set; }
-
+        public string strSelectedRecipe { get; set; }
+        public int intOrderSize { get; set; }
+        
         public frmModifyOrder()
         {
             InitializeComponent();
@@ -41,9 +42,9 @@ namespace FrontEnd
                 cbxRecipe.Items.Add(item);
             }
 
-            foreach (string item in lstCustomers)
+            foreach (string item in lstOrdername)
             {
-                cbxDescription.Items.Add(item);
+                cbxOrdername.Items.Add(item);
             }
 
             foreach (string item in lstProductionlines)
@@ -52,48 +53,57 @@ namespace FrontEnd
             }
 
             // Fill boxes.
-            if ( strOrdername != null)
+            if (strOrdername != null)
             {
-                txtOrderName.Text = strOrdername;
+                cbxOrdername.SelectedItem = strOrdername;
             }
 
-            if ( strOrdernumber != null)
+            if (strOrdernumber != null)
             {
                 txtOrdernumber.Text = strOrdernumber;
             }
 
-            if ( strSelectedCustomer != null)
+            if (strDescription != null)
             {
-                cbxDescription.SelectedItem = strSelectedCustomer;
+                txtDescription.Text = strDescription;
             }
-            
+
             // If orderdate is out of bounds, use todays date instead.
             if (dtOrderDate < dtpOrderDate.MinDate || dtOrderDate > dtpOrderDate.MaxDate)
             {
-                dtOrderDate = DateTime.Now;
+                dtpOrderDate.Value = DateTime.Now;
+            } else
+            {
+                dtpOrderDate.Value = dtOrderDate;
             }
 
-            if ( strSelectedProducionline != null)
+            if (strSelectedProducionline != null)
             {
                 cbxProductionLine.SelectedItem = strSelectedProducionline;
             }
 
-        }
+            if (strSelectedRecipe != null)
+            {
+                cbxRecipe.SelectedItem = strSelectedRecipe;
+            }
 
-        private void frmModifyOrder_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
+            if (intOrderSize >= 0)
+            {
+                txtOrderize1.Value = (decimal)intOrderSize;
+            }
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.OK;
 
-            strOrdernumber      = txtOrdernumber.Text;
-            strSelectedCustomer = cbxDescription.Text;
-            dtOrderDate         = dtpOrderDate.Value;
-            intOrderSize        = (int)txtOrderize1.Value;
-            //strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
+            strOrdername                = cbxOrdername.Text;
+            strOrdernumber              = txtOrdernumber.Text;
+            strDescription              = txtDescription.Text;
+            dtOrderDate                 = dtpOrderDate.Value;
+            strSelectedProducionline    = cbxProductionLine.Text;
+            strSelectedRecipe           = cbxRecipe.Text;
+            intOrderSize                = (int)txtOrderize1.Value;
 
             this.Close();
         }
@@ -101,16 +111,6 @@ namespace FrontEnd
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtOrderize1_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

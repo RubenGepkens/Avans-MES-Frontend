@@ -583,7 +583,7 @@ namespace FrontEnd
 				frmModifyOrder.strFormTitle			= "Order toevoegen..";
 				frmModifyOrder.strOrdernumber		= strOrdernumber;
 				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
-				frmModifyOrder.lstCustomers			= sqlData.lstCustomers;
+				frmModifyOrder.lstOrdername			= sqlData.lstOrdernames;
 				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
 				
 
@@ -604,10 +604,13 @@ namespace FrontEnd
 		/// </summary>
 		private void btnOrderEdit_Click(object sender, EventArgs e)
         {
+			string strOrdername;
 			string strOrdernumber;
-			string strCustomerName;
-			string strOrderDate;
-			string strSelectedRecipe;
+			string strDescription;
+			DateTime dtOrderdate;
+			string strProductionline;
+			string strRecipe;
+			int intOrdersize;
 
 			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 			{
@@ -641,29 +644,33 @@ namespace FrontEnd
 
 				frmModifyOrder.dtOrderDate				= dateTime;
 
+				// Retrieve the order size.
+				intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
+				frmModifyOrder.intOrderSize				= System.Convert.ToInt32(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value);
+
 				frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
-				frmModifyOrder.lstCustomers				= sqlData.lstCustomers;
+				frmModifyOrder.lstOrdername				= sqlData.lstOrdernames;
 				frmModifyOrder.lstProductionlines		= sqlData.lstProductionlines;
 			
 				intColumnIndex							= dgvTab1.Columns["Recept"].Index;
 				frmModifyOrder.strSelectedRecipe		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				intColumnIndex							= dgvTab1.Columns["Beschrijving"].Index;
-				frmModifyOrder.strSelectedCustomer		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				frmModifyOrder.strDescription			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				intColumnIndex							= dgvTab1.Columns["Productielijn"].Index;
 				frmModifyOrder.strSelectedProducionline = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-
 				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
-					strOrdernumber					= frmModifyOrder.strOrdernumber;
-					strCustomerName					= frmModifyOrder.strSelectedCustomer;
-					strOrderDate					= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
-					strSelectedRecipe				= frmModifyOrder.strSelectedRecipe;
-
-					Console.WriteLine("OK!\t {0}\t {1}\t", strOrdernumber, strCustomerName, strOrderDate);
+					strOrdername		= frmModifyOrder.strOrdername;
+					strOrdernumber		= frmModifyOrder.strOrdernumber;
+					strDescription		= frmModifyOrder.strDescription;
+					dtOrderdate			= frmModifyOrder.dtOrderDate;
+					strProductionline	= frmModifyOrder.strSelectedProducionline;
+					strRecipe			= frmModifyOrder.strSelectedRecipe;
+					intOrdersize		= frmModifyOrder.intOrderSize;
 				}
 			}
 		}
@@ -701,7 +708,7 @@ namespace FrontEnd
 			lstbxProductionlines.Items.Clear();
 			lstbxOrderstatusses.Items.Clear();
 
-			foreach (string ding in sqlData.lstCustomers)
+			foreach (string ding in sqlData.lstOrdernames)
 			{
 				lstbxCustomers.Items.Add(ding);
 			}

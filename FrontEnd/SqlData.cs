@@ -79,7 +79,7 @@ namespace FrontEnd
         public void initializeGlobalData()
         {
             lstRecipes          = getRecipes();
-            lstCustomers        = getCustomers();
+            lstOrdernames        = getCustomers();
             lstProductionlines  = getProductionlines();
             lstOrderstatusses   = getOrderStatusses();
         }

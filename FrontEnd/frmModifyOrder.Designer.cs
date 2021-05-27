@@ -32,7 +32,6 @@ namespace FrontEnd
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbxDescription = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
@@ -44,9 +43,10 @@ namespace FrontEnd
             this.txtOrderize1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtOrderName = new System.Windows.Forms.TextBox();
             this.cbxRecipe = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.cbxOrdername = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -75,9 +75,9 @@ namespace FrontEnd
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtOrderName);
+            this.groupBox1.Controls.Add(this.txtDescription);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbxDescription);
+            this.groupBox1.Controls.Add(this.cbxOrdername);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtOrdernumber);
             this.groupBox1.Controls.Add(this.dtpOrderDate);
@@ -91,14 +91,6 @@ namespace FrontEnd
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algemene gegevens";
-            // 
-            // cbxDescription
-            // 
-            this.cbxDescription.FormattingEnabled = true;
-            this.cbxDescription.Location = new System.Drawing.Point(105, 94);
-            this.cbxDescription.Name = "cbxDescription";
-            this.cbxDescription.Size = new System.Drawing.Size(200, 21);
-            this.cbxDescription.TabIndex = 7;
             // 
             // label6
             // 
@@ -170,7 +162,6 @@ namespace FrontEnd
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Aantal:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // txtOrderize1
             // 
@@ -189,7 +180,6 @@ namespace FrontEnd
             this.txtOrderize1.Size = new System.Drawing.Size(200, 20);
             this.txtOrderize1.TabIndex = 6;
             this.txtOrderize1.ThousandsSeparator = true;
-            this.txtOrderize1.ValueChanged += new System.EventHandler(this.txtOrderize1_ValueChanged);
             // 
             // groupBox2
             // 
@@ -207,18 +197,11 @@ namespace FrontEnd
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 45);
+            this.label4.Location = new System.Drawing.Point(6, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 10;
             this.label4.Text = "Ordernaam:";
-            // 
-            // txtOrderName
-            // 
-            this.txtOrderName.Location = new System.Drawing.Point(105, 42);
-            this.txtOrderName.Name = "txtOrderName";
-            this.txtOrderName.Size = new System.Drawing.Size(200, 20);
-            this.txtOrderName.TabIndex = 11;
             // 
             // cbxRecipe
             // 
@@ -237,6 +220,21 @@ namespace FrontEnd
             this.label7.TabIndex = 7;
             this.label7.Text = "Recept:";
             // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(105, 94);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(200, 20);
+            this.txtDescription.TabIndex = 11;
+            // 
+            // cbxOrdername
+            // 
+            this.cbxOrdername.FormattingEnabled = true;
+            this.cbxOrdername.Location = new System.Drawing.Point(105, 41);
+            this.cbxOrdername.Name = "cbxOrdername";
+            this.cbxOrdername.Size = new System.Drawing.Size(200, 21);
+            this.cbxOrdername.TabIndex = 7;
+            // 
             // frmModifyOrder
             // 
             this.AcceptButton = this.btnAccept;
@@ -253,7 +251,6 @@ namespace FrontEnd
             this.Name = "frmModifyOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmModifyOrder";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmModifyOrder_FormClosed);
             this.Load += new System.EventHandler(this.frmModifyOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -279,10 +276,10 @@ namespace FrontEnd
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxProductionLine;
         private System.Windows.Forms.TextBox txtOrdernumber;
-        private System.Windows.Forms.ComboBox cbxDescription;
-        private System.Windows.Forms.TextBox txtOrderName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbxRecipe;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.ComboBox cbxOrdername;
     }
 }
