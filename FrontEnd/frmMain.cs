@@ -352,7 +352,7 @@ namespace FrontEnd
 		/// </summary>
 		void getOrderData()
         {
-			if ( sqlData.blnConnectionStatus)
+			if (sqlData.blnConnectionStatus)
             {
 				sqlData.getOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
 			}			
@@ -591,11 +591,12 @@ namespace FrontEnd
 			using ( frmModifyOrder frmModifyOrder = new frmModifyOrder() )
 			{
 				// Preload variables before the form is shown to the user.
+				frmModifyOrder.strFormTitle = "Order toevoegen..";
 				frmModifyOrder.strOrdernumber		= strOrdernumber;
 				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
 				frmModifyOrder.lstCustomers			= sqlData.lstCustomers;
 				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
-				frmModifyOrder.strFormTitle			= "Order toevoegen..";
+				
 
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
@@ -622,11 +623,13 @@ namespace FrontEnd
 			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 			{
 				// Preload variables before the form is shown to the user.
+				frmModifyOrder.strFormTitle = "Order bewerken..";
+				frmModifyOrder.strOrdernumber = "1000";                 // PLACEHOLDER - TODO
 				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
-				frmModifyOrder.strFormTitle			= "Order bewerken..";
+				
 
 				// Preload the order data before the form is shown.
-				frmModifyOrder.strOrdernumber		= "1000";					// PLACEHOLDER - TODO
+				
 				frmModifyOrder.strSelectedCustomer	= "Jumbo b.v.";         // PLACEHOLDER - TODO
 				frmModifyOrder.dtOrderDate			= DateTime.Now;         // PLACEHOLDER - TODO
 				frmModifyOrder.strSelectedRecipe	= "Witbrood";           // PLACEHOLDER - TODO
