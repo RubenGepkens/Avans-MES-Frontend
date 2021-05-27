@@ -13,6 +13,7 @@ namespace FrontEnd
     public partial class frmModifyOrder : Form
     {
         public string strFormTitle { get; set; }
+        public string strOrdername { get; set; }
         public string strOrdernumber { get; set; }
         public DateTime dtOrderDate { get; set; }
         public int intOrderSize { get; set; }
@@ -22,6 +23,7 @@ namespace FrontEnd
 
         public string strSelectedRecipe { get; set; }
         public string strSelectedCustomer{ get; set; }
+        public string strSelectedProducionline { get; set; }
 
         public frmModifyOrder()
         {
@@ -30,16 +32,18 @@ namespace FrontEnd
 
         private void frmModifyOrder_Load(object sender, EventArgs e)
         {
+            // Set the form title
             this.Text = strFormTitle;
-            
+
+            // Retrieve lists conaining recipes, customers (descriptions) and production lines.
             foreach (string item in lstRecipes)
             {
-                //cbxRecipe.Items.Add(item);
+                cbxRecipe.Items.Add(item);
             }
 
             foreach (string item in lstCustomers)
             {
-                cbxCustomer.Items.Add(item);
+                cbxDescription.Items.Add(item);
             }
 
             foreach (string item in lstProductionlines)
@@ -47,23 +51,33 @@ namespace FrontEnd
                 cbxProductionLine.Items.Add(item);
             }
 
+            // Fill boxes.
+            if ( strOrdername != null)
+            {
+                txtOrderName.Text = strOrdername;
+            }
 
-            DateTime dtOrderDate = Convert.ToDateTime( DateTime.Now.ToString("dd-MM-yyyy HH:mm") );
+            if ( strOrdernumber != null)
+            {
+                txtOrdernumber.Text = strOrdernumber;
+            }
 
-            txtOrdernumber.Text     = strOrdernumber;
-            cbxCustomer.Text        = strSelectedCustomer;
-            dtpOrderDate.Value      = dtOrderDate;
-            txtOrderize1.Value       = intOrderSize;
+            if ( strSelectedCustomer != null)
+            {
+                cbxDescription.SelectedItem = strSelectedCustomer;
+            }
             
-            if ( strSelectedRecipe == null)
+            // If orderdate is out of bounds, use todays date instead.
+            if (dtOrderDate < dtpOrderDate.MinDate || dtOrderDate > dtpOrderDate.MaxDate)
             {
-                Console.WriteLine("strSelectedRecipe == null");
-                //cbxRecipe.SelectedIndex = 0;
-            } else
+                dtOrderDate = DateTime.Now;
+            }
+
+            if ( strSelectedProducionline != null)
             {
-                Console.WriteLine("strSelectedRecipe != null");
-                //cbxRecipe.SelectedItem = strSelectedRecipe;
-            }                        
+                cbxProductionLine.SelectedItem = strSelectedProducionline;
+            }
+
         }
 
         private void frmModifyOrder_FormClosed(object sender, FormClosedEventArgs e)
@@ -76,7 +90,7 @@ namespace FrontEnd
             this.DialogResult = DialogResult.OK;
 
             strOrdernumber      = txtOrdernumber.Text;
-            strSelectedCustomer = cbxCustomer.Text;
+            strSelectedCustomer = cbxDescription.Text;
             dtOrderDate         = dtpOrderDate.Value;
             intOrderSize        = (int)txtOrderize1.Value;
             //strSelectedRecipe   = cbxRecipe.SelectedItem.ToString();
@@ -87,6 +101,16 @@ namespace FrontEnd
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtOrderize1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
