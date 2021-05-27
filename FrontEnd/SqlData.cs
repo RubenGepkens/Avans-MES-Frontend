@@ -76,19 +76,19 @@ namespace FrontEnd
         /// Initialze the list information in the SqlClass.
         /// To be used as filters and customer names.
         /// </summary>
-        public void initializeGlobalData()
+        public void InitializeGlobalData()
         {
-            lstRecipes          = getRecipes();
-            lstOrdernames        = getCustomers();
-            lstProductionlines  = getProductionlines();
-            lstOrderstatusses   = getOrderStatusses();
+            lstRecipes          = GetRecipes();
+            lstOrdernames        = GetOrdernames();
+            lstProductionlines  = GetProductionlines();
+            lstOrderstatusses   = GetOrderStatusses();
         }
 
         /// <summary>
         /// Function to retrieve recipes.
         /// </summary>
         /// <returns>List containing all recipes</returns>
-        public List<string> getRecipes()
+        public List<string> GetRecipes()
         {
             List<string> lstRecipes = new List<string> { }; ;
 
@@ -120,10 +120,10 @@ namespace FrontEnd
         }
 
         /// <summary>
-        /// Function to retrieve order types.
+        /// Function to retrieve order names.
         /// </summary>
         /// <returns>List containing all order types</returns>
-        public List<string> getCustomers()
+        public List<string> GetOrdernames()
         {
             List<string> lstCustomers = new List<string> { };
 
@@ -158,7 +158,7 @@ namespace FrontEnd
         /// Retrieves all the names of the available produciton lines.
         /// </summary>
         /// <returns>List containing strings</returns>
-        public List<string> getProductionlines()
+        public List<string> GetProductionlines()
         {
             List<string> lstProductionlines = new List<string> { };
 
@@ -193,7 +193,7 @@ namespace FrontEnd
         /// Retrieves all the available order statusses.
         /// </summary>
         /// <returns>List containing strings</returns>
-        public List<string> getOrderStatusses()
+        public List<string> GetOrderStatusses()
         {
             List<string> lstOrderStatusses = new List<string> { };
             
@@ -227,7 +227,7 @@ namespace FrontEnd
         /// <summary>
         /// Retrieve production orders and allow for filtering based on production line and order status.
         /// </summary>
-        public void getOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)
+        public void GetOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)
         {
             string strQuery = "EXECUTE spGetOrder @Productielijn= '" + strProductionline + "', @Ordernummer= '" + strOrdernumber + "', @Orderstatus= '" + strOrderstatus + "'";
 
@@ -252,6 +252,55 @@ namespace FrontEnd
                 Console.WriteLine("Generic exception: " + ex.Message);
                 MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
+        }
+
+        /// <summary>
+        /// Excecutes a stored procedure to insert an order into the database.
+        /// </summary>
+        /// <param name="strOrdername"></param>
+        /// <param name="strOrdernumber"></param>
+        /// <param name="strDescription"></param>
+        /// <param name="dtOrderDate"></param>
+        /// <param name="strProductionline"></param>
+        /// <param name="strRecipe"></param>
+        /// <param name="intOrdersize"></param>
+        public void InsertOrder(
+            string strOrdername,
+            string strOrdernumber,
+            string strDescription,
+            DateTime dtOrderDate,
+            string strProductionline,
+            string strRecipe,
+            int intOrdersize)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (var command = new SqlCommand("spInsertOrder", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value = strOrdername;
+                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value = strOrdernumber;
+                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value = strDescription;
+                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderDate;
+                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderDate; // <--- TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intOrdersize;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intOrdersize;
+                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value = strProductionline;
+
+                        connection.Open();
+                        command.ExecuteNonQuery();                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
