@@ -437,6 +437,9 @@
     <Content Include="FrontEnd.Config.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Gnome-utilities-terminal.svg.png" />
+    <None Include="Resources\240px-Gnome-audio-volume-high.svg.png" />
+    <None Include="Resources\240px-Gnome-appointment-soon.svg.png" />
     <None Include="Resources\240px-Gnome-preferences-other.svg.ico" />
   </ItemGroup>
   <ItemGroup>

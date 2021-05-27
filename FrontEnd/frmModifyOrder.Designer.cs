@@ -215,9 +215,9 @@ namespace FrontEnd
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(40, 13);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Aantal:1";
+            this.label4.Text = "Aantal:";
             // 
             // txtOrderize2
             // 
