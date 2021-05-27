@@ -123,6 +123,7 @@
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
             this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
+            this.btnGetDatabaseItems = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -978,6 +979,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnGetDatabaseItems);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.lstbxOrderstatusses);
             this.tabPage2.Controls.Add(this.label3);
@@ -1066,6 +1068,16 @@
             // 
             this.timerRetrieveOPC.Interval = 10000;
             this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
+            // 
+            // btnGetDatabaseItems
+            // 
+            this.btnGetDatabaseItems.Location = new System.Drawing.Point(662, 321);
+            this.btnGetDatabaseItems.Name = "btnGetDatabaseItems";
+            this.btnGetDatabaseItems.Size = new System.Drawing.Size(200, 23);
+            this.btnGetDatabaseItems.TabIndex = 16;
+            this.btnGetDatabaseItems.Text = "Items ophalen";
+            this.btnGetDatabaseItems.UseVisualStyleBackColor = true;
+            this.btnGetDatabaseItems.Click += new System.EventHandler(this.btnGetDatabaseItems_Click);
             // 
             // frmMain
             // 
@@ -1209,6 +1221,7 @@
         private System.Windows.Forms.TextBox txtOPCupdateInterval;
         private System.Windows.Forms.TextBox txtOPCrealtimeStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblOPCstatus;
+        private System.Windows.Forms.Button btnGetDatabaseItems;
     }
 }
 
