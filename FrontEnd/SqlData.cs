@@ -279,6 +279,7 @@ namespace FrontEnd
                             dataGridView.DataSource = dataTable;
                             dataGridView.RowHeadersVisible = false;
                             dataGridView.AutoResizeColumns();
+                            dataGridView.Sort( dataGridView.Columns["Ordernummer"], System.ComponentModel.ListSortDirection.Ascending );
                         }
                     }
                 }
