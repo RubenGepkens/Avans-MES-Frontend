@@ -168,9 +168,6 @@ namespace FrontEnd
 		/// </summary>
 		private void databaseConnectionEstablished()
 		{
-			// Initialize the list information in SqlClass.
-			sqlData.initializeGlobalData();
-
 			// Update statuslabel in the frmMain UI.
 			lblStatus.Text = "Verbonden met de database";
 			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_idle_svg;
@@ -346,7 +343,7 @@ namespace FrontEnd
         {
 			if (sqlData.blnConnectionStatus)
             {
-				sqlData.getOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
+				sqlData.GetOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
 			}			
         }
 
@@ -355,9 +352,8 @@ namespace FrontEnd
 		/// </summary>
 		void initializeFilters()
         {
-			// Retrieve all production lines and order statusses.
-			//sqlData.lstProductionlines = sqlData.getProductionlines();
-			//sqlData.lstOrderstatusses = sqlData.getOrderStatusses();
+			// Initialize the list information in SqlClass.
+			sqlData.InitializeGlobalData();
 
 			// Clear the comboboxes
 			cbxProductionLine.Items.Clear();
@@ -556,40 +552,49 @@ namespace FrontEnd
 		/// </summary>
 		private void btnOrderAdd_Click(object sender, EventArgs e)
         {
+			string strOrdername;
 			string strOrdernumber;
-			string strCustomerName;
-			string strOrderDate;
-			string strSelectedRecipe;
+			string strDescription;
+			DateTime dtOrderdate;
+			string strProductionline;
+			string strRecipe;
+			int intOrdersize;
 
-			// Retrieve the highest order number and add 1
-			string T_strOrdernumber = dgvTab1.Rows[0].Cells[0].Value.ToString();			// retrieve the highest order number from datagridview
-			T_strOrdernumber = T_strOrdernumber.Substring(2, T_strOrdernumber.Length-2);	// slice off the 'OS' at the start of the string
-			int T_intOrdernumber;
-			int.TryParse(T_strOrdernumber, out T_intOrdernumber);                           // Parse the string to convert the number part to int.
-			strOrdernumber = "SO" + (T_intOrdernumber + 1).ToString();						// Add 'SO' to the start of the ordernumber string
-			
-
-			using ( frmModifyOrder frmModifyOrder = new frmModifyOrder() )
+			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 			{
 				// Preload variables before the form is shown to the user.
-				frmModifyOrder.strFormTitle			= "Order toevoegen..";
-				frmModifyOrder.strOrdernumber		= strOrdernumber;
+				frmModifyOrder.strFormTitle			= "Nieuwe order aanmaken..";
+
 				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
 				frmModifyOrder.lstOrdername			= sqlData.lstOrdernames;
 				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
-				
 
+				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
 				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 				{
-					strOrdernumber					= frmModifyOrder.strOrdernumber;
-					strCustomerName					= "";
-					strOrderDate					= frmModifyOrder.dtOrderDate.ToString("yyyy-MM-dd");
-					strSelectedRecipe				= frmModifyOrder.strSelectedRecipe;
+					strOrdername		= frmModifyOrder.strOrdername;
+					strOrdernumber		= frmModifyOrder.strOrdernumber;
+					strDescription		= frmModifyOrder.strDescription;
+					dtOrderdate			= frmModifyOrder.dtOrderDate;
+					strProductionline	= frmModifyOrder.strSelectedProducionline;
+					strRecipe			= frmModifyOrder.strSelectedRecipe;
+					intOrdersize		= frmModifyOrder.intOrderSize;
 
-					Console.WriteLine("OK!\t {0}\t {1}\t", strOrdernumber, strCustomerName, strOrderDate);					
+					sqlData.InsertOrder(
+						strOrdername,
+						strOrdernumber,
+						strDescription,
+						dtOrderdate,
+						strProductionline,
+						strRecipe,
+						intOrdersize);
+
+					// Make sure the datagridview and filters are updated.
+					initializeFilters();
+					getOrderData();
 				}
 			}
-        }
+		}
 
 		/// <summary>
 		/// Edit the currently selected order.
@@ -663,6 +668,19 @@ namespace FrontEnd
 					strProductionline	= frmModifyOrder.strSelectedProducionline;
 					strRecipe			= frmModifyOrder.strSelectedRecipe;
 					intOrdersize		= frmModifyOrder.intOrderSize;
+
+					MessageBox.Show("Your request to modify an order was received and is automatically ignored.", "Oh no, feature to be implemented later :-)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					/*
+					sqlData.InsertOrder(
+						strOrdername,
+						strOrdernumber,
+						strDescription,
+						dtOrderdate,
+						strProductionline,
+						strRecipe,
+						intOrdersize);
+					*/
 				}
 			}
 		}
@@ -674,6 +692,7 @@ namespace FrontEnd
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+			sqlData.InitializeGlobalData();
 			getOrderData();
 		}
 		#endregion

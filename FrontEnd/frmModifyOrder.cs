@@ -37,20 +37,30 @@ namespace FrontEnd
             this.Text = strFormTitle;
 
             // Retrieve lists conaining recipes, customers (descriptions) and production lines.
-            foreach (string item in lstRecipes)
+            
+            if (lstOrdername != null)
             {
-                cbxRecipe.Items.Add(item);
+                foreach (string item in lstOrdername)
+                {
+                    cbxOrdername.Items.Add(item);
+                }
+            }        
+
+            if (lstRecipes != null)
+            {
+                foreach (string item in lstRecipes)
+                {
+                    cbxRecipe.Items.Add(item);
+                }
             }
 
-            foreach (string item in lstOrdername)
+            if (lstProductionlines != null)
             {
-                cbxOrdername.Items.Add(item);
-            }
-
-            foreach (string item in lstProductionlines)
-            {
-                cbxProductionLine.Items.Add(item);
-            }
+                foreach (string item in lstProductionlines)
+                {
+                    cbxProductionLine.Items.Add(item);
+                }
+            }            
 
             // Fill boxes.
             if (strOrdername != null)
