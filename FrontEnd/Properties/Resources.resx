@@ -241,4 +241,13 @@
   <data name="_240px_Gnome_preferences_other_svg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\240px-Gnome-preferences-other.svg.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Gnome_utilities_terminal_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Gnome-utilities-terminal.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_appointment_soon_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-appointment-soon.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_240px_Gnome_audio_volume_high_svg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\240px-Gnome-audio-volume-high.svg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
