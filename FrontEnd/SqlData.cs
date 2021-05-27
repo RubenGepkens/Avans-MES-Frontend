@@ -225,41 +225,6 @@ namespace FrontEnd
         }
 
         /// <summary>
-        /// Example method retrieving nonsense (dummy) data to demonstrate the filling of a DataGridView control.
-        /// </summary>
-        /// <param name="dataGridView"></param>
-        public void exampleFunction(DataGridView dataGridView) // Example function used to demonstrate how a DataGridView can be filled.
-        {
-            using (var connection = GetConnection()) // Retrieve connectionstring
-            {
-                using (SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM dbo.Equipment", connection)) // Create SqlDataAdapter used to retrieve/manipulate data from a database.
-                {
-                    using (DataTable dataTable = new DataTable())
-                    {
-                        try
-                        {
-                            sqlDataAdapter.Fill(dataTable);
-                            dataGridView.DataSource = dataTable;
-                            dataGridView.AutoResizeColumns();
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Generic SQL exception: " + ex.Message);
-                            MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }                        
-                        /*
-                        using (BindingSource bSource = new BindingSource())
-                        {                           
-                            bSource.DataSource = dataTable;                            
-                            dataGridView.DataSource = bSource;                            
-                        }
-                        */
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Retrieve production orders and allow for filtering based on production line and order status.
         /// </summary>
         public void getOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)

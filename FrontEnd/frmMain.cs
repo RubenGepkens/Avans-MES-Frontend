@@ -340,14 +340,6 @@ namespace FrontEnd
 		}
 
 		/// <summary>
-		/// Example function showing how to use the sqlData class for excecuting SQL queries.
-		/// </summary>
-		void getExampleData()
-        {
-			sqlData.exampleFunction(dgvTab1);
-		}
-
-		/// <summary>
 		/// Retrieve production orders and allow for filtering based on production line and order status.
 		/// </summary>
 		void getOrderData()
