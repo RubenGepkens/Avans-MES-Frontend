@@ -56,6 +56,9 @@ namespace FrontEnd
 		// Object for use with the OPC server
 		private OPC objOPC;
 
+		// List containg the update interval of the OPC data. Time in miliseconds.
+		private List<int> lstOPCupdateInterval = new List<int> { 10000, 15000, 30000, 60000 };
+
 		public frmMain()
 		{
 			InitializeComponent();
@@ -65,6 +68,7 @@ namespace FrontEnd
 		{
 			// Locks all buttons and controls before the form is presented to the user.
 			databaseConnectionLost();
+			OPCConnectionLost();
 		}
 
 		private void frmMain_Shown(object sender, EventArgs e)
@@ -73,12 +77,12 @@ namespace FrontEnd
 			establishConnection();
 		}
 
-        #region Database connection functions
-        /// <summary>
-        /// Check if the application has connection information set and then attempt to make a connection.
-        /// If no connection information has been entered, open a dialog and let the user enter it.
-        /// </summary>
-        private bool establishConnection()
+		#region Database connection functions
+		/// <summary>
+		/// Check if the application has connection information set and then attempt to make a connection.
+		/// If no connection information has been entered, open a dialog and let the user enter it.
+		/// </summary>
+		private bool establishConnection()
         {
 			// Check if there database connection information stored in the application memory.
 			if (String.IsNullOrWhiteSpace(Properties.Settings.Default.connectionString) |
@@ -280,8 +284,18 @@ namespace FrontEnd
 		/// </summary>
 		private void OPCConnectionEstablished()
         {
-			txtOPCStatus.Text = "Verbonden met " + objOPC.strServerAddress + ":" + objOPC.intServerPort.ToString();
-			txtOPCStatus.BackColor = Color.LightGreen;
+			txtOPCStatusDetails.Text = "Verbonden met OPC server: " + objOPC.strServerAddress + ":" + objOPC.intServerPort.ToString();
+			txtOPCStatusDetails.BackColor = Color.LightGreen;
+
+			lblOPCstatus.Text = "Verbonden met OPC";
+
+			btnMnuOPCupdateInterval.Enabled = true;
+			btnMnuOPCenableRealtimeData.Enabled = true;
+			btnMnuOPCnotifyOnUpdate.Enabled = true;
+
+			btnUpdateOPCdata.Enabled = true;
+
+			SystemSounds.Beep.Play();
 			tabControl1.SelectedIndex = 1;
 		}
 
@@ -290,8 +304,18 @@ namespace FrontEnd
 		/// </summary>
 		private void OPCConnectionLost()
         {
-			txtOPCStatus.Text = "Geen verbinding";
-			txtOPCStatus.BackColor = SystemColors.Control;
+			txtOPCStatusDetails.Text = "Niet verbonden";
+			txtOPCStatusDetails.BackColor = SystemColors.Control;
+
+			lblOPCstatus.Text = "Geen verbinding met OPC";
+
+			btnMnuOPCupdateInterval.Enabled = false;
+			btnMnuOPCenableRealtimeData.Enabled = false;
+			cbxMnuOPCupdateInterval.SelectedIndex = 3;
+			btnMnuOPCnotifyOnUpdate.Enabled = false;
+
+			txtOPCrealtimeStatus.Text = "Niet geactiveerd";
+			btnUpdateOPCdata.Enabled = false;
 		}
 
 		#endregion
@@ -370,6 +394,28 @@ namespace FrontEnd
 				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+
+		private void GetRealtimeOPCData()
+        {
+			if (objOPC != null && objOPC.blnConnectionStatus)
+			{
+				List<string> lstTemp = objOPC.GetRealtimeData();
+
+				if (btnMnuOPCnotifyOnUpdate.Checked)
+				{
+					SystemSounds.Beep.Play();
+				}
+
+				txtLine1M1PackML.Text = lstTemp[0];
+				txtLine1M2PackML.Text = lstTemp[1];
+				txtLine1M3PackML.Text = lstTemp[2];
+
+				txtLine2M1PackML.Text = lstTemp[3];
+				txtLine2M2PackML.Text = lstTemp[4];
+				txtLine2M3PackML.Text = lstTemp[5];
+			}
+		}
+
 		#endregion
 
 		#region Menustrip items eventhandlers
@@ -405,13 +451,28 @@ namespace FrontEnd
 
 		private void btnMnuEnableRealtimeData_Click(object sender, EventArgs e)
 		{
-			if ( btnMnuEnableRealtimeData.Checked)
+			if ( btnMnuOPCenableRealtimeData.Checked)
             {
 				timerRetrieveOPC.Enabled = true;
-            } else
+				txtOPCrealtimeStatus.Text = "Automatisch ophalen";
+				txtOPCrealtimeStatus.BackColor = Color.LightGreen;
+			} else
             {
 				timerRetrieveOPC.Enabled = false;
-            }
+				txtOPCrealtimeStatus.Text = "Handmatig ophalen";
+				txtOPCrealtimeStatus.BackColor = SystemColors.Control;
+			}
+		}
+
+		private void cbxMnuOPCupdateInterval_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			int intIndex = cbxMnuOPCupdateInterval.SelectedIndex;
+			txtOPCupdateInterval.Text = cbxMnuOPCupdateInterval.SelectedItem.ToString();
+
+			if (intIndex >= 0 && intIndex <= 3)
+			{
+				timerRetrieveOPC.Interval = lstOPCupdateInterval[intIndex];
+			}
 		}
 
 		private void btnApplicationInfo_Click(object sender, EventArgs e)
@@ -587,24 +648,20 @@ namespace FrontEnd
         {
 			getOrderData();
 		}
-        #endregion
+		#endregion
 
-        private void button1_Click(object sender, EventArgs e)
-        {			
-			if ( objOPC != null && objOPC.blnConnectionStatus )
-            {
-				List<string> lstTemp =  objOPC.GetRealtimeData();
-				
-				foreach ( string ding in lstTemp)
-                {
-					Console.WriteLine(ding);
-                }
-			}
-        }
+		#region Tabcontrol : "Realtime data"
 
-        private void timerRetrieveOPC_Tick(object sender, EventArgs e)
+		private void timerRetrieveOPC_Tick(object sender, EventArgs e)
         {
-			SystemSounds.Beep.Play();
-        }
+			GetRealtimeOPCData();
+		}
+
+        private void btnUpdateOPCdata_Click(object sender, EventArgs e)
+        {
+			GetRealtimeOPCData();
+		}
+
+        #endregion
     }
 }

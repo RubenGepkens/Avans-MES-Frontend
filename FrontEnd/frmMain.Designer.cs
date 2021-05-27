@@ -42,6 +42,11 @@
             this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuOPCConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuOPCSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnMnuOPCenableRealtimeData = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnMnuOPCupdateInterval = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxMnuOPCupdateInterval = new System.Windows.Forms.ToolStripComboBox();
+            this.btnMnuOPCnotifyOnUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.btnConnect = new System.Windows.Forms.ToolStripButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
@@ -51,6 +56,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblOPCstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvTab1 = new System.Windows.Forms.DataGridView();
@@ -79,6 +85,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtOPCupdateInterval = new System.Windows.Forms.TextBox();
+            this.txtOPCrealtimeStatus = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtOPCStatusDetails = new System.Windows.Forms.TextBox();
+            this.btnUpdateOPCdata = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -89,7 +103,6 @@
             this.txtLine2M2PackML = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnUpdateOPCdata = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -109,11 +122,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
-            this.btnMnuEnableRealtimeData = new System.Windows.Forms.ToolStripMenuItem();
             this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
-            this.txtOPCStatus = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -127,10 +136,10 @@
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -163,9 +172,9 @@
             this.btnMnuResetUserSettings.Name = "btnMnuResetUserSettings";
             this.btnMnuResetUserSettings.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.R)));
-            this.btnMnuResetUserSettings.Size = new System.Drawing.Size(243, 26);
+            this.btnMnuResetUserSettings.Size = new System.Drawing.Size(239, 22);
             this.btnMnuResetUserSettings.Text = "&Reset instellingen";
-            this.btnMnuResetUserSettings.ToolTipText = "Reset alle instellingen";
+            this.btnMnuResetUserSettings.ToolTipText = "Reset alle programma instellingen";
             this.btnMnuResetUserSettings.Click += new System.EventHandler(this.btnMnuResetUserSettings_Click);
             // 
             // btnMnuClose
@@ -173,8 +182,9 @@
             this.btnMnuClose.Image = global::FrontEnd.Properties.Resources.Gnome_system_log_out_svg;
             this.btnMnuClose.Name = "btnMnuClose";
             this.btnMnuClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.btnMnuClose.Size = new System.Drawing.Size(243, 26);
+            this.btnMnuClose.Size = new System.Drawing.Size(239, 22);
             this.btnMnuClose.Text = "&Afsluiten";
+            this.btnMnuClose.ToolTipText = "Verlaat het programma";
             this.btnMnuClose.Click += new System.EventHandler(this.afsluitenToolStripMenuItem_Click);
             // 
             // infoToolStripMenuItem
@@ -210,8 +220,9 @@
             this.btnMnuDBConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuDBConnect.Name = "btnMnuDBConnect";
             this.btnMnuDBConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuDBConnect.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBConnect.Size = new System.Drawing.Size(215, 22);
             this.btnMnuDBConnect.Text = "Verbinding &maken";
+            this.btnMnuDBConnect.ToolTipText = "Maak verbinding met de database.";
             this.btnMnuDBConnect.Click += new System.EventHandler(this.btnMnuDBConnect_Click);
             // 
             // btnMnuDBSettings
@@ -219,8 +230,9 @@
             this.btnMnuDBSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuDBSettings.Name = "btnMnuDBSettings";
             this.btnMnuDBSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuDBSettings.Size = new System.Drawing.Size(219, 26);
+            this.btnMnuDBSettings.Size = new System.Drawing.Size(215, 22);
             this.btnMnuDBSettings.Text = "Verbinding &instellen";
+            this.btnMnuDBSettings.ToolTipText = "Stel de verbinding met de database in.";
             this.btnMnuDBSettings.Click += new System.EventHandler(this.btnMnuDBSettings_Click);
             // 
             // oPCToolStripMenuItem
@@ -228,7 +240,10 @@
             this.oPCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnMnuOPCConnect,
             this.btnMnuOPCSettings,
-            this.btnMnuEnableRealtimeData});
+            this.toolStripSeparator9,
+            this.btnMnuOPCenableRealtimeData,
+            this.btnMnuOPCupdateInterval,
+            this.btnMnuOPCnotifyOnUpdate});
             this.oPCToolStripMenuItem.Name = "oPCToolStripMenuItem";
             this.oPCToolStripMenuItem.Size = new System.Drawing.Size(43, 24);
             this.oPCToolStripMenuItem.Text = "&OPC";
@@ -238,8 +253,9 @@
             this.btnMnuOPCConnect.Image = global::FrontEnd.Properties.Resources.Gnome_video_display_svg;
             this.btnMnuOPCConnect.Name = "btnMnuOPCConnect";
             this.btnMnuOPCConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.btnMnuOPCConnect.Size = new System.Drawing.Size(237, 26);
+            this.btnMnuOPCConnect.Size = new System.Drawing.Size(233, 22);
             this.btnMnuOPCConnect.Text = "Verbinding &maken";
+            this.btnMnuOPCConnect.ToolTipText = "Maak verbinding met de OPC server.";
             this.btnMnuOPCConnect.Click += new System.EventHandler(this.btnMnuOPCConnect_Click);
             // 
             // btnMnuOPCSettings
@@ -247,9 +263,59 @@
             this.btnMnuOPCSettings.Image = global::FrontEnd.Properties.Resources._240px_Gnome_preferences_other_svg;
             this.btnMnuOPCSettings.Name = "btnMnuOPCSettings";
             this.btnMnuOPCSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.btnMnuOPCSettings.Size = new System.Drawing.Size(237, 26);
+            this.btnMnuOPCSettings.Size = new System.Drawing.Size(233, 22);
             this.btnMnuOPCSettings.Text = "Verbinding instellen";
+            this.btnMnuOPCSettings.ToolTipText = "Stel de verbinding met de OPC server in.";
             this.btnMnuOPCSettings.Click += new System.EventHandler(this.btnMnuOPCSettings_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(230, 6);
+            // 
+            // btnMnuOPCenableRealtimeData
+            // 
+            this.btnMnuOPCenableRealtimeData.CheckOnClick = true;
+            this.btnMnuOPCenableRealtimeData.Image = global::FrontEnd.Properties.Resources._240px_Gnome_emblem_shared_svg;
+            this.btnMnuOPCenableRealtimeData.Name = "btnMnuOPCenableRealtimeData";
+            this.btnMnuOPCenableRealtimeData.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.btnMnuOPCenableRealtimeData.Size = new System.Drawing.Size(233, 22);
+            this.btnMnuOPCenableRealtimeData.Text = "&Realtime data ophalen";
+            this.btnMnuOPCenableRealtimeData.ToolTipText = "Haal periodiek productiedata op uit de OPC server. Selecteer hieronder een update" +
+    "interval.";
+            this.btnMnuOPCenableRealtimeData.Click += new System.EventHandler(this.btnMnuEnableRealtimeData_Click);
+            // 
+            // btnMnuOPCupdateInterval
+            // 
+            this.btnMnuOPCupdateInterval.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cbxMnuOPCupdateInterval});
+            this.btnMnuOPCupdateInterval.Image = global::FrontEnd.Properties.Resources._240px_Gnome_appointment_soon_svg;
+            this.btnMnuOPCupdateInterval.Name = "btnMnuOPCupdateInterval";
+            this.btnMnuOPCupdateInterval.Size = new System.Drawing.Size(233, 22);
+            this.btnMnuOPCupdateInterval.Text = "Updateinterval";
+            this.btnMnuOPCupdateInterval.ToolTipText = "Selecteer het tijdsinterval waarmee de applicatie OPC gegevens ophaalt.";
+            // 
+            // cbxMnuOPCupdateInterval
+            // 
+            this.cbxMnuOPCupdateInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMnuOPCupdateInterval.Items.AddRange(new object[] {
+            "10 seconden",
+            "15 seconden",
+            "30 seconden",
+            "60 seconden"});
+            this.cbxMnuOPCupdateInterval.Name = "cbxMnuOPCupdateInterval";
+            this.cbxMnuOPCupdateInterval.Size = new System.Drawing.Size(121, 23);
+            this.cbxMnuOPCupdateInterval.ToolTipText = "Selecteer het tijdsinterval waarmee de applicatie OPC gegevens ophaalt.";
+            this.cbxMnuOPCupdateInterval.SelectedIndexChanged += new System.EventHandler(this.cbxMnuOPCupdateInterval_SelectedIndexChanged);
+            // 
+            // btnMnuOPCnotifyOnUpdate
+            // 
+            this.btnMnuOPCnotifyOnUpdate.CheckOnClick = true;
+            this.btnMnuOPCnotifyOnUpdate.Image = global::FrontEnd.Properties.Resources._240px_Gnome_audio_volume_high_svg;
+            this.btnMnuOPCnotifyOnUpdate.Name = "btnMnuOPCnotifyOnUpdate";
+            this.btnMnuOPCnotifyOnUpdate.Size = new System.Drawing.Size(233, 22);
+            this.btnMnuOPCnotifyOnUpdate.Text = "Geluid afspelen bij update";
+            this.btnMnuOPCnotifyOnUpdate.ToolTipText = "Speel een geluid af als de OPC nieuwe gegevens worden opgehaald.";
             // 
             // toolStripMain
             // 
@@ -318,7 +384,8 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
+            this.lblStatus,
+            this.lblOPCstatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 676);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1184, 35);
@@ -329,8 +396,15 @@
             // 
             this.lblStatus.Image = global::FrontEnd.Properties.Resources.Gnome_network_offline_svg;
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(124, 30);
-            this.lblStatus.Text = "Geen verbinding";
+            this.lblStatus.Size = new System.Drawing.Size(214, 30);
+            this.lblStatus.Text = "Geen verbinding met de database";
+            // 
+            // lblOPCstatus
+            // 
+            this.lblOPCstatus.Image = global::FrontEnd.Properties.Resources.Gnome_utilities_terminal_svg;
+            this.lblOPCstatus.Name = "lblOPCstatus";
+            this.lblOPCstatus.Size = new System.Drawing.Size(191, 30);
+            this.lblOPCstatus.Text = "Geen verbinding met de OPC";
             // 
             // tabPage1
             // 
@@ -627,6 +701,83 @@
             this.tabPage3.Text = "Realtime data";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.txtOPCupdateInterval);
+            this.groupBox3.Controls.Add(this.txtOPCrealtimeStatus);
+            this.groupBox3.Controls.Add(this.label17);
+            this.groupBox3.Controls.Add(this.txtOPCStatusDetails);
+            this.groupBox3.Controls.Add(this.btnUpdateOPCdata);
+            this.groupBox3.Location = new System.Drawing.Point(8, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(576, 175);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "OPC server";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 83);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "Interval:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 59);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(59, 13);
+            this.label18.TabIndex = 14;
+            this.label18.Text = "Gegevens:";
+            // 
+            // txtOPCupdateInterval
+            // 
+            this.txtOPCupdateInterval.Location = new System.Drawing.Point(93, 80);
+            this.txtOPCupdateInterval.Name = "txtOPCupdateInterval";
+            this.txtOPCupdateInterval.ReadOnly = true;
+            this.txtOPCupdateInterval.Size = new System.Drawing.Size(150, 20);
+            this.txtOPCupdateInterval.TabIndex = 13;
+            // 
+            // txtOPCrealtimeStatus
+            // 
+            this.txtOPCrealtimeStatus.Location = new System.Drawing.Point(93, 54);
+            this.txtOPCrealtimeStatus.Name = "txtOPCrealtimeStatus";
+            this.txtOPCrealtimeStatus.ReadOnly = true;
+            this.txtOPCrealtimeStatus.Size = new System.Drawing.Size(150, 20);
+            this.txtOPCrealtimeStatus.TabIndex = 12;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 31);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(60, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Verbinding:";
+            // 
+            // txtOPCStatusDetails
+            // 
+            this.txtOPCStatusDetails.Location = new System.Drawing.Point(93, 28);
+            this.txtOPCStatusDetails.Name = "txtOPCStatusDetails";
+            this.txtOPCStatusDetails.ReadOnly = true;
+            this.txtOPCStatusDetails.Size = new System.Drawing.Size(441, 20);
+            this.txtOPCStatusDetails.TabIndex = 10;
+            // 
+            // btnUpdateOPCdata
+            // 
+            this.btnUpdateOPCdata.Location = new System.Drawing.Point(384, 54);
+            this.btnUpdateOPCdata.Name = "btnUpdateOPCdata";
+            this.btnUpdateOPCdata.Size = new System.Drawing.Size(150, 23);
+            this.btnUpdateOPCdata.TabIndex = 1;
+            this.btnUpdateOPCdata.Text = "Update gegevens";
+            this.btnUpdateOPCdata.UseVisualStyleBackColor = true;
+            this.btnUpdateOPCdata.Click += new System.EventHandler(this.btnUpdateOPCdata_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label11);
@@ -638,7 +789,7 @@
             this.groupBox2.Controls.Add(this.txtLine2M2PackML);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Location = new System.Drawing.Point(299, 112);
+            this.groupBox2.Location = new System.Drawing.Point(299, 187);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(285, 159);
             this.groupBox2.TabIndex = 9;
@@ -648,6 +799,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(90, 94);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
@@ -657,6 +809,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(90, 55);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
@@ -666,6 +819,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(90, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 13);
@@ -723,16 +877,6 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "PackML status:";
             // 
-            // btnUpdateOPCdata
-            // 
-            this.btnUpdateOPCdata.Location = new System.Drawing.Point(93, 54);
-            this.btnUpdateOPCdata.Name = "btnUpdateOPCdata";
-            this.btnUpdateOPCdata.Size = new System.Drawing.Size(150, 23);
-            this.btnUpdateOPCdata.TabIndex = 1;
-            this.btnUpdateOPCdata.Text = "Update gegevens";
-            this.btnUpdateOPCdata.UseVisualStyleBackColor = true;
-            this.btnUpdateOPCdata.Click += new System.EventHandler(this.button1_Click);
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label10);
@@ -744,7 +888,7 @@
             this.groupBox1.Controls.Add(this.txtLine1M2PackML);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(8, 112);
+            this.groupBox1.Location = new System.Drawing.Point(8, 187);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(285, 159);
             this.groupBox1.TabIndex = 0;
@@ -754,6 +898,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(90, 94);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 13);
@@ -763,6 +908,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(90, 55);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
@@ -772,6 +918,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(90, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(85, 13);
@@ -915,50 +1062,10 @@
             this.lstbxCustomers.Size = new System.Drawing.Size(200, 251);
             this.lstbxCustomers.TabIndex = 8;
             // 
-            // btnMnuEnableRealtimeData
-            // 
-            this.btnMnuEnableRealtimeData.CheckOnClick = true;
-            this.btnMnuEnableRealtimeData.Image = global::FrontEnd.Properties.Resources._240px_Gnome_emblem_shared_svg;
-            this.btnMnuEnableRealtimeData.Name = "btnMnuEnableRealtimeData";
-            this.btnMnuEnableRealtimeData.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.btnMnuEnableRealtimeData.Size = new System.Drawing.Size(237, 26);
-            this.btnMnuEnableRealtimeData.Text = "&Realtime data ophalen";
-            this.btnMnuEnableRealtimeData.ToolTipText = "Haal periodiek productiedata op uit de OPC server";
-            this.btnMnuEnableRealtimeData.Click += new System.EventHandler(this.btnMnuEnableRealtimeData_Click);
-            // 
             // timerRetrieveOPC
             // 
             this.timerRetrieveOPC.Interval = 10000;
             this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
-            // 
-            // txtOPCStatus
-            // 
-            this.txtOPCStatus.Location = new System.Drawing.Point(93, 28);
-            this.txtOPCStatus.Name = "txtOPCStatus";
-            this.txtOPCStatus.ReadOnly = true;
-            this.txtOPCStatus.Size = new System.Drawing.Size(441, 20);
-            this.txtOPCStatus.TabIndex = 10;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 31);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(40, 13);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Status:";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.txtOPCStatus);
-            this.groupBox3.Controls.Add(this.btnUpdateOPCdata);
-            this.groupBox3.Location = new System.Drawing.Point(8, 6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(576, 100);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "OPC server";
             // 
             // frmMain
             // 
@@ -994,14 +1101,14 @@
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1088,11 +1195,20 @@
         private System.Windows.Forms.TextBox txtLine2M2PackML;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.ToolStripMenuItem btnMnuEnableRealtimeData;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuOPCenableRealtimeData;
         private System.Windows.Forms.Timer timerRetrieveOPC;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtOPCStatus;
+        private System.Windows.Forms.TextBox txtOPCStatusDetails;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuOPCupdateInterval;
+        private System.Windows.Forms.ToolStripComboBox cbxMnuOPCupdateInterval;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuOPCnotifyOnUpdate;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtOPCupdateInterval;
+        private System.Windows.Forms.TextBox txtOPCrealtimeStatus;
+        private System.Windows.Forms.ToolStripStatusLabel lblOPCstatus;
     }
 }
 
