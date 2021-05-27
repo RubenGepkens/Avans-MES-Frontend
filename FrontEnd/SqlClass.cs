@@ -42,7 +42,6 @@ namespace FrontEnd
         /// </summary>
         public SqlClass()
         {
-            Console.WriteLine("SqlClass()");
             blnConnectionStatus = false;
             initializeConnectionString();
         }
