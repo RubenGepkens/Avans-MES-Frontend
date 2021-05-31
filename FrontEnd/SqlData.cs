@@ -273,7 +273,9 @@ namespace FrontEnd
             DateTime dtOrderEndtDate,
             string strProductionline,
             string strRecipe,
-            int intOrdersize)
+            int intOrdersize,
+            int intAmountWhite,
+            int intAmountBrown)
         {
             try
             {
@@ -289,8 +291,8 @@ namespace FrontEnd
                         command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderStartDate;
                         command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderEndtDate;
                         command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
-                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intOrdersize;
-                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intOrdersize;
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intAmountWhite;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intAmountBrown;
                         command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value = strProductionline;
 
                         connection.Open();

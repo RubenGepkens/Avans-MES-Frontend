@@ -26,7 +26,9 @@ namespace FrontEnd
         public string strSelectedProducionline { get; set; }
         public string strSelectedRecipe { get; set; }
         public int intOrderSize { get; set; }
-        
+        public int intAmountBrown { get; set; }
+        public int intAmountWhite { get; set; }
+
         public frmModifyOrder()
         {
             InitializeComponent();
@@ -130,20 +132,18 @@ namespace FrontEnd
         private void btnAccept_Click(object sender, EventArgs e)
         {
             // Check if all boxes are filled with data
-            if (    cbxOrdername.Text == null ||
-                    txtOrdernumber.Text == null ||
-                    txtDescription.Text == null ||
-                    cbxProductionLine.Text == null ||
-                    cbxRecipe.Text == null ||
+            if (    cbxOrdername.Text == "" ||
+                    txtOrdernumber.Text == "" ||
+                    txtDescription.Text == "" ||
+                    cbxProductionLine.Text == "" ||
+                    cbxRecipe.Text == "" ||
                     txtOrderize.Value == 0 ||
-                    ckxExtraRecipe.Checked == true && (cbxProductionLineExtra.Text == null || cbxRecipeExtra.Text == null || txtOrderizeExtra.Value == 0)
+                    ckxExtraRecipe.Checked == true && (cbxProductionLineExtra.Text == "" || cbxRecipeExtra.Text == "" || txtOrderizeExtra.Value == 0)
                 )
             {
                 MessageBox.Show("Niet alle velden zijn ingevuld. De order kon niet worden ingevoegd of worden gewijzigd.\nControlleer of alle velden zijn ingevuld.", "Formulier niet compleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             } else
             {
-                this.DialogResult           = DialogResult.OK;
-
                 strOrdername                = cbxOrdername.Text;
                 strOrdernumber              = txtOrdernumber.Text;
                 strDescription              = txtDescription.Text;
@@ -151,8 +151,34 @@ namespace FrontEnd
                 dtOrderEndDate              = dtpOrderEndDate.Value;
                 strSelectedProducionline    = cbxProductionLine.Text;
                 strSelectedRecipe           = cbxRecipe.Text;
-                intOrderSize                = (int)txtOrderize.Value;
+                //intOrderSize                = (int)txtOrderize.Value;
+                //intOrderSizeExtra           = (int)txtOrderizeExtra.Value;
 
+                // #################
+                intAmountWhite = 0;
+                intAmountBrown = 0;
+
+                if (cbxRecipe.SelectedIndex == 0)
+                {
+                    intAmountBrown += (int)txtOrderize.Value;
+                } else
+                {
+                    intAmountWhite += (int)txtOrderize.Value;
+                }
+
+                if (cbxRecipeExtra.SelectedIndex == 0)
+                {
+                    intAmountBrown += (int)txtOrderizeExtra.Value;
+                }
+                else
+                {
+                    intAmountWhite += (int)txtOrderizeExtra.Value;
+                }
+                // #################
+
+                Console.WriteLine("intAmountBrown: {0}\nintAmountWhite: {1}", intAmountBrown, intAmountWhite);
+
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }

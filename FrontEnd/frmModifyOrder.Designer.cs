@@ -322,6 +322,7 @@ namespace FrontEnd
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 14;
             this.label10.Text = "Productielijn:";
+            this.label10.Visible = false;
             // 
             // cbxProductionLineExtra
             // 
@@ -332,6 +333,7 @@ namespace FrontEnd
             this.cbxProductionLineExtra.Name = "cbxProductionLineExtra";
             this.cbxProductionLineExtra.Size = new System.Drawing.Size(200, 21);
             this.cbxProductionLineExtra.TabIndex = 13;
+            this.cbxProductionLineExtra.Visible = false;
             // 
             // dtpOrderEndDate
             // 

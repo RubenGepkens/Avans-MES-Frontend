@@ -446,6 +446,8 @@ namespace FrontEnd
 				string strProductionline;
 				string strRecipe;
 				int intOrdersize;
+				int intAmountWhite;
+				int intAmountBrown;				
 
 				using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 				{
@@ -467,6 +469,8 @@ namespace FrontEnd
 						strProductionline					= frmModifyOrder.strSelectedProducionline;
 						strRecipe							= frmModifyOrder.strSelectedRecipe;
 						intOrdersize						= frmModifyOrder.intOrderSize;
+						intAmountWhite						= frmModifyOrder.intAmountWhite;
+						intAmountBrown						= frmModifyOrder.intAmountBrown;						
 
 						sqlData.InsertOrder(
 							strOrdername,
@@ -476,7 +480,9 @@ namespace FrontEnd
 							dtOrderEndDate,
 							strProductionline,
 							strRecipe,
-							intOrdersize);
+							intOrdersize,
+							intAmountBrown,
+							intAmountWhite);
 
 						// Make sure the datagridview and filters are updated.
 						initializeFilters();
