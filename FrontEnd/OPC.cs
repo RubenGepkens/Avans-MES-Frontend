@@ -200,10 +200,12 @@ namespace FrontEnd
                     types.Add(typeof(Int16));
                     types.Add(typeof(Int16));
 
+                    // PackML Line 1
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackMl_Deegverwerking"".""O_i_State"""));
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Bakken"".""O_i_State"""));
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""PackML_Verpakken"".""O_i_State"""));
-
+                    
+                    // PackML Line 2
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackMl_Deegverwerking"".""O_i_State"""));
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackML_Bakken"".""O_i_State"""));
                     nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""PackML_Verpakken"".""O_i_State"""));
@@ -215,6 +217,51 @@ namespace FrontEnd
                         short sValue = (short)value;
                         lstRetVal.Add(GetPackMLSate(sValue));
                     }
+
+                    // ==== Production data ====
+
+                    types = new List<Type>();
+                    nodeIdsRead = new List<NodeId>();                 
+
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+                    types.Add(typeof(Int16));
+
+
+                    // Line 1
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""S_i_AmountParts"""));
+                    
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""Produceren"".""Q_i_BrodenGebakkenL1"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""Produceren"".""Q_i_BrodenAfkeurBakkenL1"""));
+                    
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""Produceren"".""Q_i_BrodenVerpaktL1"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn1"".""Produceren"".""Q_i_BrodenAfkStickersL1"""));
+
+                    // Line 2
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""S_i_AmountParts"""));
+                    
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""Produceren"".""Q_i_BrodenGebakkenL2"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""Produceren"".""Q_i_BrodenAfkeurBakkenL2"""));
+
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""Produceren"".""Q_i_BrodenVerpaktL2"""));
+                    nodeIdsRead.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""lijn2"".""Produceren"".""Q_i_BrodenAfkStickersL2"""));
+
+                    session.ReadValues(nodeIdsRead, types, out readValues, out readResult);
+
+                    foreach (var value in readValues)
+                    {
+                        short sValue = (short)value;
+                        lstRetVal.Add(sValue.ToString());
+                    }
+
                     return lstRetVal;
                 }
             } catch (Exception ex)

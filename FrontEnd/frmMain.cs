@@ -408,6 +408,11 @@ namespace FrontEnd
 				txtLine2M1PackML.Text = lstTemp[3];
 				txtLine2M2PackML.Text = lstTemp[4];
 				txtLine2M3PackML.Text = lstTemp[5];
+
+				for (int index = 0; index <= 15; index++)
+				{
+					Console.WriteLine(lstTemp[index]);
+				}
 			}
 		}
 
