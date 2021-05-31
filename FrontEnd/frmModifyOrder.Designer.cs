@@ -32,6 +32,9 @@ namespace FrontEnd
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbxOrdername = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtOrdernumber = new System.Windows.Forms.TextBox();
             this.dtpOrderDate = new System.Windows.Forms.DateTimePicker();
@@ -42,11 +45,8 @@ namespace FrontEnd
             this.label3 = new System.Windows.Forms.Label();
             this.txtOrderize1 = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbxRecipe = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
-            this.cbxOrdername = new System.Windows.Forms.ComboBox();
+            this.cbxRecipe = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -57,7 +57,7 @@ namespace FrontEnd
             this.btnAccept.Location = new System.Drawing.Point(12, 302);
             this.btnAccept.Name = "btnAccept";
             this.btnAccept.Size = new System.Drawing.Size(110, 23);
-            this.btnAccept.TabIndex = 0;
+            this.btnAccept.TabIndex = 2;
             this.btnAccept.Text = "Accepteer";
             this.btnAccept.UseVisualStyleBackColor = true;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
@@ -68,7 +68,7 @@ namespace FrontEnd
             this.btnCancel.Location = new System.Drawing.Point(227, 302);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Annuleer";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -88,9 +88,33 @@ namespace FrontEnd
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(325, 184);
-            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Algemene gegevens";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(105, 94);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(200, 20);
+            this.txtDescription.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Ordernaam:";
+            // 
+            // cbxOrdername
+            // 
+            this.cbxOrdername.FormattingEnabled = true;
+            this.cbxOrdername.Location = new System.Drawing.Point(105, 41);
+            this.cbxOrdername.Name = "cbxOrdername";
+            this.cbxOrdername.Size = new System.Drawing.Size(200, 21);
+            this.cbxOrdername.TabIndex = 0;
             // 
             // label6
             // 
@@ -106,7 +130,7 @@ namespace FrontEnd
             this.txtOrdernumber.Location = new System.Drawing.Point(105, 68);
             this.txtOrdernumber.Name = "txtOrdernumber";
             this.txtOrdernumber.Size = new System.Drawing.Size(200, 20);
-            this.txtOrdernumber.TabIndex = 9;
+            this.txtOrdernumber.TabIndex = 1;
             // 
             // dtpOrderDate
             // 
@@ -117,7 +141,7 @@ namespace FrontEnd
             this.dtpOrderDate.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
             this.dtpOrderDate.Name = "dtpOrderDate";
             this.dtpOrderDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpOrderDate.TabIndex = 7;
+            this.dtpOrderDate.TabIndex = 3;
             // 
             // label5
             // 
@@ -134,7 +158,7 @@ namespace FrontEnd
             this.cbxProductionLine.Location = new System.Drawing.Point(105, 147);
             this.cbxProductionLine.Name = "cbxProductionLine";
             this.cbxProductionLine.Size = new System.Drawing.Size(200, 21);
-            this.cbxProductionLine.TabIndex = 7;
+            this.cbxProductionLine.TabIndex = 4;
             // 
             // label2
             // 
@@ -178,7 +202,7 @@ namespace FrontEnd
             0});
             this.txtOrderize1.Name = "txtOrderize1";
             this.txtOrderize1.Size = new System.Drawing.Size(200, 20);
-            this.txtOrderize1.TabIndex = 6;
+            this.txtOrderize1.TabIndex = 1;
             this.txtOrderize1.ThousandsSeparator = true;
             // 
             // groupBox2
@@ -190,26 +214,9 @@ namespace FrontEnd
             this.groupBox2.Location = new System.Drawing.Point(12, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(325, 94);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ordergegevens";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 44);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Ordernaam:";
-            // 
-            // cbxRecipe
-            // 
-            this.cbxRecipe.FormattingEnabled = true;
-            this.cbxRecipe.Location = new System.Drawing.Point(105, 29);
-            this.cbxRecipe.Name = "cbxRecipe";
-            this.cbxRecipe.Size = new System.Drawing.Size(200, 21);
-            this.cbxRecipe.TabIndex = 4;
             // 
             // label7
             // 
@@ -220,20 +227,13 @@ namespace FrontEnd
             this.label7.TabIndex = 7;
             this.label7.Text = "Recept:";
             // 
-            // txtDescription
+            // cbxRecipe
             // 
-            this.txtDescription.Location = new System.Drawing.Point(105, 94);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(200, 20);
-            this.txtDescription.TabIndex = 11;
-            // 
-            // cbxOrdername
-            // 
-            this.cbxOrdername.FormattingEnabled = true;
-            this.cbxOrdername.Location = new System.Drawing.Point(105, 41);
-            this.cbxOrdername.Name = "cbxOrdername";
-            this.cbxOrdername.Size = new System.Drawing.Size(200, 21);
-            this.cbxOrdername.TabIndex = 7;
+            this.cbxRecipe.FormattingEnabled = true;
+            this.cbxRecipe.Location = new System.Drawing.Point(105, 29);
+            this.cbxRecipe.Name = "cbxRecipe";
+            this.cbxRecipe.Size = new System.Drawing.Size(200, 21);
+            this.cbxRecipe.TabIndex = 0;
             // 
             // frmModifyOrder
             // 
