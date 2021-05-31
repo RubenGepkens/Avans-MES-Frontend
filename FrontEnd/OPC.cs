@@ -254,5 +254,35 @@ namespace FrontEnd
                     return "Unknown status";
             }
         }
+
+        /// <summary>
+        /// Send an order start command to the OPC server.
+        /// </summary>
+        /// <returns>true if command was successful and false if it was unsuccessful</returns>
+        public bool StartOrder(string strGUID)
+        {
+            /*
+             * ns=3;s="db_OPCdata"."orderDbId"
+             * ns=3;s="db_OPCdata"."startenOrder"
+             * 
+             * string strGUID = session.ReadValue(@"ns=3;s=""db_OPCdata"".""orderDbId""").ToString();
+             * 
+             */
+
+            try
+            {
+                //start session to the OPC server
+                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+                {
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: CheckConnection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }
