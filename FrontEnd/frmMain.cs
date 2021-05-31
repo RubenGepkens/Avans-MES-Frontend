@@ -651,7 +651,7 @@ namespace FrontEnd
 					"Beschrijving:\t" + strDescription + "\n" +
 					"Recept:\t\t" + strRecipe + "\n" +
 					"Aantal:\t\t" + strAmount + "\n" +
-					"GUID:\t" + strGUID, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					"GUID:\t\t" + strGUID, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (msgBxResult == DialogResult.Yes)
 				{
