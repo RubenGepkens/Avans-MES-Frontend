@@ -560,8 +560,14 @@ namespace FrontEnd
 			string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 			if (objOPC != null && objOPC.blnConnectionStatus)
-            {
-				objOPC.StartOrder(strGUID);
+            {				
+				if (objOPC.StartOrder(strGUID))
+                {
+					MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+					MessageBox.Show("De order is niet gestart.", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				}
 			}			
 		}
 
@@ -586,8 +592,38 @@ namespace FrontEnd
 		/// </summary>
 		private void OrderRemove()
         {
+			// Variable that contains the current selected row of the main datagridview.
+			int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+			int intColumnIndex;
 
-        }
+			intColumnIndex = dgvTab1.Columns["Ordernaam"].Index;
+			string strOrdername = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
+			string strOrdernummer = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex = dgvTab1.Columns["Beschrijving"].Index;
+			string strDescription = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex = dgvTab1.Columns["Recept"].Index;
+			string strRecipe = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex = dgvTab1.Columns["Aantal"].Index;
+			string strAmount = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			var msgBxResult = MessageBox.Show("Weet je zeker dat je de volgende order wilt verwijderen?\n" +
+				"\n" +
+				"Ordernaam:\t" + strOrdername + "\n" +
+				"Ordernummer:\t" + strOrdernummer + "\n" +
+				"Beschrijving:\t" + strDescription + "\n" +
+				"Recept:\t\t" + strRecipe + "\n" +
+				"Aantal:\t\t" + strAmount, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+			if (msgBxResult == DialogResult.Yes)
+			{
+				// TODO
+			}
+		}
 
 		#endregion
 
