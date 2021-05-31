@@ -58,6 +58,7 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblOPCstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgvTab1 = new System.Windows.Forms.DataGridView();
             this.toolStripTab1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.txtOrdernumber = new System.Windows.Forms.ToolStripTextBox();
@@ -101,6 +102,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLine1M1Parts = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -121,11 +124,29 @@
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
             this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
-            this.dgvTab1 = new System.Windows.Forms.DataGridView();
+            this.txtLine1M2Baked = new System.Windows.Forms.TextBox();
+            this.txtLine1M2Rejected = new System.Windows.Forms.TextBox();
+            this.txtLine1M3Packed = new System.Windows.Forms.TextBox();
+            this.txtLine1M3Rejected = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtLine2M1Parts = new System.Windows.Forms.TextBox();
+            this.txtLine2M2Baked = new System.Windows.Forms.TextBox();
+            this.txtLine2M2Rejected = new System.Windows.Forms.TextBox();
+            this.txtLine2M3Packed = new System.Windows.Forms.TextBox();
+            this.txtLine2M3Rejected = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -133,7 +154,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -411,6 +431,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Overzicht orders";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvTab1
+            // 
+            this.dgvTab1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTab1.Location = new System.Drawing.Point(3, 52);
+            this.dgvTab1.Name = "dgvTab1";
+            this.dgvTab1.ReadOnly = true;
+            this.dgvTab1.Size = new System.Drawing.Size(1170, 500);
+            this.dgvTab1.TabIndex = 1;
             // 
             // toolStripTab1
             // 
@@ -735,6 +765,16 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.txtLine2M3Rejected);
+            this.groupBox2.Controls.Add(this.txtLine2M3Packed);
+            this.groupBox2.Controls.Add(this.txtLine2M2Rejected);
+            this.groupBox2.Controls.Add(this.txtLine2M2Baked);
+            this.groupBox2.Controls.Add(this.txtLine2M1Parts);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
@@ -746,7 +786,7 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Location = new System.Drawing.Point(299, 187);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(285, 159);
+            this.groupBox2.Size = new System.Drawing.Size(285, 362);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lijn 2";
@@ -755,7 +795,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(90, 94);
+            this.label11.Location = new System.Drawing.Point(90, 172);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(59, 13);
             this.label11.TabIndex = 8;
@@ -765,7 +805,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(90, 55);
+            this.label12.Location = new System.Drawing.Point(90, 81);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 7;
@@ -783,7 +823,7 @@
             // 
             // txtLine2M3PackML
             // 
-            this.txtLine2M3PackML.Location = new System.Drawing.Point(93, 110);
+            this.txtLine2M3PackML.Location = new System.Drawing.Point(93, 188);
             this.txtLine2M3PackML.Name = "txtLine2M3PackML";
             this.txtLine2M3PackML.ReadOnly = true;
             this.txtLine2M3PackML.Size = new System.Drawing.Size(150, 20);
@@ -792,7 +832,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 113);
+            this.label14.Location = new System.Drawing.Point(6, 191);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(81, 13);
             this.label14.TabIndex = 4;
@@ -808,7 +848,7 @@
             // 
             // txtLine2M2PackML
             // 
-            this.txtLine2M2PackML.Location = new System.Drawing.Point(93, 71);
+            this.txtLine2M2PackML.Location = new System.Drawing.Point(93, 97);
             this.txtLine2M2PackML.Name = "txtLine2M2PackML";
             this.txtLine2M2PackML.ReadOnly = true;
             this.txtLine2M2PackML.Size = new System.Drawing.Size(150, 20);
@@ -826,7 +866,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 74);
+            this.label16.Location = new System.Drawing.Point(6, 100);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(81, 13);
             this.label16.TabIndex = 2;
@@ -834,6 +874,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.txtLine1M3Rejected);
+            this.groupBox1.Controls.Add(this.txtLine1M3Packed);
+            this.groupBox1.Controls.Add(this.txtLine1M2Rejected);
+            this.groupBox1.Controls.Add(this.txtLine1M2Baked);
+            this.groupBox1.Controls.Add(this.txtLine1M1Parts);
+            this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
@@ -845,16 +895,33 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(8, 187);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 159);
+            this.groupBox1.Size = new System.Drawing.Size(285, 362);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lijn 1";
+            // 
+            // txtLine1M1Parts
+            // 
+            this.txtLine1M1Parts.Location = new System.Drawing.Point(93, 58);
+            this.txtLine1M1Parts.Name = "txtLine1M1Parts";
+            this.txtLine1M1Parts.ReadOnly = true;
+            this.txtLine1M1Parts.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M1Parts.TabIndex = 10;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 61);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(42, 13);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Partjes:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(90, 94);
+            this.label10.Location = new System.Drawing.Point(90, 172);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(59, 13);
             this.label10.TabIndex = 8;
@@ -864,7 +931,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(90, 55);
+            this.label9.Location = new System.Drawing.Point(90, 81);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 7;
@@ -882,7 +949,7 @@
             // 
             // txtLine1M3PackML
             // 
-            this.txtLine1M3PackML.Location = new System.Drawing.Point(93, 110);
+            this.txtLine1M3PackML.Location = new System.Drawing.Point(93, 188);
             this.txtLine1M3PackML.Name = "txtLine1M3PackML";
             this.txtLine1M3PackML.ReadOnly = true;
             this.txtLine1M3PackML.Size = new System.Drawing.Size(150, 20);
@@ -891,7 +958,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 113);
+            this.label7.Location = new System.Drawing.Point(6, 191);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(81, 13);
             this.label7.TabIndex = 4;
@@ -907,7 +974,7 @@
             // 
             // txtLine1M2PackML
             // 
-            this.txtLine1M2PackML.Location = new System.Drawing.Point(93, 71);
+            this.txtLine1M2PackML.Location = new System.Drawing.Point(93, 97);
             this.txtLine1M2PackML.Name = "txtLine1M2PackML";
             this.txtLine1M2PackML.ReadOnly = true;
             this.txtLine1M2PackML.Size = new System.Drawing.Size(150, 20);
@@ -925,7 +992,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 74);
+            this.label6.Location = new System.Drawing.Point(6, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 13);
             this.label6.TabIndex = 2;
@@ -1033,15 +1100,158 @@
             this.timerRetrieveOPC.Interval = 10000;
             this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
             // 
-            // dgvTab1
+            // txtLine1M2Baked
             // 
-            this.dgvTab1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTab1.Location = new System.Drawing.Point(3, 52);
-            this.dgvTab1.Name = "dgvTab1";
-            this.dgvTab1.ReadOnly = true;
-            this.dgvTab1.Size = new System.Drawing.Size(1170, 500);
-            this.dgvTab1.TabIndex = 1;
+            this.txtLine1M2Baked.Location = new System.Drawing.Point(93, 123);
+            this.txtLine1M2Baked.Name = "txtLine1M2Baked";
+            this.txtLine1M2Baked.ReadOnly = true;
+            this.txtLine1M2Baked.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M2Baked.TabIndex = 11;
+            // 
+            // txtLine1M2Rejected
+            // 
+            this.txtLine1M2Rejected.Location = new System.Drawing.Point(93, 149);
+            this.txtLine1M2Rejected.Name = "txtLine1M2Rejected";
+            this.txtLine1M2Rejected.ReadOnly = true;
+            this.txtLine1M2Rejected.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M2Rejected.TabIndex = 12;
+            // 
+            // txtLine1M3Packed
+            // 
+            this.txtLine1M3Packed.Location = new System.Drawing.Point(93, 214);
+            this.txtLine1M3Packed.Name = "txtLine1M3Packed";
+            this.txtLine1M3Packed.ReadOnly = true;
+            this.txtLine1M3Packed.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M3Packed.TabIndex = 13;
+            // 
+            // txtLine1M3Rejected
+            // 
+            this.txtLine1M3Rejected.Location = new System.Drawing.Point(93, 240);
+            this.txtLine1M3Rejected.Name = "txtLine1M3Rejected";
+            this.txtLine1M3Rejected.ReadOnly = true;
+            this.txtLine1M3Rejected.Size = new System.Drawing.Size(150, 20);
+            this.txtLine1M3Rejected.TabIndex = 14;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 126);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(60, 13);
+            this.label21.TabIndex = 15;
+            this.label21.Text = "Gebakken:";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 152);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(59, 13);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "Afgekeurd:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(6, 217);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(47, 13);
+            this.label23.TabIndex = 17;
+            this.label23.Text = "Verpakt:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 243);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(59, 13);
+            this.label24.TabIndex = 18;
+            this.label24.Text = "Afgekeurd:";
+            // 
+            // txtLine2M1Parts
+            // 
+            this.txtLine2M1Parts.Location = new System.Drawing.Point(93, 58);
+            this.txtLine2M1Parts.Name = "txtLine2M1Parts";
+            this.txtLine2M1Parts.ReadOnly = true;
+            this.txtLine2M1Parts.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M1Parts.TabIndex = 9;
+            // 
+            // txtLine2M2Baked
+            // 
+            this.txtLine2M2Baked.Location = new System.Drawing.Point(93, 123);
+            this.txtLine2M2Baked.Name = "txtLine2M2Baked";
+            this.txtLine2M2Baked.ReadOnly = true;
+            this.txtLine2M2Baked.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M2Baked.TabIndex = 10;
+            // 
+            // txtLine2M2Rejected
+            // 
+            this.txtLine2M2Rejected.Location = new System.Drawing.Point(93, 149);
+            this.txtLine2M2Rejected.Name = "txtLine2M2Rejected";
+            this.txtLine2M2Rejected.ReadOnly = true;
+            this.txtLine2M2Rejected.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M2Rejected.TabIndex = 11;
+            // 
+            // txtLine2M3Packed
+            // 
+            this.txtLine2M3Packed.Location = new System.Drawing.Point(93, 214);
+            this.txtLine2M3Packed.Name = "txtLine2M3Packed";
+            this.txtLine2M3Packed.ReadOnly = true;
+            this.txtLine2M3Packed.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M3Packed.TabIndex = 12;
+            // 
+            // txtLine2M3Rejected
+            // 
+            this.txtLine2M3Rejected.Location = new System.Drawing.Point(93, 240);
+            this.txtLine2M3Rejected.Name = "txtLine2M3Rejected";
+            this.txtLine2M3Rejected.ReadOnly = true;
+            this.txtLine2M3Rejected.Size = new System.Drawing.Size(150, 20);
+            this.txtLine2M3Rejected.TabIndex = 13;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 61);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(42, 13);
+            this.label25.TabIndex = 19;
+            this.label25.Text = "Partjes:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(6, 126);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(60, 13);
+            this.label26.TabIndex = 19;
+            this.label26.Text = "Gebakken:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 152);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(59, 13);
+            this.label27.TabIndex = 19;
+            this.label27.Text = "Afgekeurd:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 217);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 13);
+            this.label28.TabIndex = 19;
+            this.label28.Text = "Verpakt:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 243);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(59, 13);
+            this.label29.TabIndex = 19;
+            this.label29.Text = "Afgekeurd:";
             // 
             // frmMain
             // 
@@ -1067,6 +1277,7 @@
             this.statusStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).EndInit();
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1079,7 +1290,6 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1179,6 +1389,26 @@
         private System.Windows.Forms.ToolStripStatusLabel lblOPCstatus;
         private System.Windows.Forms.Button btnGetDatabaseItems;
         private System.Windows.Forms.DataGridView dgvTab1;
+        private System.Windows.Forms.TextBox txtLine1M1Parts;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtLine2M3Rejected;
+        private System.Windows.Forms.TextBox txtLine2M3Packed;
+        private System.Windows.Forms.TextBox txtLine2M2Rejected;
+        private System.Windows.Forms.TextBox txtLine2M2Baked;
+        private System.Windows.Forms.TextBox txtLine2M1Parts;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtLine1M3Rejected;
+        private System.Windows.Forms.TextBox txtLine1M3Packed;
+        private System.Windows.Forms.TextBox txtLine1M2Rejected;
+        private System.Windows.Forms.TextBox txtLine1M2Baked;
     }
 }
 
