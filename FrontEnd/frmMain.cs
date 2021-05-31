@@ -570,11 +570,10 @@ namespace FrontEnd
 		}
 
 		/// <summary>
-		/// 
+		/// Command the OPC server to start the selected order.
 		/// </summary>
 		private void OrderStart()
         {
-			// Variable that contains the current selected row of the main datagridview.
 			int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
 			int intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
 			string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
@@ -592,56 +591,78 @@ namespace FrontEnd
 		}
 
 		/// <summary>
-		/// 
+		/// Command the OPC server to pauze the selected order.
 		/// </summary>
 		private void OrderPause()
         {
-
+			// TODO
         }
 
 		/// <summary>
-		/// 
+		/// Command the OPC server to stop the selected order.
 		/// </summary>
 		private void OrderStop()
         {
-
-        }
+			// TODO			
+		}
 
 		/// <summary>
-		/// 
+		/// Remove the selected order from the database.
 		/// </summary>
 		private void OrderRemove()
         {
-			// Variable that contains the current selected row of the main datagridview.
-			int intRowIndex = dgvTab1.CurrentCell.RowIndex;
-			int intColumnIndex;
-
-			intColumnIndex = dgvTab1.Columns["Ordernaam"].Index;
-			string strOrdername = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
-			string strOrdernummer = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			intColumnIndex = dgvTab1.Columns["Beschrijving"].Index;
-			string strDescription = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			intColumnIndex = dgvTab1.Columns["Recept"].Index;
-			string strRecipe = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			intColumnIndex = dgvTab1.Columns["Aantal"].Index;
-			string strAmount = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			var msgBxResult = MessageBox.Show("Weet je zeker dat je de volgende order wilt verwijderen?\n" +
-				"\n" +
-				"Ordernaam:\t" + strOrdername + "\n" +
-				"Ordernummer:\t" + strOrdernummer + "\n" +
-				"Beschrijving:\t" + strDescription + "\n" +
-				"Recept:\t\t" + strRecipe + "\n" +
-				"Aantal:\t\t" + strAmount, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-			if (msgBxResult == DialogResult.Yes)
+			// Check if there is a database connection.
+			if (sqlData.blnConnectionStatus)
 			{
-				// TODO
+				// Variable that contains the current selected row of the main datagridview.
+				int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+				int intColumnIndex;
+
+				intColumnIndex = dgvTab1.Columns["Ordernaam"].Index;
+				string strOrdername = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
+				string strOrdernummer = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex = dgvTab1.Columns["Beschrijving"].Index;
+				string strDescription = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex = dgvTab1.Columns["Recept"].Index;
+				string strRecipe = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex = dgvTab1.Columns["Aantal"].Index;
+				string strAmount = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex = dgvTab1.Columns["Uniqueidentifier"].Index;
+				string strGUID = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Show confirmation messagebox.
+				var msgBxResult = MessageBox.Show(
+					"Weet je zeker dat je de volgende order wilt verwijderen?\n" +
+					"\n" +
+					"Ordernaam:\t" + strOrdername + "\n" +
+					"Ordernummer:\t" + strOrdernummer + "\n" +
+					"Beschrijving:\t" + strDescription + "\n" +
+					"Recept:\t\t" + strRecipe + "\n" +
+					"Aantal:\t\t" + strAmount + "\n" +
+					"GUID:\t" + strGUID, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (msgBxResult == DialogResult.Yes)
+				{
+					// Let the user know if the command was succesful or not.
+					if (sqlData.RemoveOrder(strGUID))
+					{
+						MessageBox.Show("Order is successvol verwijderd", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+						// Make sure the datagridview and filters are updated.
+						initializeFilters();
+						getOrderData();
+					}
+					else
+					{
+						MessageBox.Show("Er is een fout opgetreden. De geselecteerde order is niet verwijderd.", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					}
+				}
 			}
 		}
 

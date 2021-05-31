@@ -302,5 +302,36 @@ namespace FrontEnd
                 MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Execute a stored procedure to remove an order from the database.
+        /// </summary>
+        /// <returns>true if command was excecuted successfully and false if an error occured.</returns>
+        public bool RemoveOrder(string strGUID)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (var command = new SqlCommand("", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        
+                        command.Parameters.Add("@strGUID", SqlDbType.VarChar).Value = strGUID;                        
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }
