@@ -409,6 +409,164 @@ namespace FrontEnd
 			}
 		}
 
+		/// <summary>
+		/// Open the new order dialog and process results, i.e. send the new order to the database.
+		/// </summary>
+		private void OrderAdd()
+        {
+			string strOrdername;
+			string strOrdernumber;
+			string strDescription;
+			DateTime dtOrderdate;
+			string strProductionline;
+			string strRecipe;
+			int intOrdersize;
+
+			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
+			{
+				// Preload variables before the form is shown to the user.
+				frmModifyOrder.strFormTitle			= "Nieuwe order aanmaken..";
+
+				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
+				frmModifyOrder.lstOrdername			= sqlData.lstOrdernames;
+				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
+
+				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
+				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
+					strOrdername					= frmModifyOrder.strOrdername;
+					strOrdernumber					= frmModifyOrder.strOrdernumber;
+					strDescription					= frmModifyOrder.strDescription;
+					dtOrderdate						= frmModifyOrder.dtOrderDate;
+					strProductionline				= frmModifyOrder.strSelectedProducionline;
+					strRecipe						= frmModifyOrder.strSelectedRecipe;
+					intOrdersize					= frmModifyOrder.intOrderSize;
+
+					sqlData.InsertOrder(
+						strOrdername,
+						strOrdernumber,
+						strDescription,
+						dtOrderdate,
+						strProductionline,
+						strRecipe,
+						intOrdersize);
+
+					// Make sure the datagridview and filters are updated.
+					initializeFilters();
+					getOrderData();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Edit the currently selected order.
+		/// </summary>
+		private void OrderEdit()
+        {
+			string strOrdername;
+			string strOrdernumber;
+			string strDescription;
+			DateTime dtOrderdate;
+			string strProductionline;
+			string strRecipe;
+			int intOrdersize;
+
+			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
+			{
+				// Variable that contains the current selected row of the main datagridview.
+				int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+				int intColumnIndex;
+
+				// Temp for date conversions.
+				DateTime dateTime;
+
+				// Preload variables before the form is shown to the user.
+				frmModifyOrder.strFormTitle				= "Order bewerken..";
+
+				// Retrieve the name of the order.
+				intColumnIndex							= dgvTab1.Columns["Ordernaam"].Index;
+				frmModifyOrder.strOrdername				= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Retrieve the ordernumber.
+				intColumnIndex							= dgvTab1.Columns["Ordernummer"].Index;
+				frmModifyOrder.strOrdernumber			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Retrieve the datetime. We have to parse the string to DateTime format!
+				intColumnIndex							= dgvTab1.Columns["Eindtijd"].Index;
+				bool blConvertResult					= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
+
+				// If the parsing of the date string failed, set todays date instead. We can continue just fine.
+				if (blConvertResult == false)
+				{
+					dateTime = DateTime.Now;
+				}
+
+				frmModifyOrder.dtOrderDate = dateTime;
+
+				// Retrieve the order size.
+				intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
+				frmModifyOrder.intOrderSize				= System.Convert.ToInt32(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value);
+
+				frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
+				frmModifyOrder.lstOrdername				= sqlData.lstOrdernames;
+				frmModifyOrder.lstProductionlines		= sqlData.lstProductionlines;
+
+				intColumnIndex							= dgvTab1.Columns["Recept"].Index;
+				frmModifyOrder.strSelectedRecipe		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex							= dgvTab1.Columns["Beschrijving"].Index;
+				frmModifyOrder.strDescription			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex							= dgvTab1.Columns["Productielijn"].Index;
+				frmModifyOrder.strSelectedProducionline = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
+				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+				{
+					strOrdername			= frmModifyOrder.strOrdername;
+					strOrdernumber			= frmModifyOrder.strOrdernumber;
+					strDescription			= frmModifyOrder.strDescription;
+					dtOrderdate				= frmModifyOrder.dtOrderDate;
+					strProductionline		= frmModifyOrder.strSelectedProducionline;
+					strRecipe				= frmModifyOrder.strSelectedRecipe;
+					intOrdersize			= frmModifyOrder.intOrderSize;
+
+					MessageBox.Show("Your request to modify an order was received and is automatically ignored.", "Oh no, feature to be implemented later :-)", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+					/*
+					sqlData.InsertOrder(
+						strOrdername,
+						strOrdernumber,
+						strDescription,
+						dtOrderdate,
+						strProductionline,
+						strRecipe,
+						intOrdersize);
+					*/
+				}
+			}
+		}
+
+		private void OrderStart()
+        {
+			// Variable that contains the current selected row of the main datagridview.
+			int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
+			int intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
+			string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			MessageBox.Show(strGUID);
+		}
+
+		private void OrderPause()
+        {
+
+        }
+
+		private void OrderStop()
+        {
+
+        }
+
 		#endregion
 
 		#region Menustrip items eventhandlers
@@ -534,7 +692,7 @@ namespace FrontEnd
 
 		private void btnOrderStart_Click(object sender, EventArgs e)
         {
-
+			OrderStart();
         }
 
         private void btnOrderPause_Click(object sender, EventArgs e)
@@ -552,137 +710,12 @@ namespace FrontEnd
 		/// </summary>
 		private void btnOrderAdd_Click(object sender, EventArgs e)
         {
-			string strOrdername;
-			string strOrdernumber;
-			string strDescription;
-			DateTime dtOrderdate;
-			string strProductionline;
-			string strRecipe;
-			int intOrdersize;
-
-			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
-			{
-				// Preload variables before the form is shown to the user.
-				frmModifyOrder.strFormTitle			= "Nieuwe order aanmaken..";
-
-				frmModifyOrder.lstRecipes			= sqlData.lstRecipes;
-				frmModifyOrder.lstOrdername			= sqlData.lstOrdernames;
-				frmModifyOrder.lstProductionlines	= sqlData.lstProductionlines;
-
-				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
-				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-				{
-					strOrdername		= frmModifyOrder.strOrdername;
-					strOrdernumber		= frmModifyOrder.strOrdernumber;
-					strDescription		= frmModifyOrder.strDescription;
-					dtOrderdate			= frmModifyOrder.dtOrderDate;
-					strProductionline	= frmModifyOrder.strSelectedProducionline;
-					strRecipe			= frmModifyOrder.strSelectedRecipe;
-					intOrdersize		= frmModifyOrder.intOrderSize;
-
-					sqlData.InsertOrder(
-						strOrdername,
-						strOrdernumber,
-						strDescription,
-						dtOrderdate,
-						strProductionline,
-						strRecipe,
-						intOrdersize);
-
-					// Make sure the datagridview and filters are updated.
-					initializeFilters();
-					getOrderData();
-				}
-			}
+			OrderAdd();
 		}
 
-		/// <summary>
-		/// Edit the currently selected order.
-		/// </summary>
 		private void btnOrderEdit_Click(object sender, EventArgs e)
         {
-			string strOrdername;
-			string strOrdernumber;
-			string strDescription;
-			DateTime dtOrderdate;
-			string strProductionline;
-			string strRecipe;
-			int intOrdersize;
-
-			using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
-			{
-				// Variable that contains the current selected row of the main datagridview.
-				int intRowIndex							= dgvTab1.CurrentCell.RowIndex;
-				int intColumnIndex;
-
-				// Temp for date conversions.
-				DateTime dateTime;
-
-				// Preload variables before the form is shown to the user.
-				frmModifyOrder.strFormTitle				= "Order bewerken..";
-
-				// Retrieve the name of the order.
-				intColumnIndex							= dgvTab1.Columns["Ordernaam"].Index;
-				frmModifyOrder.strOrdername				= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				// Retrieve the ordernumber.
-				intColumnIndex							= dgvTab1.Columns["Ordernummer"].Index;				
-				frmModifyOrder.strOrdernumber			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				// Retrieve the datetime. We have to parse the string to DateTime format!
-				intColumnIndex							= dgvTab1.Columns["Eindtijd"].Index;				
-				bool blConvertResult					= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
-
-				// If the parsing of the date string failed, set todays date instead. We can continue just fine.
-				if (blConvertResult == false)
-                {
-					dateTime = DateTime.Now;
-                }
-
-				frmModifyOrder.dtOrderDate				= dateTime;
-
-				// Retrieve the order size.
-				intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
-				frmModifyOrder.intOrderSize				= System.Convert.ToInt32(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value);
-
-				frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
-				frmModifyOrder.lstOrdername				= sqlData.lstOrdernames;
-				frmModifyOrder.lstProductionlines		= sqlData.lstProductionlines;
-			
-				intColumnIndex							= dgvTab1.Columns["Recept"].Index;
-				frmModifyOrder.strSelectedRecipe		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex							= dgvTab1.Columns["Beschrijving"].Index;
-				frmModifyOrder.strDescription			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex							= dgvTab1.Columns["Productielijn"].Index;
-				frmModifyOrder.strSelectedProducionline = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
-				if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-				{
-					strOrdername		= frmModifyOrder.strOrdername;
-					strOrdernumber		= frmModifyOrder.strOrdernumber;
-					strDescription		= frmModifyOrder.strDescription;
-					dtOrderdate			= frmModifyOrder.dtOrderDate;
-					strProductionline	= frmModifyOrder.strSelectedProducionline;
-					strRecipe			= frmModifyOrder.strSelectedRecipe;
-					intOrdersize		= frmModifyOrder.intOrderSize;
-
-					MessageBox.Show("Your request to modify an order was received and is automatically ignored.", "Oh no, feature to be implemented later :-)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-					/*
-					sqlData.InsertOrder(
-						strOrdername,
-						strOrdernumber,
-						strDescription,
-						dtOrderdate,
-						strProductionline,
-						strRecipe,
-						intOrdersize);
-					*/
-				}
-			}
+			OrderEdit();
 		}
 
         private void btnOrderRemove_Click(object sender, EventArgs e)
