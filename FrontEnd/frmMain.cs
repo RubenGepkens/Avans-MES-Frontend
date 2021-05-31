@@ -390,6 +390,10 @@ namespace FrontEnd
 			}
 		}
 
+		/// <summary>
+		/// Retrieves realtime production data from the OPC server.
+		/// Data is displayed on the "Realtime data" tab of the tabcontrol.
+		/// </summary>
 		private void GetRealtimeOPCData()
         {
 			if (objOPC != null && objOPC.blnConnectionStatus)
@@ -401,18 +405,29 @@ namespace FrontEnd
 					SystemSounds.Beep.Play();
 				}
 
-				txtLine1M1PackML.Text = lstTemp[0];
-				txtLine1M2PackML.Text = lstTemp[1];
-				txtLine1M3PackML.Text = lstTemp[2];
+				// PackML Line 1
+				txtLine1M1PackML.Text	= lstTemp[0];
+				txtLine1M2PackML.Text	= lstTemp[1];
+				txtLine1M3PackML.Text	= lstTemp[2];
 
-				txtLine2M1PackML.Text = lstTemp[3];
-				txtLine2M2PackML.Text = lstTemp[4];
-				txtLine2M3PackML.Text = lstTemp[5];
+				// PackML Line 2
+				txtLine2M1PackML.Text	= lstTemp[3];
+				txtLine2M2PackML.Text	= lstTemp[4];
+				txtLine2M3PackML.Text	= lstTemp[5];
 
-				for (int index = 0; index <= 15; index++)
-				{
-					Console.WriteLine(lstTemp[index]);
-				}
+				// Productiondata line 1
+				txtLine1M1Parts.Text	= lstTemp[6];
+				txtLine1M2Baked.Text	= lstTemp[7];
+				txtLine1M2Rejected.Text = lstTemp[8];
+				txtLine1M3Packed.Text	= lstTemp[9];
+				txtLine1M3Rejected.Text = lstTemp[10];
+
+				// Productiondata line 1
+				txtLine2M1Parts.Text	= lstTemp[11];
+				txtLine2M2Baked.Text	= lstTemp[12];
+				txtLine2M2Rejected.Text = lstTemp[13];
+				txtLine2M3Packed.Text	= lstTemp[14];
+				txtLine2M3Rejected.Text = lstTemp[15];
 			}
 		}
 
