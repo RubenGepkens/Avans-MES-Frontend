@@ -449,22 +449,22 @@ namespace FrontEnd
 				using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 				{
 					// Preload variables before the form is shown to the user.
-					frmModifyOrder.strFormTitle = "Nieuwe order aanmaken..";
+					frmModifyOrder.strFormTitle				= "Nieuwe order aanmaken..";
 
-					frmModifyOrder.lstRecipes = sqlData.lstRecipes;
-					frmModifyOrder.lstOrdername = sqlData.lstOrdernames;
-					frmModifyOrder.lstProductionlines = sqlData.lstProductionlines;
+					frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
+					frmModifyOrder.lstOrdername				= sqlData.lstOrdernames;
+					frmModifyOrder.lstProductionlines		= sqlData.lstProductionlines;
 
 					// Display form and if dialog is accepted (when ShowDialog() == DialogResult.OK), retrieve the modified data for further processing.
 					if (frmModifyOrder.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 					{
-						strOrdername = frmModifyOrder.strOrdername;
-						strOrdernumber = frmModifyOrder.strOrdernumber;
-						strDescription = frmModifyOrder.strDescription;
-						dtOrderdate = frmModifyOrder.dtOrderDate;
-						strProductionline = frmModifyOrder.strSelectedProducionline;
-						strRecipe = frmModifyOrder.strSelectedRecipe;
-						intOrdersize = frmModifyOrder.intOrderSize;
+						strOrdername						= frmModifyOrder.strOrdername;
+						strOrdernumber						= frmModifyOrder.strOrdernumber;
+						strDescription						= frmModifyOrder.strDescription;
+						dtOrderdate							= frmModifyOrder.dtOrderDate;
+						strProductionline					= frmModifyOrder.strSelectedProducionline;
+						strRecipe							= frmModifyOrder.strSelectedRecipe;
+						intOrdersize						= frmModifyOrder.intOrderSize;
 
 						sqlData.InsertOrder(
 							strOrdername,
