@@ -58,9 +58,6 @@
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblOPCstatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgvTab1 = new System.Windows.Forms.DataGridView();
-            this.dgvTab1_2 = new System.Windows.Forms.DataGridView();
             this.toolStripTab1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.txtOrdernumber = new System.Windows.Forms.ToolStripTextBox();
@@ -124,16 +121,11 @@
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
             this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
+            this.dgvTab1 = new System.Windows.Forms.DataGridView();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).BeginInit();
             this.toolStripTab1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -141,6 +133,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripMain
@@ -409,7 +402,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.splitContainer1);
+            this.tabPage1.Controls.Add(this.dgvTab1);
             this.tabPage1.Controls.Add(this.toolStripTab1);
             this.tabPage1.Location = new System.Drawing.Point(4, 34);
             this.tabPage1.Name = "tabPage1";
@@ -418,45 +411,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Overzicht orders";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 52);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvTab1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.dgvTab1_2);
-            this.splitContainer1.Size = new System.Drawing.Size(1170, 500);
-            this.splitContainer1.SplitterDistance = 335;
-            this.splitContainer1.TabIndex = 6;
-            // 
-            // dgvTab1
-            // 
-            this.dgvTab1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTab1.Location = new System.Drawing.Point(0, 0);
-            this.dgvTab1.Name = "dgvTab1";
-            this.dgvTab1.ReadOnly = true;
-            this.dgvTab1.Size = new System.Drawing.Size(1170, 335);
-            this.dgvTab1.TabIndex = 0;
-            this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
-            // 
-            // dgvTab1_2
-            // 
-            this.dgvTab1_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTab1_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTab1_2.Location = new System.Drawing.Point(0, 0);
-            this.dgvTab1_2.Name = "dgvTab1_2";
-            this.dgvTab1_2.ReadOnly = true;
-            this.dgvTab1_2.Size = new System.Drawing.Size(1170, 161);
-            this.dgvTab1_2.TabIndex = 0;
             // 
             // toolStripTab1
             // 
@@ -1079,6 +1033,16 @@
             this.timerRetrieveOPC.Interval = 10000;
             this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
             // 
+            // dgvTab1
+            // 
+            this.dgvTab1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTab1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTab1.Location = new System.Drawing.Point(3, 52);
+            this.dgvTab1.Name = "dgvTab1";
+            this.dgvTab1.ReadOnly = true;
+            this.dgvTab1.Size = new System.Drawing.Size(1170, 500);
+            this.dgvTab1.TabIndex = 1;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1103,12 +1067,6 @@
             this.statusStrip1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1_2)).EndInit();
             this.toolStripTab1.ResumeLayout(false);
             this.toolStripTab1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1121,6 +1079,7 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTab1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1154,9 +1113,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnOrderEdit;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dgvTab1;
-        private System.Windows.Forms.DataGridView dgvTab1_2;
         private System.Windows.Forms.ToolStripButton btnOrderAdd;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
@@ -1222,6 +1178,7 @@
         private System.Windows.Forms.TextBox txtOPCrealtimeStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblOPCstatus;
         private System.Windows.Forms.Button btnGetDatabaseItems;
+        private System.Windows.Forms.DataGridView dgvTab1;
     }
 }
 
