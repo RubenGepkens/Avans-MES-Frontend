@@ -441,7 +441,8 @@ namespace FrontEnd
 				string strOrdername;
 				string strOrdernumber;
 				string strDescription;
-				DateTime dtOrderdate;
+				DateTime dtOrderStartDate;
+				DateTime dtOrderEndDate;
 				string strProductionline;
 				string strRecipe;
 				int intOrdersize;
@@ -461,7 +462,8 @@ namespace FrontEnd
 						strOrdername						= frmModifyOrder.strOrdername;
 						strOrdernumber						= frmModifyOrder.strOrdernumber;
 						strDescription						= frmModifyOrder.strDescription;
-						dtOrderdate							= frmModifyOrder.dtOrderDate;
+						dtOrderStartDate					= frmModifyOrder.dtOrderStartDate;
+						dtOrderEndDate						= frmModifyOrder.dtOrderEndDate;
 						strProductionline					= frmModifyOrder.strSelectedProducionline;
 						strRecipe							= frmModifyOrder.strSelectedRecipe;
 						intOrdersize						= frmModifyOrder.intOrderSize;
@@ -470,7 +472,8 @@ namespace FrontEnd
 							strOrdername,
 							strOrdernumber,
 							strDescription,
-							dtOrderdate,
+							dtOrderStartDate,
+							dtOrderEndDate,
 							strProductionline,
 							strRecipe,
 							intOrdersize);
@@ -492,7 +495,8 @@ namespace FrontEnd
 				string strOrdername;
 				string strOrdernumber;
 				string strDescription;
-				DateTime dtOrderdate;
+				DateTime dtOrderStartDate;
+				DateTime dtOrderEndDate;
 				string strProductionline;
 				string strRecipe;
 				int intOrdersize;
@@ -504,7 +508,9 @@ namespace FrontEnd
 					int intColumnIndex;
 
 					// Temp for date conversions.
-					DateTime dateTime;
+					DateTime dateStartTime;
+					DateTime dateEndTime;
+					bool blConvertResult;
 
 					// Preload variables before the form is shown to the user.
 					frmModifyOrder.strFormTitle				= "Order bewerken..";
@@ -518,16 +524,27 @@ namespace FrontEnd
 					frmModifyOrder.strOrdernumber			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 					// Retrieve the datetime. We have to parse the string to DateTime format!
-					intColumnIndex							= dgvTab1.Columns["Eindtijd"].Index;
-					bool blConvertResult					= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
+					intColumnIndex							= dgvTab1.Columns["Starttijd"].Index;
+					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
 
 					// If the parsing of the date string failed, set todays date instead. We can continue just fine.
 					if (blConvertResult == false)
 					{
-						dateTime = DateTime.Now;
+						dateStartTime = DateTime.Now;
 					}
 
-					frmModifyOrder.dtOrderDate = dateTime;
+					// Retrieve the datetime. We have to parse the string to DateTime format!
+					intColumnIndex							= dgvTab1.Columns["Eindtijd"].Index;
+					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
+
+					// If the parsing of the date string failed, set todays date instead. We can continue just fine.
+					if (blConvertResult == false)
+					{
+						dateEndTime = DateTime.Now;
+					}
+
+					frmModifyOrder.dtOrderStartDate			= dateStartTime;
+					frmModifyOrder.dtOrderEndDate			= dateEndTime;
 
 					// Retrieve the order size.
 					intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
@@ -552,7 +569,8 @@ namespace FrontEnd
 						strOrdername			= frmModifyOrder.strOrdername;
 						strOrdernumber			= frmModifyOrder.strOrdernumber;
 						strDescription			= frmModifyOrder.strDescription;
-						dtOrderdate				= frmModifyOrder.dtOrderDate;
+						dtOrderStartDate		= frmModifyOrder.dtOrderStartDate;
+						dtOrderEndDate			= frmModifyOrder.dtOrderEndDate;
 						strProductionline		= frmModifyOrder.strSelectedProducionline;
 						strRecipe				= frmModifyOrder.strSelectedRecipe;
 						intOrdersize			= frmModifyOrder.intOrderSize;

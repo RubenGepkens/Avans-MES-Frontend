@@ -268,7 +268,8 @@ namespace FrontEnd
             string strOrdername,
             string strOrdernumber,
             string strDescription,
-            DateTime dtOrderDate,
+            DateTime dtOrderStartDate,
+            DateTime dtOrderEndtDate,
             string strProductionline,
             string strRecipe,
             int intOrdersize)
@@ -284,8 +285,8 @@ namespace FrontEnd
                         command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value = strOrdername;
                         command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value = strOrdernumber;
                         command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value = strDescription;
-                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderDate;
-                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderDate; // <--- TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderStartDate;
+                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderEndtDate;
                         command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
                         command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intOrdersize;
                         command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intOrdersize;
