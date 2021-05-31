@@ -148,7 +148,7 @@ namespace FrontEnd
             this.dtpOrderStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpOrderStartDate.Location = new System.Drawing.Point(105, 121);
             this.dtpOrderStartDate.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
-            this.dtpOrderStartDate.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
+            this.dtpOrderStartDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpOrderStartDate.Name = "dtpOrderStartDate";
             this.dtpOrderStartDate.Size = new System.Drawing.Size(200, 20);
             this.dtpOrderStartDate.TabIndex = 3;
@@ -339,7 +339,7 @@ namespace FrontEnd
             this.dtpOrderEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpOrderEndDate.Location = new System.Drawing.Point(105, 147);
             this.dtpOrderEndDate.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
-            this.dtpOrderEndDate.MinDate = new System.DateTime(2021, 1, 1, 0, 0, 0, 0);
+            this.dtpOrderEndDate.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.dtpOrderEndDate.Name = "dtpOrderEndDate";
             this.dtpOrderEndDate.Size = new System.Drawing.Size(200, 20);
             this.dtpOrderEndDate.TabIndex = 11;
