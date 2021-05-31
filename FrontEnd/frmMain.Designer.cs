@@ -114,6 +114,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnGetDatabaseItems = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lstbxOrderstatusses = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -123,7 +124,6 @@
             this.lstbxRecipes = new System.Windows.Forms.ListBox();
             this.lstbxCustomers = new System.Windows.Forms.ListBox();
             this.timerRetrieveOPC = new System.Windows.Forms.Timer(this.components);
-            this.btnGetDatabaseItems = new System.Windows.Forms.Button();
             this.menuStripMain.SuspendLayout();
             this.toolStripMain.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -445,7 +445,7 @@
             this.dgvTab1.Name = "dgvTab1";
             this.dgvTab1.ReadOnly = true;
             this.dgvTab1.Size = new System.Drawing.Size(1170, 335);
-            this.dgvTab1.TabIndex = 6;
+            this.dgvTab1.TabIndex = 0;
             this.dgvTab1.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvTab1_DataError);
             // 
             // dgvTab1_2
@@ -486,7 +486,7 @@
             this.toolStripTab1.Location = new System.Drawing.Point(3, 3);
             this.toolStripTab1.Name = "toolStripTab1";
             this.toolStripTab1.Size = new System.Drawing.Size(1170, 49);
-            this.toolStripTab1.TabIndex = 4;
+            this.toolStripTab1.TabIndex = 0;
             this.toolStripTab1.Text = "toolStrip2";
             // 
             // toolStripLabel3
@@ -687,7 +687,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1184, 593);
-            this.tabControl1.TabIndex = 3;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -996,6 +996,16 @@
             this.tabPage2.Text = "Database";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnGetDatabaseItems
+            // 
+            this.btnGetDatabaseItems.Location = new System.Drawing.Point(662, 321);
+            this.btnGetDatabaseItems.Name = "btnGetDatabaseItems";
+            this.btnGetDatabaseItems.Size = new System.Drawing.Size(200, 23);
+            this.btnGetDatabaseItems.TabIndex = 16;
+            this.btnGetDatabaseItems.Text = "Items ophalen";
+            this.btnGetDatabaseItems.UseVisualStyleBackColor = true;
+            this.btnGetDatabaseItems.Click += new System.EventHandler(this.btnGetDatabaseItems_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1068,16 +1078,6 @@
             // 
             this.timerRetrieveOPC.Interval = 10000;
             this.timerRetrieveOPC.Tick += new System.EventHandler(this.timerRetrieveOPC_Tick);
-            // 
-            // btnGetDatabaseItems
-            // 
-            this.btnGetDatabaseItems.Location = new System.Drawing.Point(662, 321);
-            this.btnGetDatabaseItems.Name = "btnGetDatabaseItems";
-            this.btnGetDatabaseItems.Size = new System.Drawing.Size(200, 23);
-            this.btnGetDatabaseItems.TabIndex = 16;
-            this.btnGetDatabaseItems.Text = "Items ophalen";
-            this.btnGetDatabaseItems.UseVisualStyleBackColor = true;
-            this.btnGetDatabaseItems.Click += new System.EventHandler(this.btnGetDatabaseItems_Click);
             // 
             // frmMain
             // 
