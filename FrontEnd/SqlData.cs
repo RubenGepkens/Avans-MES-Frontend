@@ -260,7 +260,8 @@ namespace FrontEnd
         /// <param name="strOrdername"></param>
         /// <param name="strOrdernumber"></param>
         /// <param name="strDescription"></param>
-        /// <param name="dtOrderDate"></param>
+        /// <param name="dtOrderStartDate"></param>
+        /// <param name="dtOrderEndtDate"></param>
         /// <param name="strProductionline"></param>
         /// <param name="strRecipe"></param>
         /// <param name="intOrdersize"></param>
@@ -294,6 +295,57 @@ namespace FrontEnd
 
                         connection.Open();
                         command.ExecuteNonQuery();                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Excecutes a stored procedure to insert an order into the database.
+        /// </summary>
+        /// <param name="strOrdername"></param>
+        /// <param name="strOrdernumber"></param>
+        /// <param name="strDescription"></param>
+        /// <param name="dtOrderStartDate"></param>
+        /// <param name="dtOrderEndtDate"></param>
+        /// <param name="strProductionline"></param>
+        /// <param name="strRecipe"></param>
+        /// <param name="intOrdersize"></param>
+        public void OrderEdit(
+            string strOrdername,
+            string strOrdernumber,
+            string strDescription,
+            DateTime dtOrderStartDate,
+            DateTime dtOrderEndtDate,
+            string strProductionline,
+            string strRecipe,
+            int intOrdersize)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    using (var command = new SqlCommand("", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value = strOrdername;
+                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value = strOrdernumber;
+                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value = strDescription;
+                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderStartDate;
+                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderEndtDate;
+                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intOrdersize;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intOrdersize;
+                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value = strProductionline;
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
                     }
                 }
             }
