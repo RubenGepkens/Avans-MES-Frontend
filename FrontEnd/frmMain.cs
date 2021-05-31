@@ -525,7 +525,7 @@ namespace FrontEnd
 
 					// Retrieve the datetime. We have to parse the string to DateTime format!
 					intColumnIndex							= dgvTab1.Columns["Starttijd"].Index;
-					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
+					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateStartTime);
 
 					// If the parsing of the date string failed, set todays date instead. We can continue just fine.
 					if (blConvertResult == false)
@@ -535,7 +535,7 @@ namespace FrontEnd
 
 					// Retrieve the datetime. We have to parse the string to DateTime format!
 					intColumnIndex							= dgvTab1.Columns["Eindtijd"].Index;
-					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateTime);
+					blConvertResult							= DateTime.TryParse(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString(), out dateEndTime);
 
 					// If the parsing of the date string failed, set todays date instead. We can continue just fine.
 					if (blConvertResult == false)
