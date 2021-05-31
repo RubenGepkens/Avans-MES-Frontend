@@ -184,10 +184,6 @@ namespace FrontEnd
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = true;
 			cbxOrderStatus.SelectedIndex = 0;
-			btnReleaseOrder.Enabled = true;
-			btnOrderStart.Enabled = true;
-			btnOrderPause.Enabled = true;
-			btnOrderStop.Enabled = true;
 			btnOrderAdd.Enabled = true;
 			btnOrderEdit.Enabled = true;
 			btnOrderRemove.Enabled = true;
@@ -220,10 +216,6 @@ namespace FrontEnd
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = false;
 			cbxOrderStatus.SelectedIndex = 0;
-			btnReleaseOrder.Enabled = false;
-			btnOrderStart.Enabled = false;
-			btnOrderPause.Enabled = false;
-			btnOrderStop.Enabled = false;
 			btnOrderAdd.Enabled = false;
 			btnOrderEdit.Enabled = false;
 			btnOrderRemove.Enabled = false;
@@ -297,6 +289,11 @@ namespace FrontEnd
 
 			btnUpdateOPCdata.Enabled = true;
 
+			btnReleaseOrder.Enabled = true;
+			btnOrderStart.Enabled = true;
+			btnOrderPause.Enabled = true;
+			btnOrderStop.Enabled = true;
+
 			SystemSounds.Beep.Play();
 			tabControl1.SelectedIndex = 1;
 		}
@@ -315,6 +312,11 @@ namespace FrontEnd
 			btnMnuOPCenableRealtimeData.Enabled = false;
 			cbxMnuOPCupdateInterval.SelectedIndex = 3;
 			btnMnuOPCnotifyOnUpdate.Enabled = false;
+
+			btnReleaseOrder.Enabled = false;
+			btnOrderStart.Enabled = false;
+			btnOrderPause.Enabled = false;
+			btnOrderStop.Enabled = false;
 
 			txtOPCrealtimeStatus.Text = "Niet geactiveerd";
 			btnUpdateOPCdata.Enabled = false;
@@ -547,6 +549,9 @@ namespace FrontEnd
 			}
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		private void OrderStart()
         {
 			// Variable that contains the current selected row of the main datagridview.
@@ -554,15 +559,32 @@ namespace FrontEnd
 			int intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
 			string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-			MessageBox.Show(strGUID);
+			if (objOPC != null && objOPC.blnConnectionStatus)
+            {
+				objOPC.StartOrder(strGUID);
+			}			
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
 		private void OrderPause()
         {
 
         }
 
+		/// <summary>
+		/// 
+		/// </summary>
 		private void OrderStop()
+        {
+
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		private void OrderRemove()
         {
 
         }
@@ -697,17 +719,14 @@ namespace FrontEnd
 
         private void btnOrderPause_Click(object sender, EventArgs e)
         {
-
+			OrderPause();
         }
 
         private void btnOrderStop_Click(object sender, EventArgs e)
         {
-
+			OrderStop();
         }
 
-		/// <summary>
-		/// Open the new order dialog and process results, i.e. send the new order to the database.
-		/// </summary>
 		private void btnOrderAdd_Click(object sender, EventArgs e)
         {
 			OrderAdd();
@@ -720,7 +739,7 @@ namespace FrontEnd
 
         private void btnOrderRemove_Click(object sender, EventArgs e)
         {
-
+			OrderRemove();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

@@ -219,7 +219,7 @@ namespace FrontEnd
                 }
             } catch (Exception ex)
             {
-                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: CheckConnection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There was a problem with retrieving realtime OPC data.\nException: " + ex.Message, "OPC issue: GetRealtimeData", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return lstRetVal;
             }
         }
@@ -261,26 +261,52 @@ namespace FrontEnd
         /// <returns>true if command was successful and false if it was unsuccessful</returns>
         public bool StartOrder(string strGUID)
         {
-            /*
-             * ns=3;s="db_OPCdata"."orderDbId"
-             * ns=3;s="db_OPCdata"."startenOrder"
-             * 
-             * string strGUID = session.ReadValue(@"ns=3;s=""db_OPCdata"".""orderDbId""").ToString();
-             * 
-             */
-
             try
             {
                 //start session to the OPC server
                 using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
                 {
 
+                    //Write to node
+                    IList<NodeId> nodeIds = new List<NodeId>();
+                    nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""orderDbId"""));
+                    nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""startenOrder"""));
+
+                    object[] values = { strGUID, true };
+
+                    WriteValueCollection nodesToWrite = new WriteValueCollection();
+
+                    for (int i = 0; i < nodeIds.Count; i++)
+                    {
+                        WriteValue bWriteValue = new WriteValue();
+                        bWriteValue.NodeId = nodeIds[i];
+                        bWriteValue.AttributeId = Attributes.Value;
+                        bWriteValue.Value = new DataValue();
+                        bWriteValue.Value.Value = values[i];
+                        nodesToWrite.Add(bWriteValue);
+                    }
+
+                    // Write the node attributes
+                    StatusCodeCollection results = null;
+                    DiagnosticInfoCollection diagnosticInfos;
+
+                    // Call Write Service
+                    session.Write(null,
+                                    nodesToWrite,
+                                    out results,
+                                    out diagnosticInfos);
+
+                    foreach (StatusCode writeResult in results)
+                    {
+                        Console.WriteLine("     {0}", writeResult);
+                    }
+
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Exception: " + ex.Message, "OPC connection issue: CheckConnection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There was a problem starting the order.\nException: " + ex.Message, "OPC issue: StartOrder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
