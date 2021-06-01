@@ -639,7 +639,8 @@
             this.btnOrderRemove.Name = "btnOrderRemove";
             this.btnOrderRemove.Size = new System.Drawing.Size(46, 46);
             this.btnOrderRemove.Text = "toolStripButton7";
-            this.btnOrderRemove.ToolTipText = "Verwijder de geselecteerde order";
+            this.btnOrderRemove.ToolTipText = "Verwijder de geselecteerde order.\r\nEen order kan alleen verwijderd worden als dez" +
+    "e de status \"FORECAST\" heeft.";
             this.btnOrderRemove.Click += new System.EventHandler(this.btnOrderRemove_Click);
             // 
             // btnRefresh

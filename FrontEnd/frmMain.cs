@@ -601,7 +601,7 @@ namespace FrontEnd
 			if (msgBxResult == DialogResult.Yes)
             {
 				intRowIndex			= dgvTab1.CurrentCell.RowIndex;
-				intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
+				intColumnIndex		= dgvTab1.Columns["Schedule UId"].Index;
 				string strGUID		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				// Check if objOPC exists and that there is a connection with the OPC.
@@ -662,7 +662,7 @@ namespace FrontEnd
 				intColumnIndex				= dgvTab1.Columns["Aantal"].Index;
 				string strAmount			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex				= dgvTab1.Columns["Uniqueidentifier"].Index;
+				intColumnIndex				= dgvTab1.Columns["Schedule UId"].Index;
 				string strGUID				= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				// Show confirmation messagebox.
