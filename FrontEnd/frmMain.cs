@@ -604,20 +604,30 @@ namespace FrontEnd
 		private void OrderStart()
         {
 			int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
-			int intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
-			string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+			int intColumnIndex		= dgvTab1.Columns["Ordernaam"].Index;
+			string strOrdername		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-			// Check if objOPC exists and that there is a connection with the OPC.
-			if (objOPC != null && objOPC.blnConnectionStatus)
-            {				
-				if (objOPC.StartOrder(strGUID))
-                {
-					MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
-                {
-					MessageBox.Show("De order is niet gestart.", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			var msgBxResult = MessageBox.Show("Weet je zeker dat je de order '" + strOrdername + "' wilt starten? Hierbij worden alle onderliggende orders ook gestart.","Order starten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+			if (msgBxResult == DialogResult.Yes)
+            {
+				intRowIndex			= dgvTab1.CurrentCell.RowIndex;
+				intColumnIndex		= dgvTab1.Columns["Uniqueidentifier"].Index;
+				string strGUID		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Check if objOPC exists and that there is a connection with the OPC.
+				if (objOPC != null && objOPC.blnConnectionStatus)
+				{
+					if (objOPC.StartOrder(strGUID))
+					{
+						MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					else
+					{
+						MessageBox.Show("Er is een probleem opgetreden en de order kon niet worden gestart. Is er verbinding met de OPC server?", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					}
 				}
-			}			
+			}		
 		}
 
 		/// <summary>
