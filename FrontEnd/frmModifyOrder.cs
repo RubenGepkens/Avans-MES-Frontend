@@ -87,7 +87,7 @@ namespace FrontEnd
                 txtDescription.Text = strDescription;
             }
 
-            // If orderdate is out of bounds, use todays date instead.
+            // dtpOrderStartDate - If orderdate is out of bounds, use todays date instead.
             if (dtOrderStartDate < dtpOrderStartDate.MinDate || dtOrderStartDate > dtpOrderStartDate.MaxDate)
             {
                 dtpOrderStartDate.Value = DateTime.Now;
@@ -96,7 +96,7 @@ namespace FrontEnd
                 dtpOrderStartDate.Value = dtOrderStartDate;
             }
 
-            // If orderdate is out of bounds, use todays date instead.
+            // dtpOrderEndDate - If orderdate is out of bounds, use todays date instead.
             if (dtOrderEndDate < dtpOrderEndDate.MinDate || dtOrderEndDate > dtpOrderEndDate.MaxDate)
             {
                 dtpOrderEndDate.Value = DateTime.Now;
@@ -116,7 +116,10 @@ namespace FrontEnd
                 cbxRecipe.SelectedItem = strSelectedRecipe;
             }
 
-            if (intOrderSize >= 0)
+            if (intOrderSize <= 100)
+            {
+                txtOrderize.Value = 100;
+            } else if (intOrderSize > 100)
             {
                 txtOrderize.Value = (decimal)intOrderSize;
             }
@@ -126,6 +129,7 @@ namespace FrontEnd
             if ( strOrdername != null || strOrdernumber != null || strDescription !=null)
             {
                 ckxExtraRecipe.Enabled = false;
+                cbxRecipe.Enabled = false;
             }
         }
 
