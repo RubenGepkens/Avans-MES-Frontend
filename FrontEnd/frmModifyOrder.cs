@@ -24,6 +24,7 @@ namespace FrontEnd
         public List<string> lstProductionlines { get; set; }
         
         public string strSelectedProducionline { get; set; }
+        public string strSelectedProducionline2 { get; set; }
         public string strSelectedRecipe { get; set; }
         public int intOrderSize { get; set; }
         public int intAmountBrown { get; set; }
@@ -126,8 +127,9 @@ namespace FrontEnd
 
             // If the form's properties are filled, an order is being modified and an extra recipe is not allowed.
             // Therefore, disable this function.
-            if ( strOrdername != null || strOrdernumber != null || strDescription !=null)
+            if (strOrdername != null || strOrdernumber != null || strDescription !=null)
             {
+                txtOrderizeExtra.Value = 0;
                 ckxExtraRecipe.Enabled = false;
                 cbxRecipe.Enabled = false;
             }
@@ -136,17 +138,21 @@ namespace FrontEnd
         private void btnAccept_Click(object sender, EventArgs e)
         {
             // Check if all boxes are filled with data
-            if (    cbxOrdername.Text == "" ||
-                    txtOrdernumber.Text == "" ||
-                    txtDescription.Text == "" ||
-                    cbxProductionLine.Text == "" ||
-                    cbxRecipe.Text == "" ||
-                    txtOrderize.Value == 0 ||
-                    ckxExtraRecipe.Checked == true && (cbxProductionLineExtra.Text == "" || cbxRecipeExtra.Text == "" || txtOrderizeExtra.Value == 0)
+            if (            cbxOrdername.Text == "" ||
+                            txtOrdernumber.Text == "" ||
+                            txtDescription.Text == "" ||
+                            cbxProductionLine.Text == "" ||
+                            cbxRecipe.Text == ""
                 )
-            {
+            {                 
                 MessageBox.Show("Niet alle velden zijn ingevuld. De order kon niet worden ingevoegd of worden gewijzigd.\nControlleer of alle velden zijn ingevuld.", "Formulier niet compleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } else
+            } else if (     txtOrderize.Value < 100 ||
+                            ckxExtraRecipe.Checked == true && (cbxProductionLineExtra.Text == "" || cbxRecipeExtra.Text == "" || txtOrderizeExtra.Value < 100)
+                      )
+            {
+                MessageBox.Show("Het bestelde aantal mag niet kleiner zijn dan 100 stuks.\nVerander het aantal voordat .", "Formulier niet compleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } 
+            else 
             {
                 strOrdername                = cbxOrdername.Text;
                 strOrdernumber              = txtOrdernumber.Text;
@@ -154,6 +160,7 @@ namespace FrontEnd
                 dtOrderStartDate            = dtpOrderStartDate.Value;
                 dtOrderEndDate              = dtpOrderEndDate.Value;
                 strSelectedProducionline    = cbxProductionLine.Text;
+                strSelectedProducionline2   = cbxProductionLineExtra.Text;
                 strSelectedRecipe           = cbxRecipe.Text;
                 //intOrderSize                = (int)txtOrderize.Value;
                 //intOrderSizeExtra           = (int)txtOrderizeExtra.Value;
@@ -196,11 +203,13 @@ namespace FrontEnd
         {
             if (ckxExtraRecipe.Checked)
             {
+                txtOrderizeExtra.Value              = 100;
                 cbxProductionLineExtra.Enabled      = true;
                 cbxRecipeExtra.Enabled              = true;
                 txtOrderizeExtra.Enabled            = true;
             } else
-            {                
+            {
+                txtOrderizeExtra.Value              = 0;
                 cbxProductionLineExtra.Enabled      = false;
                 cbxRecipeExtra.Enabled              = false;
                 txtOrderizeExtra.Enabled            = false;

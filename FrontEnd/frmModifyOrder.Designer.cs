@@ -47,8 +47,8 @@ namespace FrontEnd
             this.label3 = new System.Windows.Forms.Label();
             this.txtOrderize = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbxProductionLineExtra = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbxRecipeExtra = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@ namespace FrontEnd
             this.ckxExtraRecipe = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbxRecipe = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbxProductionLineExtra = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -233,11 +233,6 @@ namespace FrontEnd
             0,
             0,
             0});
-            this.txtOrderize.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.txtOrderize.Name = "txtOrderize";
             this.txtOrderize.Size = new System.Drawing.Size(200, 20);
             this.txtOrderize.TabIndex = 1;
@@ -252,7 +247,9 @@ namespace FrontEnd
             // 
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
+            this.groupBox2.Controls.Add(this.cbxProductionLineExtra);
             this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cbxRecipeExtra);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
@@ -270,26 +267,25 @@ namespace FrontEnd
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ordergegevens";
             // 
-            // label10
+            // label13
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(133, -4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Productielijn:";
-            this.label10.Visible = false;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(103, 218);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 12);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Minimaal 100 stuks";
             // 
-            // cbxProductionLineExtra
+            // label12
             // 
-            this.cbxProductionLineExtra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProductionLineExtra.Enabled = false;
-            this.cbxProductionLineExtra.FormattingEnabled = true;
-            this.cbxProductionLineExtra.Location = new System.Drawing.Point(206, -7);
-            this.cbxProductionLineExtra.Name = "cbxProductionLineExtra";
-            this.cbxProductionLineExtra.Size = new System.Drawing.Size(28, 21);
-            this.cbxProductionLineExtra.TabIndex = 13;
-            this.cbxProductionLineExtra.Visible = false;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(103, 96);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 12);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "Minimaal 100 stuks";
             // 
             // label8
             // 
@@ -333,11 +329,6 @@ namespace FrontEnd
             0,
             0,
             0});
-            this.txtOrderizeExtra.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             this.txtOrderizeExtra.Name = "txtOrderizeExtra";
             this.txtOrderizeExtra.Size = new System.Drawing.Size(200, 20);
             this.txtOrderizeExtra.TabIndex = 10;
@@ -351,7 +342,7 @@ namespace FrontEnd
             // ckxExtraRecipe
             // 
             this.ckxExtraRecipe.AutoSize = true;
-            this.ckxExtraRecipe.Location = new System.Drawing.Point(6, 145);
+            this.ckxExtraRecipe.Location = new System.Drawing.Point(6, 118);
             this.ckxExtraRecipe.Name = "ckxExtraRecipe";
             this.ckxExtraRecipe.Size = new System.Drawing.Size(267, 17);
             this.ckxExtraRecipe.TabIndex = 8;
@@ -377,25 +368,24 @@ namespace FrontEnd
             this.cbxRecipe.Size = new System.Drawing.Size(200, 21);
             this.cbxRecipe.TabIndex = 0;
             // 
-            // label12
+            // label10
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(103, 96);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 12);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Minimaal 100 stuks";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 144);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 13);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Productielijn:";
             // 
-            // label13
+            // cbxProductionLineExtra
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(103, 218);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 12);
-            this.label13.TabIndex = 15;
-            this.label13.Text = "Minimaal 100 stuks";
+            this.cbxProductionLineExtra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxProductionLineExtra.Enabled = false;
+            this.cbxProductionLineExtra.FormattingEnabled = true;
+            this.cbxProductionLineExtra.Location = new System.Drawing.Point(105, 141);
+            this.cbxProductionLineExtra.Name = "cbxProductionLineExtra";
+            this.cbxProductionLineExtra.Size = new System.Drawing.Size(200, 21);
+            this.cbxProductionLineExtra.TabIndex = 13;
             // 
             // frmModifyOrder
             // 
@@ -406,8 +396,6 @@ namespace FrontEnd
             this.ClientSize = new System.Drawing.Size(348, 471);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cbxProductionLineExtra);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -423,7 +411,6 @@ namespace FrontEnd
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderizeExtra)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

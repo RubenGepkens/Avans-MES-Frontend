@@ -302,6 +302,7 @@ namespace FrontEnd
             DateTime dtOrderStartDate,
             DateTime dtOrderEndtDate,
             string strProductionline,
+            string strProductionline2,
             string strRecipe,
             int intOrdersize,
             int intAmountWhite,
@@ -315,15 +316,16 @@ namespace FrontEnd
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value = strOrdername;
-                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value = strOrdernumber;
-                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value = strDescription;
-                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderStartDate;
-                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderEndtDate;
-                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
-                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intAmountWhite;
-                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intAmountBrown;
-                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value = strProductionline;
+                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value                        = strOrdername;
+                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value                      = strOrdernumber;
+                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value                      = strDescription;
+                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value                        = dtOrderStartDate;
+                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value                          = dtOrderEndtDate;
+                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value                        = "EnterPrise";
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                          = intAmountWhite;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value                          = intAmountBrown;
+                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value                    = strProductionline;
+                        command.Parameters.Add("@strProductieLijn2", SqlDbType.VarChar).Value                    = strProductionline2;
 
                         connection.Open();
                         command.ExecuteNonQuery();                       
@@ -369,7 +371,7 @@ namespace FrontEnd
 
                 using (var connection = GetConnection())
                 {
-                    using (var command = new SqlCommand("", connection))
+                    using (var command = new SqlCommand("spModifyOrder", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
@@ -379,8 +381,8 @@ namespace FrontEnd
                         command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value                            = dtOrderStartDate;
                         command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value                              = dtOrderEndtDate;
                         command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value                            = "EnterPrise";
-                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                              = intOrdersize;
-                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value                              = intOrdersize;
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                              = intAmountWhite;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value                              = intAmountBrown;
                         command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value                        = strProductionline;
                         command.Parameters.Add("@uidOperationsScheduleDBiD", SqlDbType.UniqueIdentifier).Value      = guidSchedule;
                         command.Parameters.Add("@uidOperationsRequestDBiD", SqlDbType.UniqueIdentifier).Value       = guidRequest;

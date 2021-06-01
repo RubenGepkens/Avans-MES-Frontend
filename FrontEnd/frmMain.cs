@@ -473,6 +473,7 @@ namespace FrontEnd
 				DateTime dtOrderStartDate;
 				DateTime dtOrderEndDate;
 				string strProductionline;
+				string strProductionline2;
 				string strRecipe;
 				int intOrdersize;
 				int intAmountWhite;
@@ -496,6 +497,7 @@ namespace FrontEnd
 						dtOrderStartDate					= frmModifyOrder.dtOrderStartDate;
 						dtOrderEndDate						= frmModifyOrder.dtOrderEndDate;
 						strProductionline					= frmModifyOrder.strSelectedProducionline;
+						strProductionline2					= frmModifyOrder.strSelectedProducionline2;
 						strRecipe							= frmModifyOrder.strSelectedRecipe;
 						intOrdersize						= frmModifyOrder.intOrderSize;
 						intAmountWhite						= frmModifyOrder.intAmountWhite;
@@ -508,6 +510,7 @@ namespace FrontEnd
 							dtOrderStartDate,
 							dtOrderEndDate,
 							strProductionline,
+							strProductionline2,
 							strRecipe,
 							intOrdersize,
 							intAmountBrown,
@@ -596,8 +599,6 @@ namespace FrontEnd
 					// 
 					intColumnIndex = dgvTab1.Columns["Request UId"].Index;
 					strRequestUId = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-
 
 					// Setup properties of frmModifyOrder
 					frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
