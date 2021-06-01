@@ -71,7 +71,6 @@
             this.cbxOrderStatus = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.btnReleaseOrder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnOrderStart = new System.Windows.Forms.ToolStripButton();
             this.btnOrderPause = new System.Windows.Forms.ToolStripButton();
             this.btnOrderStop = new System.Windows.Forms.ToolStripButton();
@@ -458,7 +457,6 @@
             this.cbxOrderStatus,
             this.toolStripSeparator6,
             this.btnReleaseOrder,
-            this.toolStripSeparator7,
             this.btnOrderStart,
             this.btnOrderPause,
             this.btnOrderStop,
@@ -563,13 +561,9 @@
             this.btnReleaseOrder.Name = "btnReleaseOrder";
             this.btnReleaseOrder.Size = new System.Drawing.Size(46, 46);
             this.btnReleaseOrder.Text = "toolStripButton1";
-            this.btnReleaseOrder.ToolTipText = "Markeer de geselecteerde order als vrijgegeven.";
+            this.btnReleaseOrder.ToolTipText = "Markeer de geselecteerde order als vrijgegeven (RELEASED).\r\nEen order kan vrijgeg" +
+    "even worden als deze de status \"FORECAST\" heeft.";
             this.btnReleaseOrder.Click += new System.EventHandler(this.btnReleaseOrder_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 49);
             // 
             // btnOrderStart
             // 
@@ -579,7 +573,9 @@
             this.btnOrderStart.Name = "btnOrderStart";
             this.btnOrderStart.Size = new System.Drawing.Size(46, 46);
             this.btnOrderStart.Text = "toolStripButton1";
-            this.btnOrderStart.ToolTipText = "Start de geselecteerde order";
+            this.btnOrderStart.ToolTipText = "Start de geselecteerde order in de machinelijn.\r\nEen order kan alleen gestart wor" +
+    "den als deze de status \"RELEASED\" (vrijgegeven) heeft en er verbinding is met de" +
+    " OPC server.";
             this.btnOrderStart.Click += new System.EventHandler(this.btnOrderStart_Click);
             // 
             // btnOrderPause
@@ -591,6 +587,7 @@
             this.btnOrderPause.Size = new System.Drawing.Size(46, 46);
             this.btnOrderPause.Text = "toolStripButton5";
             this.btnOrderPause.ToolTipText = "Pauzeer de geselecteerde order";
+            this.btnOrderPause.Visible = false;
             this.btnOrderPause.Click += new System.EventHandler(this.btnOrderPause_Click);
             // 
             // btnOrderStop
@@ -602,6 +599,7 @@
             this.btnOrderStop.Size = new System.Drawing.Size(46, 46);
             this.btnOrderStop.Text = "toolStripButton6";
             this.btnOrderStop.ToolTipText = "Stop de geselecteerde order";
+            this.btnOrderStop.Visible = false;
             this.btnOrderStop.Click += new System.EventHandler(this.btnOrderStop_Click);
             // 
             // toolStripSeparator4
@@ -628,7 +626,8 @@
             this.btnOrderEdit.Name = "btnOrderEdit";
             this.btnOrderEdit.Size = new System.Drawing.Size(46, 46);
             this.btnOrderEdit.Text = "toolStripButton1";
-            this.btnOrderEdit.ToolTipText = "Bewerk de geselecteerde order";
+            this.btnOrderEdit.ToolTipText = "Bewerk de geselecteerde order.\r\nEen order kan alleen bewerkt worden als deze de s" +
+    "tatus \"FORECAST\" heeft.";
             this.btnOrderEdit.Click += new System.EventHandler(this.btnOrderEdit_Click);
             // 
             // btnOrderRemove
@@ -1331,7 +1330,6 @@
         private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.ToolStripMenuItem btnMnuResetUserSettings;
         private System.Windows.Forms.ToolStripButton btnReleaseOrder;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.ToolStripTextBox txtOrdernumber;
