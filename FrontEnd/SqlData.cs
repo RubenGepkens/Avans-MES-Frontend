@@ -356,25 +356,34 @@ namespace FrontEnd
             DateTime dtOrderEndtDate,
             string strProductionline,
             string strRecipe,
-            int intOrdersize)
+            int intOrdersize,
+            int intAmountWhite,
+            int intAmountBrown,
+            string strScheduleUId,
+            string strRequestUId)
         {
             try
             {
+                Guid guidSchedule = new Guid(strScheduleUId);
+                Guid guidRequest = new Guid(strRequestUId);
+
                 using (var connection = GetConnection())
                 {
                     using (var command = new SqlCommand("", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value = strOrdername;
-                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value = strOrdernumber;
-                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value = strDescription;
-                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value = dtOrderStartDate;
-                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value = dtOrderEndtDate;
-                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value = "EnterPrise";
-                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value = intOrdersize;
-                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value = intOrdersize;
-                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value = strProductionline;
+                        command.Parameters.Add("@strOrderName", SqlDbType.VarChar).Value                            = strOrdername;
+                        command.Parameters.Add("@strBatchNumber", SqlDbType.VarChar).Value                          = strOrdernumber;
+                        command.Parameters.Add("@strDescription", SqlDbType.VarChar).Value                          = strDescription;
+                        command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value                            = dtOrderStartDate;
+                        command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value                              = dtOrderEndtDate;
+                        command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value                            = "EnterPrise";
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                              = intOrdersize;
+                        command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value                              = intOrdersize;
+                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value                        = strProductionline;
+                        command.Parameters.Add("@uidOperationsScheduleDBiD", SqlDbType.UniqueIdentifier).Value      = guidSchedule;
+                        command.Parameters.Add("@uidOperationsRequestDBiD", SqlDbType.UniqueIdentifier).Value       = guidRequest;
 
                         connection.Open();
                         command.ExecuteNonQuery();

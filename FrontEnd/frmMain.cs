@@ -534,6 +534,8 @@ namespace FrontEnd
 				string strProductionline;
 				string strRecipe;
 				int intOrdersize;
+				int intAmountWhite;
+				int intAmountBrown;
 				string strScheduleUId;
 				string strRequestUId;
 
@@ -621,19 +623,21 @@ namespace FrontEnd
 						strProductionline		= frmModifyOrder.strSelectedProducionline;
 						strRecipe				= frmModifyOrder.strSelectedRecipe;
 						intOrdersize			= frmModifyOrder.intOrderSize;
+						intAmountWhite			= frmModifyOrder.intAmountWhite;
+						intAmountBrown			= frmModifyOrder.intAmountBrown;					
 
-						MessageBox.Show("Your request to modify an order was received and is automatically ignored.", "Oh no, feature to be implemented later :-)", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-						/*
-						sqlData.InsertOrder(
-							strOrdername,
+						sqlData.OrderEdit(strOrdername,
 							strOrdernumber,
 							strDescription,
-							dtOrderdate,
+							dtOrderStartDate,
+							dtOrderEndDate,
 							strProductionline,
 							strRecipe,
-							intOrdersize);
-						*/
+							intOrdersize,
+							intAmountWhite,
+							intAmountBrown,
+							strScheduleUId,
+							strRequestUId);
 					}
 				}
 			}
@@ -828,14 +832,7 @@ namespace FrontEnd
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
-			int intRowIndex = dgvTab1.CurrentCell.RowIndex;
-			//int intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
-			int intColumnIndex = dgvTab1.CurrentCell.ColumnIndex;
-			string strSelectedCell = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-			string strMsgBx = "Je hebt rij " + intRowIndex.ToString() + " cel " + intColumnIndex.ToString() + " met de inhoud '" + strSelectedCell + "' geselecteerd.";
-
-			MessageBox.Show(strMsgBx);
 		}
 
 		private void btnResetUserSettings_Click(object sender, EventArgs e)
