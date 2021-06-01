@@ -78,6 +78,7 @@ namespace FrontEnd
 		}
 
 		#region Database connection functions
+
 		/// <summary>
 		/// Check if the application has connection information set and then attempt to make a connection.
 		/// If no connection information has been entered, open a dialog and let the user enter it.

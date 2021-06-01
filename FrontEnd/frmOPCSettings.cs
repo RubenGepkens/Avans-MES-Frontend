@@ -27,6 +27,10 @@ namespace FrontEnd
             {
                 txtServerAdress.Text    = strServerAdress;
                 txtServerPort.Value     = (decimal)intServerPort;
+            } else
+            {
+                txtServerAdress.Text    = "127.0.0.1";
+                txtServerPort.Value     = 4840;
             }            
         }
 
