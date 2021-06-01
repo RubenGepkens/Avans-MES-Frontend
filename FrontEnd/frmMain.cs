@@ -325,6 +325,7 @@ namespace FrontEnd
 		#endregion
 
 		#region General application functions
+
 		/// <summary>
 		/// Reset application settings.
 		/// </summary>
@@ -376,18 +377,6 @@ namespace FrontEnd
             {
 				cbxOrderStatus.Items.Add(strListItem);
             }
-		}
-
-		/// <summary>
-		/// Without this exceptionhandler the DataGridView will crash the application.
-		/// Handle the exception and show a dialog if it occurs.
-		/// </summary>
-		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
-		{
-			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
-			{
-				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
 		}
 
 		/// <summary>
@@ -655,26 +644,26 @@ namespace FrontEnd
 			if (sqlData.blnConnectionStatus)
 			{
 				// Variable that contains the current selected row of the main datagridview.
-				int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+				int intRowIndex				= dgvTab1.CurrentCell.RowIndex;
 				int intColumnIndex;
 
-				intColumnIndex = dgvTab1.Columns["Ordernaam"].Index;
-				string strOrdername = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Ordernaam"].Index;
+				string strOrdername			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
-				string strOrdernummer = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Ordernummer"].Index;
+				string strOrdernummer		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex = dgvTab1.Columns["Beschrijving"].Index;
-				string strDescription = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Beschrijving"].Index;
+				string strDescription		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex = dgvTab1.Columns["Recept"].Index;
-				string strRecipe = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Recept"].Index;
+				string strRecipe			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex = dgvTab1.Columns["Aantal"].Index;
-				string strAmount = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Aantal"].Index;
+				string strAmount			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex = dgvTab1.Columns["Uniqueidentifier"].Index;
-				string strGUID = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Uniqueidentifier"].Index;
+				string strGUID				= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				// Show confirmation messagebox.
 				var msgBxResult = MessageBox.Show(
@@ -804,6 +793,49 @@ namespace FrontEnd
 		#endregion
 
 		#region Tabcontrol : "Overzicht orders"
+		
+		/// <summary>
+		/// Without this exceptionhandler the DataGridView will crash the application.
+		/// Handle the exception and show a dialog if it occurs.
+		/// </summary>
+		private void dgvTab1_DataError(object sender, DataGridViewDataErrorEventArgs e) // Exception handler for DataGridView
+		{
+			if (e.Exception != null && e.Context == DataGridViewDataErrorContexts.Commit)
+			{
+				MessageBox.Show("Exception message: " + e.Exception.Message, "E200", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		/// <summary>
+		/// Function called when the datagridview selection changes. It is used to enable or disable the btnOrderRemove to allow deletion of an order only when the order status allow it.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void dgvTab1_SelectionChanged(object sender, EventArgs e)
+		{
+            try
+            {
+				if (sqlData.blnConnectionStatus && dgvTab1.SelectedCells.Count > 0)
+				{
+					int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
+					int intColumnIndex		= dgvTab1.Columns["Orderstatus"].Index;
+					string strOrderstatus	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					if (strOrderstatus == "FORECAST")
+					{
+						btnOrderRemove.Enabled = true;
+					}
+					else
+					{
+						btnOrderRemove.Enabled = false;
+					}
+				}
+			}	catch (Exception ex)
+            {
+                Console.WriteLine("Error occured in dgvTab1_SelectionChanged. Exception message: {0}", ex);
+            }							
+		}
+
 		private void txtOrdernumber_TextChanged(object sender, EventArgs e)
 		{
 			getOrderData();
@@ -864,6 +896,7 @@ namespace FrontEnd
 			sqlData.InitializeGlobalData();
 			getOrderData();
 		}
+
 		#endregion
 
 		#region Tabcontrol : "Realtime data"
@@ -909,5 +942,6 @@ namespace FrontEnd
 			}
 		}
         #endregion
+
     }
 }

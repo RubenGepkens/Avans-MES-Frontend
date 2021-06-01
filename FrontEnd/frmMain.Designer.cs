@@ -441,6 +441,7 @@
             this.dgvTab1.ReadOnly = true;
             this.dgvTab1.Size = new System.Drawing.Size(1170, 500);
             this.dgvTab1.TabIndex = 1;
+            this.dgvTab1.SelectionChanged += new System.EventHandler(this.dgvTab1_SelectionChanged);
             // 
             // toolStripTab1
             // 

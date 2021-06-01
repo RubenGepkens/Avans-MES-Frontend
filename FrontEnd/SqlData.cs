@@ -368,11 +368,11 @@ namespace FrontEnd
             {
                 using (var connection = GetConnection())
                 {
-                    using (var command = new SqlCommand("", connection))
+                    using (var command = new SqlCommand("spDeleteOrder", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         
-                        command.Parameters.Add("@strGUID", SqlDbType.VarChar).Value = strGUID;                        
+                        command.Parameters.Add("@dbidOperationsSchedule", SqlDbType.VarChar).Value = strGUID;                        
 
                         connection.Open();
                         command.ExecuteNonQuery();
