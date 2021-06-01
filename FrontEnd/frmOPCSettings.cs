@@ -23,13 +23,14 @@ namespace FrontEnd
 
         private void frmOPCSettings_Load(object sender, EventArgs e)
         {
-            txtServerAdress.Text        = "127.0.0.1";
-            txtServerPort.Value         = 4840;
-
-            if ( strServerAdress != null && intServerPort >= 0 && intServerPort <= 65536 )
+            if ( strServerAdress != "" && intServerPort >= 0 && intServerPort <= 65536 )
             {
                 txtServerAdress.Text    = strServerAdress;
                 txtServerPort.Value     = (decimal)intServerPort;
+            } else
+            {
+                txtServerAdress.Text    = "127.0.0.1";
+                txtServerPort.Value     = 4840;
             }
         }
 
