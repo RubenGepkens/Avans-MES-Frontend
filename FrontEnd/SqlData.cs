@@ -255,6 +255,36 @@ namespace FrontEnd
         }
 
         /// <summary>
+        /// Releases an order in the database.
+        /// </summary>
+        /// <param name="strGUID"></param>
+        public void ReleaseOrder(string strGUID)
+        {
+            try
+            {
+                Guid guid = new Guid(strGUID);
+
+                using (var connection = GetConnection())
+                {
+                    using (var command = new SqlCommand("spReleaseOrder", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        
+                        command.Parameters.Add("@strOrderNumber", SqlDbType.UniqueIdentifier).Value = guid;
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Generic exception: " + ex.Message);
+                MessageBox.Show("Exception message: " + ex.Message, "Generic SQL exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
         /// Excecutes a stored procedure to insert an order into the database.
         /// </summary>
         /// <param name="strOrdername"></param>

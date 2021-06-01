@@ -184,6 +184,7 @@ namespace FrontEnd
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = true;
 			cbxOrderStatus.SelectedIndex = 0;
+			btnReleaseOrder.Enabled = true;
 			btnOrderAdd.Enabled = true;
 			btnOrderEdit.Enabled = true;
 			btnOrderRemove.Enabled = true;
@@ -216,6 +217,7 @@ namespace FrontEnd
 			cbxProductionLine.SelectedIndex = 0;
 			cbxOrderStatus.Enabled = false;
 			cbxOrderStatus.SelectedIndex = 0;
+			btnReleaseOrder.Enabled = false;
 			btnOrderAdd.Enabled = false;
 			btnOrderEdit.Enabled = false;
 			btnOrderRemove.Enabled = false;
@@ -289,7 +291,6 @@ namespace FrontEnd
 
 			btnUpdateOPCdata.Enabled = true;
 
-			btnReleaseOrder.Enabled = true;
 			btnOrderStart.Enabled = true;
 			btnOrderPause.Enabled = true;
 			btnOrderStop.Enabled = true;
@@ -313,7 +314,6 @@ namespace FrontEnd
 			cbxMnuOPCupdateInterval.SelectedIndex = 3;
 			btnMnuOPCnotifyOnUpdate.Enabled = false;
 
-			btnReleaseOrder.Enabled = false;
 			btnOrderStart.Enabled = false;
 			btnOrderPause.Enabled = false;
 			btnOrderStop.Enabled = false;
@@ -421,6 +421,45 @@ namespace FrontEnd
 		}
 
 		/// <summary>
+		/// Releases an order in the database.
+		/// </summary>
+		private void OrderRelease()
+        {
+			if (sqlData.blnConnectionStatus)
+            {
+				int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
+				int intColumnIndex;
+
+				intColumnIndex			= dgvTab1.Columns["Ordernaam"].Index;
+				string strOrdername		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex			= dgvTab1.Columns["Ordernummer"].Index;
+				string strOrdernummer	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				intColumnIndex			= dgvTab1.Columns["Beschrijving"].Index;
+				string strDescription	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				var msgBxResult = MessageBox.Show("Wil je de volgende order vrijgeven?\n" +
+					"\n" +
+					"Ordernaam:\t" + strOrdername + "\n" +
+					"Ordernummer:\t" + strOrdernummer + "\n" +
+					"Beschrijving:\t" + strDescription + "","Order vrijgeven?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (msgBxResult == DialogResult.Yes)
+                {
+					intColumnIndex		= dgvTab1.Columns["Schedule UId"].Index;
+					string strGUID		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					sqlData.ReleaseOrder(strGUID);
+
+					// Make sure the datagridview and filters are updated.
+					initializeFilters();
+					getOrderData();
+				}
+			}
+        }
+
+		/// <summary>
 		/// Open the new order dialog and process results, i.e. send the new order to the database.
 		/// </summary>
 		private void OrderAdd()
@@ -495,11 +534,13 @@ namespace FrontEnd
 				string strProductionline;
 				string strRecipe;
 				int intOrdersize;
+				string strScheduleUId;
+				string strRequestUId;
 
 				using (frmModifyOrder frmModifyOrder = new frmModifyOrder())
 				{
 					// Variable that contains the current selected row of the main datagridview.
-					int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+					int intRowIndex							= dgvTab1.CurrentCell.RowIndex;
 					int intColumnIndex;
 
 					// Temp for date conversions.
@@ -517,6 +558,10 @@ namespace FrontEnd
 					// Retrieve the ordernumber.
 					intColumnIndex							= dgvTab1.Columns["Ordernummer"].Index;
 					frmModifyOrder.strOrdernumber			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					// Retrieve the order size.
+					intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
+					frmModifyOrder.intOrderSize				= System.Convert.ToInt32(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value);
 
 					// Retrieve the datetime. We have to parse the string to DateTime format!
 					intColumnIndex							= dgvTab1.Columns["Starttijd"].Index;
@@ -541,10 +586,17 @@ namespace FrontEnd
 					frmModifyOrder.dtOrderStartDate			= dateStartTime;
 					frmModifyOrder.dtOrderEndDate			= dateEndTime;
 
-					// Retrieve the order size.
-					intColumnIndex							= dgvTab1.Columns["Aantal"].Index;
-					frmModifyOrder.intOrderSize				= System.Convert.ToInt32(dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value);
+					// 
+					intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
+					strScheduleUId = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
+					// 
+					intColumnIndex = dgvTab1.Columns["Request UId"].Index;
+					strRequestUId = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+
+
+					// Setup properties of frmModifyOrder
 					frmModifyOrder.lstRecipes				= sqlData.lstRecipes;
 					frmModifyOrder.lstOrdername				= sqlData.lstOrdernames;
 					frmModifyOrder.lstProductionlines		= sqlData.lstProductionlines;
@@ -823,11 +875,15 @@ namespace FrontEnd
 
 					if (strOrderstatus == "FORECAST")
 					{
+						btnReleaseOrder.Enabled = true;
 						btnOrderRemove.Enabled = true;
+						btnOrderEdit.Enabled = true;
 					}
 					else
 					{
+						btnReleaseOrder.Enabled = false;
 						btnOrderRemove.Enabled = false;
+						btnOrderEdit.Enabled = false;
 					}
 				}
 			}	catch (Exception ex)
@@ -858,7 +914,7 @@ namespace FrontEnd
 
 		private void btnReleaseOrder_Click(object sender, EventArgs e)
 		{
-
+			OrderRelease();
 		}
 
 		private void btnOrderStart_Click(object sender, EventArgs e)
