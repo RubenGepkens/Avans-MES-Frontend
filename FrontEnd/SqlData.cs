@@ -301,8 +301,8 @@ namespace FrontEnd
             string strDescription,
             DateTime dtOrderStartDate,
             DateTime dtOrderEndtDate,
-            string strProductionline,
-            string strProductionline2,
+            string strProductionlineWhite,
+            string strProductionlineBrown,
             string strRecipe,
             int intOrdersize,
             int intAmountWhite,
@@ -322,11 +322,12 @@ namespace FrontEnd
                         command.Parameters.Add("@dtStartTime", SqlDbType.DateTime).Value                        = dtOrderStartDate;
                         command.Parameters.Add("@dtEndTime", SqlDbType.DateTime).Value                          = dtOrderEndtDate;
                         command.Parameters.Add("@strHierarchy", SqlDbType.VarChar).Value                        = "EnterPrise";
-                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                          = intAmountWhite;
                         command.Parameters.Add("@intAmountBrown", SqlDbType.Int).Value                          = intAmountBrown;
-                        command.Parameters.Add("@strProductieLijn", SqlDbType.VarChar).Value                    = strProductionline;
-                        command.Parameters.Add("@strProductieLijn2", SqlDbType.VarChar).Value                    = strProductionline2;
+                        command.Parameters.Add("@intAmountWhite", SqlDbType.Int).Value                          = intAmountWhite;                        
+                        command.Parameters.Add("@strProductieLijnWit", SqlDbType.VarChar).Value                 = strProductionlineWhite;
+                        command.Parameters.Add("@strProductieLijnBruin", SqlDbType.VarChar).Value               = strProductionlineBrown;
 
+                        Console.WriteLine("");
                         connection.Open();
                         command.ExecuteNonQuery();                       
                     }

@@ -472,8 +472,8 @@ namespace FrontEnd
 				string strDescription;
 				DateTime dtOrderStartDate;
 				DateTime dtOrderEndDate;
-				string strProductionline;
-				string strProductionline2;
+				string strProductionlineWhite;
+				string strProductionlineBrown;
 				string strRecipe;
 				int intOrdersize;
 				int intAmountWhite;
@@ -496,8 +496,8 @@ namespace FrontEnd
 						strDescription						= frmModifyOrder.strDescription;
 						dtOrderStartDate					= frmModifyOrder.dtOrderStartDate;
 						dtOrderEndDate						= frmModifyOrder.dtOrderEndDate;
-						strProductionline					= frmModifyOrder.strSelectedProducionline;
-						strProductionline2					= frmModifyOrder.strSelectedProducionline2;
+						strProductionlineWhite				= frmModifyOrder.strProductionlineWhite;
+						strProductionlineBrown				= frmModifyOrder.strProductionlineBrown;
 						strRecipe							= frmModifyOrder.strSelectedRecipe;
 						intOrdersize						= frmModifyOrder.intOrderSize;
 						intAmountWhite						= frmModifyOrder.intAmountWhite;
@@ -509,12 +509,12 @@ namespace FrontEnd
 							strDescription,
 							dtOrderStartDate,
 							dtOrderEndDate,
-							strProductionline,
-							strProductionline2,
+							strProductionlineWhite,
+							strProductionlineBrown,
 							strRecipe,
 							intOrdersize,
-							intAmountBrown,
-							intAmountWhite);
+							intAmountWhite,
+							intAmountBrown);
 
 						// Make sure the datagridview and filters are updated.
 						initializeFilters();

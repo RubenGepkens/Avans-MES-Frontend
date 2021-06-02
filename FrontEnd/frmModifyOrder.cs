@@ -22,9 +22,9 @@ namespace FrontEnd
         public List<string> lstRecipes { get; set; }
         public List<string> lstOrdername { get; set; }
         public List<string> lstProductionlines { get; set; }
-        
         public string strSelectedProducionline { get; set; }
-        public string strSelectedProducionline2 { get; set; }
+        public string strProductionlineWhite { get; set; }
+        public string strProductionlineBrown { get; set; }
         public string strSelectedRecipe { get; set; }
         public int intOrderSize { get; set; }
         public int intAmountBrown { get; set; }
@@ -138,37 +138,59 @@ namespace FrontEnd
         private void btnAccept_Click(object sender, EventArgs e)
         {
             // Check if all boxes are filled with data
-            if (            cbxOrdername.Text == "" ||
+            if (cbxOrdername.Text == "" ||
                             txtOrdernumber.Text == "" ||
                             txtDescription.Text == "" ||
                             cbxProductionLine.Text == "" ||
                             cbxRecipe.Text == ""
                 )
-            {                 
+            {
                 MessageBox.Show("Niet alle velden zijn ingevuld. De order kon niet worden ingevoegd of worden gewijzigd.\nControlleer of alle velden zijn ingevuld.", "Formulier niet compleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } else if (     txtOrderize.Value < 100 ||
+            } else if (txtOrderize.Value < 100 ||
                             ckxExtraRecipe.Checked == true && (cbxProductionLineExtra.Text == "" || cbxRecipeExtra.Text == "" || txtOrderizeExtra.Value < 100)
                       )
             {
                 MessageBox.Show("Het bestelde aantal mag niet kleiner zijn dan 100 stuks.\nVerander het aantal voordat .", "Formulier niet compleet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            } 
-            else 
+            }
+            else
             {
-                strOrdername                = cbxOrdername.Text;
-                strOrdernumber              = txtOrdernumber.Text;
-                strDescription              = txtDescription.Text;
-                dtOrderStartDate            = dtpOrderStartDate.Value;
-                dtOrderEndDate              = dtpOrderEndDate.Value;
-                strSelectedProducionline    = cbxProductionLine.Text;
-                strSelectedProducionline2   = cbxProductionLineExtra.Text;
-                strSelectedRecipe           = cbxRecipe.Text;
+                strOrdername = cbxOrdername.Text;
+                strOrdernumber = txtOrdernumber.Text;
+                strDescription = txtDescription.Text;
+                dtOrderStartDate = dtpOrderStartDate.Value;
+                dtOrderEndDate = dtpOrderEndDate.Value;
+                strProductionlineWhite = cbxProductionLine.Text;
+                strProductionlineBrown = cbxProductionLineExtra.Text;
+                strSelectedRecipe = cbxRecipe.Text;
                 //intOrderSize                = (int)txtOrderize.Value;
                 //intOrderSizeExtra           = (int)txtOrderizeExtra.Value;
+
+
+
+
+                if (cbxRecipe.SelectedIndex == 0)
+                {
+                    Console.WriteLine("1=0");
+                    strProductionlineBrown = cbxProductionLine.SelectedItem.ToString();
+                } else if (cbxRecipe.SelectedIndex == 1)
+                {
+                    Console.WriteLine("1=1");
+                    strProductionlineWhite = cbxProductionLine.SelectedItem.ToString();
+                } 
+                
+                if (cbxRecipeExtra.SelectedIndex == 0)
+                {
+                    Console.WriteLine("2=0");
+                    strProductionlineBrown = cbxProductionLineExtra.SelectedItem.ToString();
+                } else if (cbxRecipeExtra.SelectedIndex == 1)
+                {
+                    Console.WriteLine("2=1");
+                    strProductionlineWhite = cbxProductionLineExtra.SelectedItem.ToString();
+                }
 
                 // #################
                 intAmountWhite = 0;
                 intAmountBrown = 0;
-
                 if (cbxRecipe.SelectedIndex == 0)
                 {
                     intAmountBrown += (int)txtOrderize.Value;
@@ -183,10 +205,11 @@ namespace FrontEnd
                 }
                 else
                 {
-                    intAmountWhite += (int)txtOrderizeExtra.Value;
+                    intAmountWhite += (int)txtOrderizeExtra.Value;                   
                 }
-                // #################
 
+
+               // Console.WriteLine("1Line:{0}\t 1Recipe:{1}\n2Line:{3}\t2Recipe:{4}", cbxProductionLine.SelectedIndex, cbxRecipe.SelectedIndex, cbxProductionLineExtra.SelectedIndex, cbxRecipeExtra.SelectedIndex);
                 Console.WriteLine("intAmountBrown: {0}\nintAmountWhite: {1}", intAmountBrown, intAmountWhite);
 
                 this.DialogResult = DialogResult.OK;
