@@ -49,15 +49,15 @@ namespace FrontEnd
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.cbxProductionLineExtra = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.cbxRecipeExtra = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtOrderizeExtra = new System.Windows.Forms.NumericUpDown();
             this.ckxExtraRecipe = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbxRecipe = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbxProductionLineExtra = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrderize)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -102,7 +102,7 @@ namespace FrontEnd
             this.groupBox1.Size = new System.Drawing.Size(324, 168);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Algemene gegevens";
+            this.groupBox1.Text = "Algemene gegevens inkooporder";
             // 
             // dtpOrderEndDate
             // 
@@ -271,7 +271,7 @@ namespace FrontEnd
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(103, 218);
+            this.label13.Location = new System.Drawing.Point(103, 224);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(85, 12);
             this.label13.TabIndex = 15;
@@ -287,21 +287,40 @@ namespace FrontEnd
             this.label12.TabIndex = 13;
             this.label12.Text = "Minimaal 100 stuks";
             // 
+            // cbxProductionLineExtra
+            // 
+            this.cbxProductionLineExtra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxProductionLineExtra.Enabled = false;
+            this.cbxProductionLineExtra.FormattingEnabled = true;
+            this.cbxProductionLineExtra.Location = new System.Drawing.Point(105, 147);
+            this.cbxProductionLineExtra.Name = "cbxProductionLineExtra";
+            this.cbxProductionLineExtra.Size = new System.Drawing.Size(200, 21);
+            this.cbxProductionLineExtra.TabIndex = 13;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 171);
+            this.label8.Location = new System.Drawing.Point(6, 177);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "Recept:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 150);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 13);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Productielijn:";
             // 
             // cbxRecipeExtra
             // 
             this.cbxRecipeExtra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRecipeExtra.Enabled = false;
             this.cbxRecipeExtra.FormattingEnabled = true;
-            this.cbxRecipeExtra.Location = new System.Drawing.Point(105, 168);
+            this.cbxRecipeExtra.Location = new System.Drawing.Point(105, 174);
             this.cbxRecipeExtra.Name = "cbxRecipeExtra";
             this.cbxRecipeExtra.Size = new System.Drawing.Size(200, 21);
             this.cbxRecipeExtra.TabIndex = 9;
@@ -309,7 +328,7 @@ namespace FrontEnd
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 197);
+            this.label9.Location = new System.Drawing.Point(6, 203);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 11;
@@ -323,7 +342,7 @@ namespace FrontEnd
             0,
             0,
             0});
-            this.txtOrderizeExtra.Location = new System.Drawing.Point(105, 195);
+            this.txtOrderizeExtra.Location = new System.Drawing.Point(105, 201);
             this.txtOrderizeExtra.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -342,11 +361,11 @@ namespace FrontEnd
             // ckxExtraRecipe
             // 
             this.ckxExtraRecipe.AutoSize = true;
-            this.ckxExtraRecipe.Location = new System.Drawing.Point(6, 118);
+            this.ckxExtraRecipe.Location = new System.Drawing.Point(9, 124);
             this.ckxExtraRecipe.Name = "ckxExtraRecipe";
-            this.ckxExtraRecipe.Size = new System.Drawing.Size(267, 17);
+            this.ckxExtraRecipe.Size = new System.Drawing.Size(261, 17);
             this.ckxExtraRecipe.TabIndex = 8;
-            this.ckxExtraRecipe.Text = "Extra recept toevoegen (alleen bij aanmaken order)";
+            this.ckxExtraRecipe.Text = "Extra order toevoegen (alleen bij aanmaken order)";
             this.ckxExtraRecipe.UseVisualStyleBackColor = true;
             this.ckxExtraRecipe.CheckStateChanged += new System.EventHandler(this.ckxExtraRecipe_CheckStateChanged);
             // 
@@ -367,25 +386,6 @@ namespace FrontEnd
             this.cbxRecipe.Name = "cbxRecipe";
             this.cbxRecipe.Size = new System.Drawing.Size(200, 21);
             this.cbxRecipe.TabIndex = 0;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 144);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Productielijn:";
-            // 
-            // cbxProductionLineExtra
-            // 
-            this.cbxProductionLineExtra.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxProductionLineExtra.Enabled = false;
-            this.cbxProductionLineExtra.FormattingEnabled = true;
-            this.cbxProductionLineExtra.Location = new System.Drawing.Point(105, 141);
-            this.cbxProductionLineExtra.Name = "cbxProductionLineExtra";
-            this.cbxProductionLineExtra.Size = new System.Drawing.Size(200, 21);
-            this.cbxProductionLineExtra.TabIndex = 13;
             // 
             // frmModifyOrder
             // 
