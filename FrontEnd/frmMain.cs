@@ -292,12 +292,14 @@ namespace FrontEnd
 
 			btnUpdateOPCdata.Enabled = true;
 
-			btnOrderStart.Enabled = true;
+			btnOrderStart.Enabled = false;
 			btnOrderPause.Enabled = true;
-			btnOrderStop.Enabled = true;
+			btnOrderStop.Enabled = true;			
 
 			SystemSounds.Beep.Play();
 			tabControl1.SelectedIndex = 1;
+
+			getOrderData();
 		}
 
 		/// <summary>
@@ -874,15 +876,28 @@ namespace FrontEnd
 
 					if (strOrderstatus == "FORECAST")
 					{
-						btnReleaseOrder.Enabled = true;
-						btnOrderRemove.Enabled = true;
-						btnOrderEdit.Enabled = true;
+						btnReleaseOrder.Enabled		= true;
+						btnOrderRemove.Enabled		= true;
+						btnOrderEdit.Enabled		= true;
+						btnOrderStart.Enabled		= false;
+
+					} else if (strOrderstatus == "RELEASED")
+                    {
+						btnReleaseOrder.Enabled		= false;
+						btnOrderRemove.Enabled		= false;
+						btnOrderEdit.Enabled		= false;
+
+						if ((objOPC != null && objOPC.blnConnectionStatus))
+						{
+							btnOrderStart.Enabled	= true;
+						}
 					}
 					else
 					{
-						btnReleaseOrder.Enabled = false;
-						btnOrderRemove.Enabled = false;
-						btnOrderEdit.Enabled = false;
+						btnReleaseOrder.Enabled		= false;
+						btnOrderRemove.Enabled		= false;
+						btnOrderEdit.Enabled		= false;
+						btnOrderStart.Enabled		= false;
 					}
 				}
 			}	catch (Exception ex)
