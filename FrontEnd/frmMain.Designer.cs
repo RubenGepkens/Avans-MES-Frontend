@@ -39,6 +39,8 @@
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuDBConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuDBSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnMnuHideGUID = new System.Windows.Forms.ToolStripMenuItem();
             this.oPCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuOPCConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.btnMnuOPCSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,7 +225,9 @@
             // 
             this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnMnuDBConnect,
-            this.btnMnuDBSettings});
+            this.btnMnuDBSettings,
+            this.toolStripSeparator7,
+            this.btnMnuHideGUID});
             this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
             this.databaseToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.databaseToolStripMenuItem.Text = "&Database";
@@ -233,7 +237,7 @@
             this.btnMnuDBConnect.Image = global::FrontEnd.Properties.Resources.Gnome_network_wired_svg;
             this.btnMnuDBConnect.Name = "btnMnuDBConnect";
             this.btnMnuDBConnect.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnMnuDBConnect.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuDBConnect.Size = new System.Drawing.Size(255, 26);
             this.btnMnuDBConnect.Text = "Verbinding &maken";
             this.btnMnuDBConnect.ToolTipText = "Maak verbinding met de database.";
             this.btnMnuDBConnect.Click += new System.EventHandler(this.btnMnuDBConnect_Click);
@@ -243,10 +247,25 @@
             this.btnMnuDBSettings.Image = global::FrontEnd.Properties.Resources.Gnome_applications_system_svg;
             this.btnMnuDBSettings.Name = "btnMnuDBSettings";
             this.btnMnuDBSettings.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnMnuDBSettings.Size = new System.Drawing.Size(215, 22);
+            this.btnMnuDBSettings.Size = new System.Drawing.Size(255, 26);
             this.btnMnuDBSettings.Text = "Verbinding &instellen";
             this.btnMnuDBSettings.ToolTipText = "Stel de verbinding met de database in.";
             this.btnMnuDBSettings.Click += new System.EventHandler(this.btnMnuDBSettings_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(252, 6);
+            // 
+            // btnMnuHideGUID
+            // 
+            this.btnMnuHideGUID.Checked = true;
+            this.btnMnuHideGUID.CheckOnClick = true;
+            this.btnMnuHideGUID.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.btnMnuHideGUID.Name = "btnMnuHideGUID";
+            this.btnMnuHideGUID.Size = new System.Drawing.Size(255, 26);
+            this.btnMnuHideGUID.Text = "Kolommen met GUID\'s verbergen";
+            this.btnMnuHideGUID.CheckStateChanged += new System.EventHandler(this.btnMnuHideGUID_CheckStateChanged);
             // 
             // oPCToolStripMenuItem
             // 
@@ -376,7 +395,6 @@
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(100, 46);
             this.btnTest.Text = "Testknop";
-            this.btnTest.Visible = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // btnResetUserSettings
@@ -1408,6 +1426,8 @@
         private System.Windows.Forms.TextBox txtLine1M3Packed;
         private System.Windows.Forms.TextBox txtLine1M2Rejected;
         private System.Windows.Forms.TextBox txtLine1M2Baked;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem btnMnuHideGUID;
     }
 }
 

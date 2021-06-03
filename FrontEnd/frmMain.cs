@@ -178,6 +178,8 @@ namespace FrontEnd
 			btnTest.Enabled = true;
 			btnConnect.Enabled = false;
 			btnMnuDBConnect.Enabled = false;
+			btnMnuHideGUID.Enabled = true;
+			btnMnuHideGUID.Checked = true;
 
 			txtOrdernumber.Enabled = true;
 			btnClearOrderFilter.Enabled = true;
@@ -211,6 +213,7 @@ namespace FrontEnd
 			btnTest.Enabled = false;
 			btnConnect.Enabled = true;
 			btnMnuDBConnect.Enabled = true;
+			btnMnuHideGUID.Enabled = false;
 
 			txtOrdernumber.Enabled = false;
 			btnClearOrderFilter.Enabled = false;
@@ -778,6 +781,32 @@ namespace FrontEnd
 			enterConnectionSettings();
 		}
 
+		private void btnMnuHideGUID_CheckStateChanged(object sender, EventArgs e)
+		{
+			if (btnMnuHideGUID.Checked)
+            {
+				try
+                {
+					int intColumnIndex;
+					intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
+
+					if (dgvTab1.Columns[intColumnIndex].Visible)
+					{
+						dgvTab1.Columns[intColumnIndex].Visible = false;
+						dgvTab1.Columns[intColumnIndex + 1].Visible = false;
+					}
+					else
+					{
+						dgvTab1.Columns[intColumnIndex].Visible = true;
+						dgvTab1.Columns[intColumnIndex + 1].Visible = true;
+					}
+				} catch (Exception ex)
+                {
+                    Console.WriteLine("Exception in btnMnuHideGUID_CheckStateChanged");
+                }
+			}
+		}
+
 		private void btnMnuOPCConnect_Click(object sender, EventArgs e)
 		{
 			establishOPCConnection();
@@ -836,8 +865,14 @@ namespace FrontEnd
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.
 		{
+			int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+			int intColumnIndex;
 
-		}
+			intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
+			string strGUID = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			MessageBox.Show("Rij: " + intRowIndex + " kolom: " + intColumnIndex + " waarde: " + strGUID);			
+		}	
 
 		private void btnResetUserSettings_Click(object sender, EventArgs e)
 		{
@@ -1012,6 +1047,5 @@ namespace FrontEnd
 			}
 		}
         #endregion
-
     }
 }
