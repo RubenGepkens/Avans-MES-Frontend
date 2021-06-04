@@ -504,6 +504,8 @@ namespace FrontEnd
 					if (objOPC.StartOrder(strGUID, strProductionline))
 					{
 						MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
+						initializeFilters();
+						getOrderData();
 					}
 					else
 					{
@@ -805,7 +807,11 @@ namespace FrontEnd
 
 		private void btnMnuDBSettings_Click(object sender, EventArgs e)
 		{
-			enterConnectionSettings();
+			if (enterConnectionSettings())
+			{
+				// If possible valid information was entered in the dialog, check the connection.
+				checkConnectionSettings();
+			}
 		}
 
 		private void btnMnuShowExtraColumns_CheckStateChanged(object sender, EventArgs e)
@@ -865,8 +871,11 @@ namespace FrontEnd
 
 		private void btnSettings_Click(object sender, EventArgs e)
 		{
-			// Allow user to modify the connectionsettings.
-			enterConnectionSettings();
+			if (enterConnectionSettings())
+			{
+				// If possible valid information was entered in the dialog, check the connection.
+				checkConnectionSettings();
+			}
 		}
 
 		private void btnTest_Click(object sender, EventArgs e) // Example function used to demonstrate how a DataGridView can be filled.

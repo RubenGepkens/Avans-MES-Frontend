@@ -340,7 +340,7 @@ namespace FrontEnd
                         command.Parameters.Add("@strProductieLijnWit", SqlDbType.VarChar).Value                 = strProductionlineWhite;
                         command.Parameters.Add("@strProductieLijnBruin", SqlDbType.VarChar).Value               = strProductionlineBrown;
 
-                        Console.WriteLine("");
+                        //Console.WriteLine("");
                         connection.Open();
                         command.ExecuteNonQuery();                       
                     }

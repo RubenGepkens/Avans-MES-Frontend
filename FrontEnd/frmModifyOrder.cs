@@ -128,11 +128,12 @@ namespace FrontEnd
             // If the form's properties are filled, an order is being modified and an extra recipe is not allowed.
             // Therefore, disable this function.
             if (strOrdername != null || strOrdernumber != null || strDescription !=null)
-            {
-                txtOrderizeExtra.Value = 0;
+            {                
                 ckxExtraRecipe.Enabled = false;
                 cbxRecipe.Enabled = false;
             }
+
+            txtOrderizeExtra.Value = 0;
         }
 
         private void btnAccept_Click(object sender, EventArgs e)
@@ -170,21 +171,21 @@ namespace FrontEnd
 
                 if (cbxRecipe.SelectedIndex == 0)
                 {
-                    Console.WriteLine("1=0");
+                    //Console.WriteLine("1=0");
                     strProductionlineBrown = cbxProductionLine.SelectedItem.ToString();
                 } else if (cbxRecipe.SelectedIndex == 1)
                 {
-                    Console.WriteLine("1=1");
+                    //Console.WriteLine("1=1");
                     strProductionlineWhite = cbxProductionLine.SelectedItem.ToString();
                 } 
                 
                 if (cbxRecipeExtra.SelectedIndex == 0)
                 {
-                    Console.WriteLine("2=0");
+                    //Console.WriteLine("2=0");
                     strProductionlineBrown = cbxProductionLineExtra.SelectedItem.ToString();
                 } else if (cbxRecipeExtra.SelectedIndex == 1)
                 {
-                    Console.WriteLine("2=1");
+                    //Console.WriteLine("2=1");
                     strProductionlineWhite = cbxProductionLineExtra.SelectedItem.ToString();
                 }
 
@@ -210,7 +211,7 @@ namespace FrontEnd
 
 
                // Console.WriteLine("1Line:{0}\t 1Recipe:{1}\n2Line:{3}\t2Recipe:{4}", cbxProductionLine.SelectedIndex, cbxRecipe.SelectedIndex, cbxProductionLineExtra.SelectedIndex, cbxRecipeExtra.SelectedIndex);
-                Console.WriteLine("intAmountBrown: {0}\nintAmountWhite: {1}", intAmountBrown, intAmountWhite);
+               //Console.WriteLine("intAmountBrown: {0}\nintAmountWhite: {1}", intAmountBrown, intAmountWhite);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
