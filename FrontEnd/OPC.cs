@@ -306,18 +306,30 @@ namespace FrontEnd
         /// Send an order start command to the OPC server.
         /// </summary>
         /// <returns>true if command was successful and false if it was unsuccessful</returns>
-        public bool StartOrder(string strGUID)
+        public bool StartOrder(string strGUID, string strProductionline)
         {
             try
             {
                 //start session to the OPC server
-                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())              
                 {
 
                     //Write to node
                     IList<NodeId> nodeIds = new List<NodeId>();
-                    nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""orderDbId"""));
-                    nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""startenOrder"""));
+                    
+                    //nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""orderDbId"""));
+                    //nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""startenOrder"""));
+
+                    if (strProductionline == "Productie lijn 1")
+                    {
+                        nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""requestDbIdL1"""));
+                        nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""startJobsLijn1"""));
+                    }
+                    else
+                    {
+                        nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""requestDbIdL2"""));
+                        nodeIds.Add(new NodeId(@"ns=3;s=""db_OPCdata"".""startJobsLijn2"""));
+                    }
 
                     object[] values = { strGUID, true };
 

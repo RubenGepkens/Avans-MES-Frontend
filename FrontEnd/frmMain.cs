@@ -432,28 +432,28 @@ namespace FrontEnd
         {
 			if (sqlData.blnConnectionStatus)
             {
-				int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
+				int intRowIndex				= dgvTab1.CurrentCell.RowIndex;
 				int intColumnIndex;
 
-				intColumnIndex			= dgvTab1.Columns["Ordernaam"].Index;
-				string strOrdername		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Ordernaam"].Index;
+				string strOrdername			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex			= dgvTab1.Columns["Ordernummer"].Index;
-				string strOrdernummer	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Ordernummer"].Index;
+				string strOrdernummer		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
-				intColumnIndex			= dgvTab1.Columns["Beschrijving"].Index;
-				string strDescription	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+				intColumnIndex				= dgvTab1.Columns["Beschrijving"].Index;
+				string strDescription		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 				var msgBxResult = MessageBox.Show("Wil je de volgende order vrijgeven?\n" +
 					"\n" +
-					"Ordernaam:\t" + strOrdername + "\n" +
-					"Ordernummer:\t" + strOrdernummer + "\n" +
-					"Beschrijving:\t" + strDescription + "","Order vrijgeven?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+					"Ordernaam:\t" +		strOrdername + "\n" +
+					"Ordernummer:\t" +		strOrdernummer + "\n" +
+					"Beschrijving:\t" +		strDescription + "","Order vrijgeven?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 				if (msgBxResult == DialogResult.Yes)
                 {
-					intColumnIndex		= dgvTab1.Columns["Schedule UId"].Index;
-					string strGUID		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+					intColumnIndex			= dgvTab1.Columns["Schedule UId"].Index;
+					string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
 
 					sqlData.ReleaseOrder(strGUID);
 
@@ -463,6 +463,54 @@ namespace FrontEnd
 				}
 			}
         }
+
+		/// <summary>
+		/// Command the OPC server to start the selected order.
+		/// </summary>
+		private void OrderStart()
+		{
+			int intRowIndex				= dgvTab1.CurrentCell.RowIndex;
+			int intColumnIndex;
+
+			intColumnIndex				= dgvTab1.Columns["Ordernaam"].Index;
+			string strOrdername			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex				= dgvTab1.Columns["Ordernummer"].Index;
+			string strOrdernummer		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex				= dgvTab1.Columns["Productielijn"].Index;
+			string strProductionline	= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			intColumnIndex				= dgvTab1.Columns["Beschrijving"].Index;
+			string strDescription		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+			var msgBxResult				= MessageBox.Show("Wil je de volgende order starten?\n" +
+				"\n" +
+				"Ordernaam:\t" +		strOrdername + "\n" +
+				"Ordernummer:\t" +		strOrdernummer + "\n" +
+				"Productielijn:\t" +	strProductionline + "\n" +
+				"Beschrijving:\t" +		strDescription + "", "Order starten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+			if (msgBxResult == DialogResult.Yes)
+			{
+				intRowIndex				= dgvTab1.CurrentCell.RowIndex;
+				intColumnIndex			= dgvTab1.Columns["Request UId"].Index;
+				string strGUID			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+				// Check if objOPC exists and that there is a connection with the OPC.
+				if (objOPC != null && objOPC.blnConnectionStatus)
+				{
+					if (objOPC.StartOrder(strGUID, strProductionline))
+					{
+						MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					else
+					{
+						MessageBox.Show("Er is een probleem opgetreden en de order kon niet worden gestart. Is er verbinding met de OPC server?", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					}
+				}
+			}
+		}
 
 		/// <summary>
 		/// Open the new order dialog and process results, i.e. send the new order to the database.
@@ -647,38 +695,6 @@ namespace FrontEnd
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// Command the OPC server to start the selected order.
-		/// </summary>
-		private void OrderStart()
-        {
-			int intRowIndex			= dgvTab1.CurrentCell.RowIndex;
-			int intColumnIndex		= dgvTab1.Columns["Ordernaam"].Index;
-			string strOrdername		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-			var msgBxResult = MessageBox.Show("Weet je zeker dat je de order '" + strOrdername + "' wilt starten? Hierbij worden alle onderliggende orders ook gestart.","Order starten?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-			if (msgBxResult == DialogResult.Yes)
-            {
-				intRowIndex			= dgvTab1.CurrentCell.RowIndex;
-				intColumnIndex		= dgvTab1.Columns["Schedule UId"].Index;
-				string strGUID		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				// Check if objOPC exists and that there is a connection with the OPC.
-				if (objOPC != null && objOPC.blnConnectionStatus)
-				{
-					if (objOPC.StartOrder(strGUID))
-					{
-						MessageBox.Show("Order is gestart", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					}
-					else
-					{
-						MessageBox.Show("Er is een probleem opgetreden en de order kon niet worden gestart. Is er verbinding met de OPC server?", "Order starten", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-					}
-				}
-			}		
 		}
 
 		/// <summary>
@@ -909,6 +925,16 @@ namespace FrontEnd
 						{
 							btnOrderStart.Enabled	= true;
 						}
+					} else if (strOrderstatus == "PRODUCTION")
+					{
+						btnReleaseOrder.Enabled		= false;
+						btnOrderRemove.Enabled		= false;
+						btnOrderEdit.Enabled		= false;
+
+						if ((objOPC != null && objOPC.blnConnectionStatus))
+						{
+							btnOrderStart.Enabled = true;
+						}
 					}
 					else
 					{
@@ -981,7 +1007,7 @@ namespace FrontEnd
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-			sqlData.InitializeGlobalData();
+			initializeFilters();
 			getOrderData();
 		}
 
