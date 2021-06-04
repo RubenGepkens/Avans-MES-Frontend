@@ -227,7 +227,7 @@ namespace FrontEnd
         /// <summary>
         /// Retrieve production orders and allow for filtering based on production line and order status.
         /// </summary>
-        public void GetOrders(DataGridView dataGridView, string strOrdernumber, string strProductionline, string strOrderstatus)
+        public void GetOrders(DataGridView dataGridView, bool blnShowExtraColumns, string strOrdernumber, string strProductionline, string strOrderstatus)
         {
             string strQuery = "EXECUTE spGetOrder @Productielijn= '" + strProductionline + "', @Ordernummer= '" + strOrdernumber + "', @Orderstatus= '" + strOrderstatus + "'";
 
@@ -242,6 +242,19 @@ namespace FrontEnd
                             sqlDataAdapter.Fill(dataTable);
                             dataGridView.DataSource = dataTable;
                             dataGridView.RowHeadersVisible = false;
+
+                            int intColumnIndex = dataGridView.Columns["Schedule UId"].Index;                            
+
+                            if (blnShowExtraColumns)
+                            {
+                                dataGridView.Columns[intColumnIndex].Visible    = true;
+                                dataGridView.Columns[intColumnIndex+1].Visible  = true;
+                            } else
+                            {
+                                dataGridView.Columns[intColumnIndex].Visible    = false;
+                                dataGridView.Columns[intColumnIndex+1].Visible  = false;
+                            }
+                           
                             dataGridView.AutoResizeColumns();
                             dataGridView.Sort( dataGridView.Columns["Ordernummer"], System.ComponentModel.ListSortDirection.Ascending );
                         }

@@ -178,8 +178,7 @@ namespace FrontEnd
 			btnTest.Enabled = true;
 			btnConnect.Enabled = false;
 			btnMnuDBConnect.Enabled = false;
-			btnMnuHideGUID.Enabled = true;
-			btnMnuHideGUID.Checked = true;
+			btnMnuShowExtraColumns.Enabled = true;
 
 			txtOrdernumber.Enabled = true;
 			btnClearOrderFilter.Enabled = true;
@@ -213,7 +212,7 @@ namespace FrontEnd
 			btnTest.Enabled = false;
 			btnConnect.Enabled = true;
 			btnMnuDBConnect.Enabled = true;
-			btnMnuHideGUID.Enabled = false;
+			btnMnuShowExtraColumns.Enabled = false;
 
 			txtOrdernumber.Enabled = false;
 			btnClearOrderFilter.Enabled = false;
@@ -352,7 +351,7 @@ namespace FrontEnd
         {
 			if (sqlData.blnConnectionStatus)
             {
-				sqlData.GetOrders(dgvTab1, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
+				sqlData.GetOrders(dgvTab1, btnMnuShowExtraColumns.Checked, txtOrdernumber.Text, cbxProductionLine.Text, cbxOrderStatus.Text);
 			}			
         }
 
@@ -781,30 +780,9 @@ namespace FrontEnd
 			enterConnectionSettings();
 		}
 
-		private void btnMnuHideGUID_CheckStateChanged(object sender, EventArgs e)
+		private void btnMnuShowExtraColumns_CheckStateChanged(object sender, EventArgs e)
 		{
-			if (btnMnuHideGUID.Checked)
-            {
-				try
-                {
-					int intColumnIndex;
-					intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
-
-					if (dgvTab1.Columns[intColumnIndex].Visible)
-					{
-						dgvTab1.Columns[intColumnIndex].Visible = false;
-						dgvTab1.Columns[intColumnIndex + 1].Visible = false;
-					}
-					else
-					{
-						dgvTab1.Columns[intColumnIndex].Visible = true;
-						dgvTab1.Columns[intColumnIndex + 1].Visible = true;
-					}
-				} catch (Exception ex)
-                {
-                    Console.WriteLine("Exception in btnMnuHideGUID_CheckStateChanged");
-                }
-			}
+			getOrderData();
 		}
 
 		private void btnMnuOPCConnect_Click(object sender, EventArgs e)
@@ -869,9 +847,14 @@ namespace FrontEnd
 			int intColumnIndex;
 
 			intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
-			string strGUID = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+			string strGUID1 = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+			string strGUID2 = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex+1].Value.ToString();
 
-			MessageBox.Show("Rij: " + intRowIndex + " kolom: " + intColumnIndex + " waarde: " + strGUID);			
+			intColumnIndex = dgvTab1.CurrentCell.ColumnIndex;
+
+			MessageBox.Show("Je hebt rij: " + intRowIndex + " kolom: " + intColumnIndex + " geselecteerd\n" +
+				"Schedule UId:\t" + strGUID1 + "\n" +
+				"Request UId:\t" + strGUID2, "Debug info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}	
 
 		private void btnResetUserSettings_Click(object sender, EventArgs e)
@@ -1047,5 +1030,6 @@ namespace FrontEnd
 			}
 		}
         #endregion
+
     }
 }
