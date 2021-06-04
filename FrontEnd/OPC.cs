@@ -185,7 +185,7 @@ namespace FrontEnd
             try
             {
                 //start session to the OPC server
-                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 30 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
+                using (var session = Session.Create(application.ApplicationConfiguration, endpoint, false, false, application.ApplicationName, 10 * 60 * 1000, new UserIdentity(), null).GetAwaiter().GetResult())
                 {
                     //Read nodes
                     IList<Type> types = new List<Type>();

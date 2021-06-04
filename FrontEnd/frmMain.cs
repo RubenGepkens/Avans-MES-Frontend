@@ -170,7 +170,8 @@ namespace FrontEnd
 		private void databaseConnectionEstablished()
 		{
 			// Update statuslabel in the frmMain UI.
-			lblStatus.Text = "Verbonden met de database";
+			string strUsername = Properties.Settings.Default.lastUsername;
+			lblStatus.Text = "Verbonden met de database als gebruiker: '" + strUsername + "'\t";
 			lblStatus.Image = FrontEnd.Properties.Resources.Gnome_network_idle_svg;
 			sqlData.blnConnectionStatus = true;
 
@@ -721,54 +722,65 @@ namespace FrontEnd
 			// Check if there is a database connection.
 			if (sqlData.blnConnectionStatus)
 			{
-				// Variable that contains the current selected row of the main datagridview.
-				int intRowIndex				= dgvTab1.CurrentCell.RowIndex;
-				int intColumnIndex;
+				string strUsername = Properties.Settings.Default.lastUsername.ToLower();
 
-				intColumnIndex				= dgvTab1.Columns["Ordernaam"].Index;
-				string strOrdername			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex				= dgvTab1.Columns["Ordernummer"].Index;
-				string strOrdernummer		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex				= dgvTab1.Columns["Beschrijving"].Index;
-				string strDescription		= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex				= dgvTab1.Columns["Recept"].Index;
-				string strRecipe			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex				= dgvTab1.Columns["Aantal"].Index;
-				string strAmount			= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				intColumnIndex				= dgvTab1.Columns["Schedule UId"].Index;
-				string strGUID				= dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
-
-				// Show confirmation messagebox.
-				var msgBxResult = MessageBox.Show(
-					"Weet je zeker dat je de volgende order wilt verwijderen?\n" +
-					"\n" +
-					"Ordernaam:\t" + strOrdername + "\n" +
-					"Ordernummer:\t" + strOrdernummer + "\n" +
-					"Beschrijving:\t" + strDescription + "\n" +
-					"Recept:\t\t" + strRecipe + "\n" +
-					"Aantal:\t\t" + strAmount + "\n" +
-					"GUID:\t\t" + strGUID, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-				if (msgBxResult == DialogResult.Yes)
+				if (	strUsername == "avans" ||
+						strUsername == "sales")
 				{
-					// Let the user know if the command was succesful or not.
-					if (sqlData.RemoveOrder(strGUID))
-					{
-						MessageBox.Show("Order is successvol verwijderd", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					// Variable that contains the current selected row of the main datagridview.
+					int intRowIndex = dgvTab1.CurrentCell.RowIndex;
+					int intColumnIndex;
 
-						// Make sure the datagridview and filters are updated.
-						initializeFilters();
-						getOrderData();
-					}
-					else
+					intColumnIndex = dgvTab1.Columns["Ordernaam"].Index;
+					string strOrdername = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					intColumnIndex = dgvTab1.Columns["Ordernummer"].Index;
+					string strOrdernummer = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					intColumnIndex = dgvTab1.Columns["Beschrijving"].Index;
+					string strDescription = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					intColumnIndex = dgvTab1.Columns["Recept"].Index;
+					string strRecipe = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					intColumnIndex = dgvTab1.Columns["Aantal"].Index;
+					string strAmount = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					intColumnIndex = dgvTab1.Columns["Schedule UId"].Index;
+					string strGUID = dgvTab1.Rows[intRowIndex].Cells[intColumnIndex].Value.ToString();
+
+					// Show confirmation messagebox.
+					var msgBxResult = MessageBox.Show(
+						"Weet je zeker dat je de volgende order wilt verwijderen?\n" +
+						"\n" +
+						"Ordernaam:\t" + strOrdername + "\n" +
+						"Ordernummer:\t" + strOrdernummer + "\n" +
+						"Beschrijving:\t" + strDescription + "\n" +
+						"Recept:\t\t" + strRecipe + "\n" +
+						"Aantal:\t\t" + strAmount + "\n" +
+						"GUID:\t\t" + strGUID, "Order verwijderen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+					if (msgBxResult == DialogResult.Yes)
 					{
-						MessageBox.Show("Er is een fout opgetreden. De geselecteerde order is niet verwijderd.", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						// Let the user know if the command was succesful or not.
+						if (sqlData.RemoveOrder(strGUID))
+						{
+							MessageBox.Show("Order is successvol verwijderd", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+							// Make sure the datagridview and filters are updated.
+							initializeFilters();
+							getOrderData();
+						}
+						else
+						{
+							MessageBox.Show("Er is een fout opgetreden. De geselecteerde order is niet verwijderd.", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+						}
 					}
+				} else
+                {
+					MessageBox.Show("De order kon niet verwijderd worden omdat dit account onvoldoende rechten heeft om een order te verwijderen. Neem contact op met het management voor verdere ondersteuning.\n" +
+						"\n" +
+						"Accountnaam: '" + strUsername + "'", "Order verwijderden", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				}
 			}
 		}
@@ -1007,7 +1019,7 @@ namespace FrontEnd
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-			initializeFilters();
+			//initializeFilters();
 			getOrderData();
 		}
 
